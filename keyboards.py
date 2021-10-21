@@ -1,15 +1,15 @@
-import json
-from emoji import emojize
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from emoji import emojize
 
 # Select language
 def select_language():
 	markup = InlineKeyboardMarkup()
-	select_language_ru = InlineKeyboardButton(emojize("RU :russia:", use_aliases=True), callback_data="button_ru")
-	select_language_en = InlineKeyboardButton(emojize("EN :uk:", use_aliases=True), callback_data="button_en")
+	select_language_ru = InlineKeyboardButton(emojize("RU :Russia:", use_aliases=True), callback_data="button_ru")
+	select_language_en = InlineKeyboardButton(emojize("EN :United_Kingdom:", use_aliases=True), callback_data="button_en")
 	markup.add(select_language_ru, select_language_en)
 	return markup
 
+# Main menu
 def menu(menu):
 	markup = InlineKeyboardMarkup()
 	markup.add(InlineKeyboardButton(menu["basics"], callback_data="button_menu_basics"))
@@ -22,6 +22,7 @@ def menu(menu):
 	markup.add(InlineKeyboardButton(menu["patterns"], callback_data="button_menu_patterns"))
 	return markup
 
+# Navigation in articles
 def navigation(locale):
 	markup = InlineKeyboardMarkup(row_width=3)
 	markup.row(
