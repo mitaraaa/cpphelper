@@ -1,7 +1,7 @@
 {
 	"menu":
 	{
-		"pick_category": "Выберите категорию:",
+		"pick_category": ":blue_book: Выберите категорию:",
 		"basics": "Основы",
 		"functions": "Функции",
 		"pointers": "Указатели",
@@ -10,5 +10,19 @@
 		"containers": "Контейнеры",
 		"streams": "Потоки и система ввода-вывода",
 		"patterns": "Шаблоны"
+	},
+	"navigation":
+	{
+		"to_menu": ":black_circle_for_record: В меню",
+		"next_page": ":arrow_right:",
+		"prev_page": ":arrow_left:"
+	},
+	"articles":
+	{
+		"basics":
+		{
+			"header": "Basics",
+			"text": "Ненавижу многоэтажки\nВ детстве хотел быть архитектором, как kizaru\nНахуй рифмы, нахуй панчи в музыке нет правил\nМного проблем надо решить, а я в облаках витаю\nНет никаких чувств\nПроблемы с головой, ха, но я лечусь"
+		}
 	}
 }

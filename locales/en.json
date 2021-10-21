@@ -1,7 +1,7 @@
 {
 	"menu":
 	{
-		"pick_category": "Pick category:",
+		"pick_category": ":blue_book: Pick category:",
 		"basics": "Basics",
 		"functions": "Functions",
 		"pointers": "Pointers",
@@ -10,5 +10,11 @@
 		"containers": "Containers",
 		"streams": "Streams and IO-system",
 		"patterns": "Patterns"
+	},
+	"article":
+	{
+		"to_menu": ":black_circle_for_record: To menu",
+		"next_page": ":arrow_right:",
+		"prev_page": ":arrow_left:"
 	}
 }
