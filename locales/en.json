@@ -1,0 +1,14 @@
+{
+	"menu":
+	{
+		"pick_category": "Pick category:",
+		"basics": "Basics",
+		"functions": "Functions",
+		"pointers": "Pointers",
+		"object_oriented_lang": "Object-oriented language",
+		"exceptions": "Exceptions",
+		"containers": "Containers",
+		"streams": "Streams and IO-system",
+		"patterns": "Patterns"
+	}
+}
