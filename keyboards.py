@@ -22,6 +22,24 @@ def menu(menu):
 	markup.add(InlineKeyboardButton(menu["patterns"], callback_data="button_menu_patterns"))
 	return markup
 
+def basics(basics):
+	markup = InlineKeyboardMarkup()
+	markup.add(InlineKeyboardButton(basics["variables"]["name"], callback_data="button_basics_variables"))
+	markup.add(InlineKeyboardButton(basics["data_types"]["name"], callback_data="button_basics_data_types"))
+	markup.add(InlineKeyboardButton(basics["static_typization"]["name"], callback_data="button_basics_static_typization"))
+	markup.add(InlineKeyboardButton(basics["constants"]["name"], callback_data="button_basics_constants"))
+	markup.add(InlineKeyboardButton(basics["arithmetical_operations"]["name"], callback_data="button_basics_arithmetical_operations"))
+	markup.add(InlineKeyboardButton(basics["console_io"]["name"], callback_data="button_basics_console_io"))
+	markup.add(InlineKeyboardButton(basics["conditional_constructions"]["name"], callback_data="button_basics_conditional_constructions"))
+	markup.add(InlineKeyboardButton(basics["bit_operations"]["name"], callback_data="button_basics_bit_operations"))
+	markup.add(InlineKeyboardButton(basics["logical_operations"]["name"], callback_data="button_basics_logical_operations"))
+	markup.add(InlineKeyboardButton(basics["loops"]["name"], callback_data="button_basics_loops"))
+	markup.add(InlineKeyboardButton(basics["links"]["name"], callback_data="button_basics_links"))
+	markup.add(InlineKeyboardButton(basics["arrays"]["name"], callback_data="button_basics_arrays"))
+	markup.add(InlineKeyboardButton(basics["strings"]["name"], callback_data="button_basics_strings"))
+	markup.add(InlineKeyboardButton(basics["namespaces"]["name"], callback_data="button_basics_namespaces"))
+	return markup
+
 # Navigation in articles
 def navigation(locale):
 	markup = InlineKeyboardMarkup(row_width=3)

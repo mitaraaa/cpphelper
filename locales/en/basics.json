@@ -1,0 +1,68 @@
+{
+	"name": "*Basic concepts*",
+	"overview": "This section explains concepts that are critical to understanding *C++.*",
+
+	"data_types": 
+	{
+		"name": "*Data types*",
+		"article": "Each variable has a specific type. And this type determines what values ​​a variable can have, what operations can be performed with it and how many bytes in memory it will occupy. The following basic data types are defined in *C++*:",
+		"bool": "*bool:* logical type. It can take one of two values - _​True_ and _False_. The size of the occupied memory for this type is not precisely defined.",
+		"char": "*char:* represents a single ASCII character. It occupies `1 byte` (8 bits) in memory. Can store any value from `-128` to `127`, or `0` to `255`.",
+		"signed_char": "*signed char:* represents one character. It occupies `1 byte` (8 bits) in memory. Can store any value from `-128` to `127`.",
+		"unsigned_char": "*unsigned char:* represents one character. It occupies `1 byte` (8 bits) in memory. Can store any value from `0` to `255`.",
+		"wchar_t": "*wchar_t:* represents a wide character. On Windows it occupies `2` bytes (16 bits) in memory, on Linux it takes `4` bytes (32 bits). Can store any value from `0` to `65,535` (for 2 bytes), or `0` to `4,294,967,295` (for 4 bytes).",
+		"char16_t": "*char16_t:* represents a single Unicode character. It occupies `2` bytes (16 bits) in memory. Can store any value from `0` to `65535`."
+	},
+	"variables": 
+	{
+		"name": "Variables"
+	},
+	"arithmetical_operations": 
+	{
+		"name": "Arithmetical operations"
+	},
+	"static_typization": 
+	{
+		"name": "Static typization"
+	},
+	"constants": 
+	{
+		"name": "Constants"
+	},
+	"console_io": 
+	{
+		"name": "Console I/O"
+	},
+	"namespaces": 
+	{
+		"name": "Namespaces"
+	},
+	"bit_operations": 
+	{
+		"name": "Bit operations"
+	},
+	"logical_operations": 
+	{
+		"name": "Logical operations"
+	},
+	"conditional_constructions": 
+	{
+		"name": "Conditional constructions"
+	},
+	"loops": 
+	{
+		"name": "Loops"
+	},
+	"links": 
+	{
+		"name": "Links"
+	},
+	"arrays": 
+	{
+		"name": "Arrays"
+	},
+	"strings": 
+	{
+		"name": "Strings"
+	}
+}
