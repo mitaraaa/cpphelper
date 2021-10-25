@@ -1,4 +1,5 @@
 {
+	"id": "basics",
 	"name": "*Basic concepts*",
 	"overview": "This section explains concepts that are critical to understanding *C++.*",
 

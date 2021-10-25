@@ -1,5 +1,7 @@
 {
 	"to_menu": ":black_circle_for_record: В меню",
 	"next_page": ":arrow_right:",
-	"prev_page": ":arrow_left:"
+	"prev_page": ":arrow_left:",
+	"err_first": "Первая страница",
+	"err_last": "Последняя страница"
 }

@@ -1,8 +1,9 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from emoji import emojize
 
-def create_callback(locales):
-	pass
+def create_callback(name, key):
+	callback = "".join("button_" + name + "_" + key)
+	return callback
 
 # Select language
 def select_language():
@@ -15,32 +16,17 @@ def select_language():
 # Main menu
 def menu(menu):
 	markup = InlineKeyboardMarkup()
-	markup.add(InlineKeyboardButton(menu["basics"], callback_data="button_menu_basics"))
-	markup.add(InlineKeyboardButton(menu["functions"], callback_data="button_menu_functions"))
-	markup.add(InlineKeyboardButton(menu["pointers"], callback_data="button_menu_pointers"))
-	markup.add(InlineKeyboardButton(menu["object_oriented_lang"], callback_data="button_menu_object_oriented_lang"))
-	markup.add(InlineKeyboardButton(menu["exceptions"], callback_data="button_menu_exceptions"))
-	markup.add(InlineKeyboardButton(menu["containers"], callback_data="button_menu_containers"))
-	markup.add(InlineKeyboardButton(menu["streams"], callback_data="button_menu_streams"))
-	markup.add(InlineKeyboardButton(menu["patterns"], callback_data="button_menu_patterns"))
+	for key in menu.keys():
+		if key == "name": continue
+		markup.add(InlineKeyboardButton(menu[key], callback_data=create_callback("menu", key)))
 	return markup
 
-def basics(basics):
+# Generates keyboard from json
+def generate_keyboard(locale):
 	markup = InlineKeyboardMarkup()
-	markup.add(InlineKeyboardButton(basics["variables"]["name"], callback_data="button_basics_variables"))
-	markup.add(InlineKeyboardButton(basics["data_types"]["name"], callback_data="button_basics_data_types"))
-	markup.add(InlineKeyboardButton(basics["static_typization"]["name"], callback_data="button_basics_static_typization"))
-	markup.add(InlineKeyboardButton(basics["constants"]["name"], callback_data="button_basics_constants"))
-	markup.add(InlineKeyboardButton(basics["arithmetical_operations"]["name"], callback_data="button_basics_arithmetical_operations"))
-	markup.add(InlineKeyboardButton(basics["console_io"]["name"], callback_data="button_basics_console_io"))
-	markup.add(InlineKeyboardButton(basics["conditional_constructions"]["name"], callback_data="button_basics_conditional_constructions"))
-	markup.add(InlineKeyboardButton(basics["bit_operations"]["name"], callback_data="button_basics_bit_operations"))
-	markup.add(InlineKeyboardButton(basics["logical_operations"]["name"], callback_data="button_basics_logical_operations"))
-	markup.add(InlineKeyboardButton(basics["loops"]["name"], callback_data="button_basics_loops"))
-	markup.add(InlineKeyboardButton(basics["links"]["name"], callback_data="button_basics_links"))
-	markup.add(InlineKeyboardButton(basics["arrays"]["name"], callback_data="button_basics_arrays"))
-	markup.add(InlineKeyboardButton(basics["strings"]["name"], callback_data="button_basics_strings"))
-	markup.add(InlineKeyboardButton(basics["namespaces"]["name"], callback_data="button_basics_namespaces"))
+	for key in locale.keys():
+		if key == "id" or key == "name" or key == "overview": continue
+		markup.add(InlineKeyboardButton(locale[key]["name"], callback_data=create_callback(locale["id"], key)))
 	return markup
 
 # Navigation in articles
