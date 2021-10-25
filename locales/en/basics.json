@@ -20,6 +20,10 @@
 			"char32_t": "*char32_t:* represents a single Unicode character. It occupies 4 bytes (32 bits) in memory. Can store any value from 0 to 4,294,967,295",
 			"short": "*short:* represents an integer in the range from –32768 to 32767. Occupies 2 bytes (16 bits) in memory",
 			"unsigned short": "*unsigned short:* represents an integer in the range from 0 to 65535. Occupies 2 bytes (16 bits) in memory"
+		},
+		"page_3":
+		{
+			"a": "a"	
 		}
 	},
 	"variables": 
