@@ -1,6 +1,6 @@
 import os
 import pickle
-from aiogram.types import user
+from aiohttp.helpers import current_task
 
 from emoji import emojize
 from aiogram import Bot, Dispatcher, executor, types
@@ -10,6 +10,7 @@ import keyboards
 
 bot = Bot(os.environ["TOKEN"])
 dp = Dispatcher(bot)
+global current_page
 
 
 # Read from locales.pickle dictionary of locales
@@ -34,6 +35,7 @@ async def process_callback_button(callback_query: types.CallbackQuery):
 	user_id = callback_query.from_user.id
 	query_text = callback_query.data
 	data = read_pickle()
+	global current_page
 
 	if query_text == "button_ru" or query_text == "button_en":
 		with open("locales.pickle", "wb") as file:
@@ -54,8 +56,7 @@ async def process_callback_button(callback_query: types.CallbackQuery):
 	basics = lang.RU_BASICS  if l else lang.EN_BASICS
 
 	if query_text.startswith("button_navigation"):
-		if query_text == "button_navigation_prev_page": pass
-		elif query_text == "button_navigation_to_menu": 
+		if query_text == "button_navigation_to_menu": 
 			await bot.edit_message_text(
 				text=emojize(menu["name"], 
 				use_aliases=True), 
@@ -63,7 +64,19 @@ async def process_callback_button(callback_query: types.CallbackQuery):
 				chat_id=user_id, 
 				reply_markup=keyboards.menu(menu)
 				)
-		elif query_text == "button_navigation_next_page": pass
+		else:
+			page = int(current_page[1]) + 1 if query_text == "button_navigation_next_page" else int(current_page[1]) - 1
+			next_page = current_page[0][f"page_{page}"]
+			if next_page is not None:
+				text = parse_article(next_page)
+				await bot.edit_message_text(
+				text=text, 
+				parse_mode="markdown", 
+				message_id=callback_query.message.message_id, 
+				chat_id=user_id, 
+				reply_markup=keyboards.navigation(navigation)
+				)
+			current_page[1] = page
 
 	if query_text.startswith("button_menu"):
 		if query_text == "button_menu_basics":
@@ -78,13 +91,16 @@ async def process_callback_button(callback_query: types.CallbackQuery):
 
 	if query_text.startswith("button_basics"):
 		if query_text == "button_basics_data_types":
+			current_page = [basics["data_types"], 1]
 			await bot.edit_message_text(
-				text=parse_article(basics["data_types"]), 
+				text=parse_article(basics["data_types"]["page_1"]), 
 				parse_mode="markdown", 
 				message_id=callback_query.message.message_id, 
 				chat_id=user_id, 
 				reply_markup=keyboards.navigation(navigation)
 			)
+	await bot.answer_callback_query(callback_query.id)
+
 
 
 @dp.message_handler(commands=["start", "help"])

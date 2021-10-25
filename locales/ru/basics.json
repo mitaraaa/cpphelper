@@ -4,24 +4,74 @@
 
 	"data_types": 
 	{
-		"article": "Each variable has a specific type. And this type determines what values ​​a variable can have, what operations can be performed with it and how many bytes in memory it will occupy. The following basic data types are defined in *C++*:",
-		"bool": "*bool:* logical type. It can take one of two values - _​True_ and _False_. The size of the occupied memory for this type is not precisely defined.",
-		"char": "*char:* represents a single ASCII character. It occupies `1 byte` (8 bits) in memory. Can store any value from `-128` to `127`, or `0` to `255`.",
-		"signed_char": "*signed char:* represents one character. It occupies `1 byte` (8 bits) in memory. Can store any value from `-128` to `127`.",
-		"unsigned_char": "*unsigned char:* represents one character. It occupies `1 byte` (8 bits) in memory. Can store any value from `0` to `255`.",
-		"wchar_t": "*wchar_t:* represents a wide character. On Windows it occupies `2` bytes (16 bits) in memory, on Linux it takes `4` bytes (32 bits). Can store any value from `0` to `65,535` (for 2 bytes), or `0` to `4,294,967,295` (for 4 bytes).",
-		"char16_t": "*char16_t:* represents a single Unicode character. It occupies `2` bytes (16 bits) in memory. Can store any value from `0` to `65535`."
+		"name": "Типы данных",
+		"page_1": 
+		{
+			"article": "Each variable has a specific type. And this type determines what values ​​a variable can have, what operations can be performed with it and how many bytes in memory it will occupy. The following basic data types are defined in *C++*:",
+			"bool": "*bool:* logical type. It can take one of two values - _​True_ and _False_. The size of the occupied memory for this type is not precisely defined.",
+			"char": "*char:* represents a single ASCII character. It occupies `1 byte` (8 bits) in memory. Can store any value from `-128` to `127`, or `0` to `255`.",
+			"signed_char": "*signed char:* represents one character. It occupies `1 byte` (8 bits) in memory. Can store any value from `-128` to `127`.",
+			"unsigned_char": "*unsigned char:* represents one character. It occupies `1 byte` (8 bits) in memory. Can store any value from `0` to `255`.",
+			"wchar_t": "*wchar_t:* represents a wide character. On Windows it occupies `2` bytes (16 bits) in memory, on Linux it takes `4` bytes (32 bits). Can store any value from `0` to `65,535` (for 2 bytes), or `0` to `4,294,967,295` (for 4 bytes).",
+			"char16_t": "*char16_t:* represents a single Unicode character. It occupies `2` bytes (16 bits) in memory. Can store any value from `0` to `65535`."
+		},
+		"page_2":
+		{
+			"char32_t": "*char32_t:* represents a single Unicode character. It occupies 4 bytes (32 bits) in memory. Can store any value from 0 to 4,294,967,295",
+			"short": "*short:* represents an integer in the range from –32768 to 32767. Occupies 2 bytes (16 bits) in memory",
+			"unsigned short": "*unsigned short:* represents an integer in the range from 0 to 65535. Occupies 2 bytes (16 bits) in memory"
+		}
 	},
-	"variables": {},
-	"arithmetical_operations": {},
-	"static_typization": {},
-	"constants": {},
-	"namespaces": {},
-	"bit_operations": {},
-	"logical_operations": {},
-	"conditional_constructions": {},
-	"loops": {},
-	"links": {},
-	"arrays": {},
-	"strings": {}
+	"variables": 
+	{
+		"name": "Переменные"
+	},
+	"arithmetical_operations": 
+	{
+		"name": "Арифметические операции"
+	},
+	"static_typization": 
+	{
+		"name": "Статическая типизация"
+	},
+	"constants": 
+	{
+		"name": "Константы"
+	},
+	"console_io": 
+	{
+		"name": "Ввод/вывод в консоли"
+	},
+	"namespaces": 
+	{
+		"name": "Пространства имён"
+	},
+	"bit_operations": 
+	{
+		"name": "Побитовые операции"
+	},
+	"logical_operations": 
+	{
+		"name": "Логические операции"
+	},
+	"conditional_constructions": 
+	{
+		"name": "Условные конструкции"
+	},
+	"loops": 
+	{
+		"name": "Циклы"
+	},
+	"links": 
+	{
+		"name": "Ссылки"
+	},
+	"arrays": 
+	{
+		"name": "Массивы"
+	},
+	"strings": 
+	{
+		"name": "Строки"
+	}
 }

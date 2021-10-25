@@ -1,6 +1,9 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from emoji import emojize
 
+def create_callback(locales):
+	pass
+
 # Select language
 def select_language():
 	markup = InlineKeyboardMarkup()
