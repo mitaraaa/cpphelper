@@ -1,4 +1,5 @@
 import os
+import gzip
 import pickle
 from jsonpath_ng import jsonpath, parse
 
@@ -85,7 +86,7 @@ async def process_navigation_to_menu(callback_query: types.CallbackQuery):
 @dp.callback_query_handler(lambda c: c.data == "lang_ru")
 async def process_language(callback_query: types.CallbackQuery):
 	user_data = read_pickle()
-	with open("locales.pickle", "wb") as file:
+	with gzip.open("locales.pickle", "wb") as file:
 		user_data[callback_query.from_user.id] = "ru" if callback_query.data == "lang_ru" else "en"
 		set_lang(user_data[callback_query.from_user.id])
 		pickle.dump(user_data, file)
