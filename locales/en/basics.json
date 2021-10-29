@@ -7,34 +7,44 @@
 	{
 		"name": "Data types",
 		"page_1": 
-		[
-			"Each variable has a specific type. And this type determines what values ​​a variable can have, what operations can be performed with it and how many bytes in memory it will occupy. The following basic data types are defined in *C++*:",
-			"*bool:* logical type. It can take one of two values - _​True_ and _False_. The size of the occupied memory for this type is not precisely defined.",
-			"*char:* represents a single ASCII character. It occupies `1 byte` (8 bits) in memory. Can store any value from `-128` to `127`, or `0` to `255`.",
-			"*signed char:* represents one character. It occupies `1 byte` (8 bits) in memory. Can store any value from `-128` to `127`.",
-			"*unsigned char:* represents one character. It occupies `1 byte` (8 bits) in memory. Can store any value from `0` to `255`.",
-			"*wchar_t:* represents a wide character. On Windows it occupies `2` bytes (16 bits) in memory, on Linux it takes `4` bytes (32 bits). Can store any value from `0` to `65,535` (for 2 bytes), or `0` to `4,294,967,295` (for 4 bytes).",
-			"*char16_t:* represents a single Unicode character. It occupies `2` bytes (16 bits) in memory. Can store any value from `0` to `65535`."
-		],
+		{
+			"article": "Each variable has a specific type. And this type determines what values ​​a variable can have, what operations can be performed with it and how many bytes in memory it will occupy. The following basic data types are defined in *C++*:",
+			"bool": "*bool:* logical type. It can take one of two values - _​True_ and _False_. The size of the occupied memory for this type is not precisely defined.",
+			"char": "*char:* represents a single ASCII character. It occupies `1 byte` (8 bits) in memory. Can store any value from `-128` to `127`, or `0` to `255`.",
+			"signed_char": "*signed char:* represents one character. It occupies `1 byte` (8 bits) in memory. Can store any value from `-128` to `127`.",
+			"unsigned_char": "*unsigned char:* represents one character. It occupies `1 byte` (8 bits) in memory. Can store any value from `0` to `255`.",
+			"wchar_t": "*wchar_t:* represents a wide character. On Windows it occupies `2` bytes (16 bits) in memory, on Linux it takes `4` bytes (32 bits). Can store any value from `0` to `65,535` (for 2 bytes), or `0` to `4,294,967,295` (for 4 bytes).",
+			"char16_t": "*char16_t:* represents a single Unicode character. It occupies `2` bytes (16 bits) in memory. Can store any value from `0` to `65535`."
+		},
 		"page_2":
-		[
-			"*char32_t:* represents a single Unicode character. It occupies 4 bytes (32 bits) in memory. Can store any value from 0 to 4,294,967,295",
-			"*short:* represents an integer in the range from –32768 to 32767. Occupies 2 bytes (16 bits) in memory",
-			"*unsigned short:* represents an integer in the range from 0 to 65535. Occupies 2 bytes (16 bits) in memory"
-		],
+		{
+			"char32_t": "*char32_t:* represents a single Unicode character. It occupies '4' bytes (32 bits) in memory. Can store any value from '0' to '4,294,967,295'",
+			"short": "*short:* represents an integer in the range from '–32768' to '32767'. Occupies '2' bytes (16 bits) in memory",
+			"unsigned short": "*unsigned short:* represents an integer in the range from '0' to '65535'. Occupies '2' bytes (16 bits) in memory"
+			"int": "*int:* represents an integer number. Depending on the architecture of the processor, it may occupy '2' bytes (16 bits) or '4' bytes (32 bits). The range of limit values, respectively, can also vary from '-32768' to '32767' (for 2 bytes) or from '-2,147,483,648' to '2,147,483,647' (for 4 bytes). But in any case, the size must be greater than or equal to the size of the short type and less than or equal to the size of the long type. This type is synonymous with *signed int* and *signed*.",
+			"unsigned int": "*unsigned int:* represents a positive integer. It can occupy '2' bytes (16 bits) or '4' bytes (32 bits) depending on the architecture of the processor, and because of this the range of limit values can vary: from '0' to '65535' (for 2 bytes), or from '0' to '4 294 967 295' (for 4 bytes). As a synonym of this type *unsigned* can be used.",
+			"long": "*long:* Represents an integer between '-2,147,483,648' and '2,147,483,647'. It takes up '4' bytes (32 bits) of memory.This type also has synonyms for *long int*, *signed long int* and *signed long*.".
+			
+		},
 		"page_3":
-		[
-			"a"	
-		]
+		{
+			"unsigned long": "*unsigned long:* represents an integer between '0' and '4,294,967,295'. Takes up '4' bytes (32 bits) of memory. It is synonymous with *unsigned long int*.",
+			"long long": "*long long:* represents an integer in the range '-9 223 372 036 854 775 808' to '+9 223 372 036 854 775 807'. Usually takes up '8' bytes (64 bits) of memory. Synonyms are *long long int*, *signed long long int*, and *signed long long*.",
+			"unsigned long long": "*unsigned long long:* represents an integer between '0' and '18,446,744,073,709,551,615'. Usually takes up '8' bytes (64 bits) of memory. It is synonymous with *unsigned long long int*.",
+			"float": "*float:* represents a floating-point floating-point real number between '+/- 3.4E-38' and '3.4E+38'. Takes up '4' bytes (32 bits) in memory.",
+			"double": "*double:* represents a double-precision floating-point real number in the range '+/- 1.7E-308' to '1.7E+308'. It occupies '8' bytes (64 bits) in memory.",
+			"long double": "*long double:* represents a double-precision floating-point real number of at least '8' bytes (64 bits). The range of valid values may differ depending on the size of the memory occupied.",
+			"void": "*void:* type without value.",
+			"article": "Thus, all data types except void can be divided into three groups: character (char, wchar_t, char16_t, char32_t), integer (short, int, long, long long) and floating-point number types (float, double, long double).".
+			
+		}
 	},
 	"variables": 
 	{
 		"name": "Variables",
 		"page_1":
-		[
-			"Как и во многих языках программирования, в C++ для хранения данных используются переменные. Переменная имеет тип, имя и значение. Тип определяет, какую информацию может хранить переменная."
-			
-		]
+		{
+			"article": "The types char, wchar_t, char16_t and char32_t are used to represent characters in the application. Let's define some variables: /n 1. char c ='d'; /n 2. wchar_t d ='c'; /n 
 	},
 	"arithmetical_operations": 
 	{
