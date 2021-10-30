@@ -5,3 +5,4 @@ Scripts
 .vscode
 
 .env
+pyvenv.cfg
