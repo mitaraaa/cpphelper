@@ -55,7 +55,7 @@ async def edit_message(bot, text, callback_query, keyboard):
 	
 	await bot.edit_message_text(
 		text=text, 
-		parse_mode="markdown", 
+		parse_mode="HTML", 
 		message_id=callback_query.message.message_id, 
 		chat_id=callback_query.from_user.id, 
 		reply_markup=kb
@@ -66,7 +66,7 @@ async def edit_message_nav(bot, text, callback_query, article, current_page):
 	kb = keyboards.navigation(locale.navigation, article, current_page)
 	await bot.edit_message_text(
 		text=text, 
-		parse_mode="markdown", 
+		parse_mode="HTML", 
 		message_id=callback_query.message.message_id, 
 		chat_id=callback_query.from_user.id, 
 		reply_markup=kb
