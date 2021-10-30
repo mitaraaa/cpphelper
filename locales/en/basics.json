@@ -20,7 +20,7 @@
 		[
 			"*char32_t:* represents a single Unicode character. It occupies '4' bytes (32 bits) in memory. Can store any value from '0' to '4,294,967,295'",
 			"*short:* represents an integer in the range from '–32768' to '32767'. Occupies '2' bytes (16 bits) in memory",
-			"*unsigned short:* represents an integer in the range from '0' to '65535'. Occupies '2' bytes (16 bits) in memory"
+			"*unsigned short:* represents an integer in the range from '0' to '65535'. Occupies '2' bytes (16 bits) in memory",
 			"*int:* represents an integer number. Depending on the architecture of the processor, it may occupy '2' bytes (16 bits) or '4' bytes (32 bits). The range of limit values, respectively, can also vary from '-32768' to '32767' (for 2 bytes) or from '-2,147,483,648' to '2,147,483,647' (for 4 bytes). But in any case, the size must be greater than or equal to the size of the short type and less than or equal to the size of the long type. This type is synonymous with *signed int* and *signed*.",
 			"*unsigned int:* represents a positive integer. It can occupy '2' bytes (16 bits) or '4' bytes (32 bits) depending on the architecture of the processor, and because of this the range of limit values can vary: from '0' to '65535' (for 2 bytes), or from '0' to '4 294 967 295' (for 4 bytes). As a synonym of this type *unsigned* can be used.",
 			"*long:* Represents an integer between '-2,147,483,648' and '2,147,483,647'. It takes up '4' bytes (32 bits) of memory.This type also has synonyms for *long int*, *signed long int* and *signed long*."
