@@ -1,6 +1,5 @@
 import os
-import gzip
-import pickle
+import redis
 
 from emoji import emojize
 from aiogram import Bot, Dispatcher, executor, types
@@ -9,6 +8,8 @@ import localization as lang
 from keyboards import *
 from utils import *
 
+db = redis.from_url(os.environ.get("REDIS_URL"))
+#db = redis.StrictRedis(host=os.environ.get("REDIS_TEST"), port=18762, password="rKjn6VeJ7mssGZAh89ykmrggFOtrG2QF",charset="utf-8",decode_responses=True)
 
 # Creates bot and dispatcher instances
 bot = Bot(os.environ["TOKEN"])
@@ -36,13 +37,12 @@ async def process_navigation_to_menu(callback_query: types.CallbackQuery):
 @dp.callback_query_handler(lambda c: c.data == "lang_en")
 @dp.callback_query_handler(lambda c: c.data == "lang_ru")
 async def process_language(callback_query: types.CallbackQuery):
-	user_data = read_pickle()
-	with gzip.open("locales.pickle", "wb") as file:
-		user_data[callback_query.from_user.id] = "ru" if callback_query.data == "lang_ru" else "en"
-		locale.set_lang(user_data[callback_query.from_user.id])
-		pickle.dump(user_data, file)
+	language = "ru" if callback_query == "lang_ru" else "en"
+	db.set(callback_query.from_user.id, language)
+	locale.set_lang(language)
+
 	await bot.edit_message_text(
-			text=("Выбран язык: Русский" if callback_query.data == "lang_ru" else "Picked language: English"), 
+			text=("Выбран язык: Русский" if language == "ru" else "Picked language: English"), 
 			message_id=callback_query.message.message_id, 
 			chat_id=callback_query.from_user.id
 			)

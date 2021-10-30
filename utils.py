@@ -1,5 +1,3 @@
-import pickle
-import gzip
 import localization as lang
 import keyboards
 
@@ -24,18 +22,6 @@ class Locales():
 
 # Instance of localization class
 locale = Locales()
-
-# Read from locales.pickle dictionary of locales
-# TODO replace pickle to sqlite3
-def read_pickle():
-	data = { }
-	with gzip.open("locales.pickle", "rb") as file_r:
-		while True:
-			try:
-				data = pickle.load(file_r)
-			except EOFError:
-				break
-	return data
 
 # Combines all strings from json into one
 def parse_article(article):
