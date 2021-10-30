@@ -1,11 +1,13 @@
-import os
 import json
+
 
 ru_directory = "locales/ru"
 en_directory = "locales/en"
 
+# List of all opened files
 file_handles = []
 
+# Sends json data into variables
 try:
 	file_handles.append(open(f"{ru_directory}/basics.json", "r", encoding="utf-8"))
 	RU_BASICS = json.load(file_handles[0])
@@ -21,6 +23,7 @@ try:
 	file_handles.append(open(f"{en_directory}/menu.json", "r", encoding="utf-8"))
 	EN_MENU = json.load(file_handles[5])
 	
+# Closes all files
 finally:
 	for file in file_handles:
 		file.close()

@@ -2,6 +2,8 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils.callback_data import CallbackData
 from emoji import emojize
 
+
+# Creates callback
 def _get_callback_name(name, key):
 	callback = "".join(name + "_" + key)
 	return callback
@@ -30,6 +32,7 @@ def generate_keyboard(locale):
 		markup.add(InlineKeyboardButton(locale[key]["name"], callback_data=_get_callback_name(locale["id"], key)))
 	return markup
 
+# Custom callback
 cb_nav = CallbackData("nav", "name", "article", "current_page", sep="#")
 
 # Navigation in articles

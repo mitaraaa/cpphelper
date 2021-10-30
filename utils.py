@@ -3,6 +3,8 @@ import gzip
 import localization as lang
 import keyboards
 
+
+# Class with all localization variables
 class Locales():
 
 	def __init__(self) -> None:
@@ -18,7 +20,9 @@ class Locales():
 	menu = lang.EN_MENU
 	navigation = lang.EN_NAV
 	basics = lang.EN_BASICS
+	# ...
 
+# Instance of localization class
 locale = Locales()
 
 # Read from locales.pickle dictionary of locales
@@ -39,10 +43,12 @@ def parse_article(article):
 		text += line + "\n"
 	return text
 
+# Lists all attributes of a class
 def get_attrs(locale=locale):
 	members = [attr for attr in dir(locale) if not callable(getattr(locale, attr)) and not attr.startswith("__")]
 	return members
 
+# Gets dict data from "xxx.yyy" string
 def parse_path(path):
 	path = path.split('.')
 	for member in get_attrs():
@@ -53,6 +59,7 @@ def parse_path(path):
 		dct = dct[p]
 	return dct
 
+# Sends default message
 async def edit_message(bot, text, callback_query, keyboard):
 	if keyboard == locale.menu:
 		kb = keyboards.menu(locale.menu)
@@ -67,6 +74,7 @@ async def edit_message(bot, text, callback_query, keyboard):
 		reply_markup=kb
 	)
 
+# Sends message with navigation buttons
 async def edit_message_nav(bot, text, callback_query, article, current_page):
 	kb = keyboards.navigation(locale.navigation, article, current_page)
 	await bot.edit_message_text(
