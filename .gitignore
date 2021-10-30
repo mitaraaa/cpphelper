@@ -5,4 +5,4 @@ Scripts
 .vscode
 
 .env
-locales.pickle
+pyvenv.cfg
