@@ -1,18 +1,29 @@
 import os
 import redis
+import logging
+
+import rich
+from rich.logging import RichHandler
 
 from emoji import emojize
 from aiogram import Bot, Dispatcher, executor, types
+from aiogram.utils.exceptions import MessageNotModified
 
 import localization as lang
 from keyboards import *
 from utils import *
 
+# Connects to Redis database
 db = redis.from_url(os.environ.get("REDIS_URL"))
 
 # Creates bot and dispatcher instances
 bot = Bot(os.environ["TOKEN"])
 dp = Dispatcher(bot)
+
+# Logging
+FORMAT = "%(message)s"
+logging.basicConfig(level="NOTSET", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()])
+log = logging.getLogger("rich")
 
 # Navigation handler
 @dp.callback_query_handler(cb_nav.filter(name="navigation_prev_page"))
@@ -64,6 +75,11 @@ async def process_callback_button(callback_query: types.CallbackQuery):
 					if article == qt:
 						await edit_message_nav(bot, parse_article(getattr(locale, attr)[article]["page_1"]), callback_query, attr + '.' + article, 1)
 	await bot.answer_callback_query(callback_query.id)
+
+# Skip NotModified exception
+@dp.errors_handler(exception=MessageNotModified)
+async def message_not_modified_handler(update, error):
+    return True
 
 # On /start message
 @dp.message_handler(commands=["start", "help"])
