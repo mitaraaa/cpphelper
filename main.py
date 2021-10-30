@@ -9,7 +9,6 @@ from keyboards import *
 from utils import *
 
 db = redis.from_url(os.environ.get("REDIS_URL"))
-#db = redis.StrictRedis(host=os.environ.get("REDIS_TEST"), port=18762, password="rKjn6VeJ7mssGZAh89ykmrggFOtrG2QF",charset="utf-8",decode_responses=True)
 
 # Creates bot and dispatcher instances
 bot = Bot(os.environ["TOKEN"])
