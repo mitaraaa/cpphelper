@@ -22,7 +22,7 @@ dp = Dispatcher(bot)
 
 # Logging
 FORMAT = "%(message)s"
-logging.basicConfig(level="NOTSET", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()])
+logging.basicConfig(level="INFO", format=FORMAT, handlers=[RichHandler()])
 log = logging.getLogger("rich")
 
 # Navigation handler
