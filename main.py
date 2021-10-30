@@ -75,6 +75,10 @@ async def send_welcome(message: types.Message):
 		reply_markup=select_language()
 		)
 
+# TODO Add /search command
+# TODO Add /pattern command
+# TODO Fill localization files
+
 # Starts bot
 if __name__ == "__main__":
 	executor.start_polling(dp)

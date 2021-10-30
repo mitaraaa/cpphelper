@@ -26,6 +26,7 @@ class Locales():
 locale = Locales()
 
 # Read from locales.pickle dictionary of locales
+# TODO replace pickle to sqlite3
 def read_pickle():
 	data = { }
 	with gzip.open("locales.pickle", "rb") as file_r:
