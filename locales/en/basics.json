@@ -16,6 +16,7 @@
 			"<b>wchar_t:</b> represents a wide character. On Windows it occupies `2` bytes (16 bits) in memory, on Linux it takes `4` bytes (32 bits). Can store any value from `0` to `65,535` (for 2 bytes), or `0` to `4,294,967,295` (for 4 bytes).",
 			"<b>char16_t:</b> represents a single Unicode character. It occupies `2` bytes (16 bits) in memory. Can store any value from `0` to `65535`."
 		],
+		
 		"page_2":
 		[
 			"<b>char32_t:</b> represents a single Unicode character. It occupies 4 bytes (32 bits) in memory. Can store any value from 0 to 4,294,967,295",
@@ -26,6 +27,7 @@
 			"<b>long:</b> Represents an integer between -2,147,483,648 and 2,147,483,647. It takes up 4 bytes (32 bits) of memory.This type also has synonyms for <b>long int</b>, <b>signed long int</b> and <b>signed long</b>."
 			
 		],
+		
 		"page_3":
 		[
 			"<b>unsigned long:</b> represents an integer between 0 and 4,294,967,295. Takes up 4 bytes (32 bits) of memory. It is synonymous with <b>unsigned long int</b>.",
@@ -37,24 +39,97 @@
 			"<b>void:</b> type without value.",
 			"Thus, all data types except void can be divided into three groups: character (char, wchar_t, char16_t, char32_t), integer (short, int, long, long long) and floating-point number types (float, double, long double)."
 		],
+		
 		"page_4":
 		[
-			"<b>Symbol types<b/n>",
+			"<b>Symbol types</b>",
 			"The types char, wchar_t, char16_t and char32_t are used to represent characters in the application. Lets define some variables: \n 1. <code>char c = d;</code> \n 2. <code>wchar_t d = c;</code> \n",
 			"A char variable takes one character in single quotes as its value: char c = 'd'. You can also assign a number from the list above: char c = 120. In this case, the value of the variable c will be the character that has the code 120 in the ASCII character table."
 			"Note that you should not use std::cout to output wchar_t characters to the console, but use the <b>std::wcout</b> stream:"
-			"1. include <iostream> /n 2. int main() /n 3. { /n 4. char a = 'H'; /n 5. wchar_t b ='e'; /n 6. std::wcout<<a<<b<<'/n'; /n 7. return 0; /n 8. }"
+			"1. #include <iostream> \n 2. int main() \n 3. { /n 4. char a = 'H'; \n 5. wchar_t b ='e'; \n 6. std::wcout<<a<<b<<'/n'; \n 7. return 0; \n 8. }"
 			"The std::wcout stream can work with both char and wchar_t. And the std::cout thread for the wchar_t variable will print its numeric code instead of the character."
 			"The <b>char16_t</b> and <b>char32_t</b> types were added to the C++11 standard, which are oriented to use Unicode. However, threads for working with these types have not been implemented at the OS level yet. So, if you need to output these variables to the console, you have to convert them to char or wchar_t types:"
-			"1. include <iostream> /n 2. int main() /n 3. { /n 4. char a = 'H'; /n 5. wchar_t b = 'e'; /n 6. char16_t c = 'l'; /n 7. char32_t d = 'o'; /n 8. std::cout<<a<<(char)b<<(char)c<<(char)d<<'/n'; /n 9. return 0; /n 10. }"
+			"1. #include <iostream> \n 2. int main() \n 3. { /n 4. char a = 'H'; \n 5. wchar_t b = 'e'; \n 6. char16_t c = 'l'; \n 7. char32_t d = 'o'; \n 8. std::cout<<a<<(char)b<<(char)c<<(char)d<<'/n'; \n 9. return 0; \n 10. }"
 			"In this case, a <b>char</b>-conversion operation is specified before the variables, so that the values of the b, c, and d variables are converted to char and can be printed to the console using the std::cout stream."
-			]
+		],
+		
+		"page_5":
+		[
+			"<b>Integer types</b>",
+			"Integer types are represented by the following types: <b>short, unsigned short, int, unsigned int, long, unsigned long, long long and unsigned long long:</b>"
+			"1. <b>short</b> a = -10; \n 2. unsigned <b>short</b> b = 10; \n 3. <b>int</b> c = -30; \n 4. unsigned <b>int</b> d = 60; \n 5. <b>long</b> e = -170; \n 6. unsigned <b>long</b> f = 45; \n 7. <b>long long</b> g = 89;"
+		],
+		
+		"page_6":
+		[
+			"<b>Floating point number types</b>",
+			"Floating-point or fractional number types are represented by <b>float, double</b>, and <b>long double:</b>"
+			"1. <b>float</b> a = -10.45; \n 2. <b>double</b> b = 0.00105; \n 3. <b>long double</b> c = 30.890045;"
+		],
+		
+		"page_7":
+		[
+			"<b>Dimensions of data types</b>",
+			"The list above shows the size that each type occupies in memory. However, it is worth noting that compiler developers can choose the size limits for types on their own, based on the hardware capabilities of the computer. The standard specifies only the minimum values that must be. For example, for the int and short types, the minimum value is 16 bits, for the long type - 32 bits, for the long double type. In this case, the size of the long type must not be smaller than the size of the int type, and the size of the int type must not be smaller than the size of the short type, and the size of the long double type must be larger than double. For example, the g++ compiler under Windows uses 12 bytes for long double, while the compiler integrated into Visual Studio also working under Windows uses 8 bytes for long double. This means that even within the framework of one platform different compilers may have different approaches to the sizes of some data types. But in general, the sizes used are the ones specified above when describing the data types."
+			"However, there are situations where you need to know exactly the size of a certain type. And for that, C++ has the <b>sizeof()</b> operator, which returns the size in bytes of the memory that the variable occupies:"
+			"1. #include <iostream> \n 2. int main() \n 3. { \n 4. <b>long double</b> number = 2; \n 5. std::cout<<'sizeof(number)='<<sizeof(number); \n 6. return 0; \n 7. }"
+			"Console output when compiling in g++:"
+			"<b>sizeof(number) = 12</b>"
+			"When defining variables, it is important to understand that the value of a variable must not exceed the limits that are delineated for its type. For example:"
+			"1. unsigned <b>short</b> number = -65535;"
+			"Compilation of such code may pass without errors, although some compilers, like G++, may give warnings that the value will be truncated. However, when you compile, the variable number will get a value of 1, the result of converting -65535 to unsigned short. So again, the result will not be exactly what is expected. The value of a variable is just a set of bits in memory, which are interpreted according to a certain type. And for different types, the same set of bits can be interpreted differently. Therefore, it is important to consider the value ranges for a particular type when assigning a value to a variable."
+		],
+		
+		"page_8":
+		[
+			"<b>Specifier auto</b>",
+			"Sometimes it can be difficult to determine the type of an expression. And according to the latest standards, you can let the compiler output the type of an object by itself. The <b>auto</b> specifier is used for this purpose. If we define a variable with the specifier <b>auto</b>, this variable must be initialized with some value:"
+			"1. auto number = 5;"
+			"Based on the value assigned, the compiler will print the type of the variable. Uninitialized variables with the specifier 'auto' are not allowed:"
+			"1. auto number;"
+		]
 	},
+	
 	"variables": 
 	{
 		"name": "Variables",
 		"page_1":
 		[
+			"Like many programming languages, C++ uses <b>variables</b> to store data. A variable has a type, a name, and a value. The type determines what information the variable can store."
+			"Before any variable can be used, it must be defined. The syntax for defining a variable is as follows:"
+			"1. Variable_type Variable_name;"
+			"The simplest definition of a variable: \n 1. int age; \n Here the variable age is defined, which is of type <b>int</b>. Since the variable definition is an instruction, it is followed by a semicolon."
+			"Also note that C++ is a case-sensitive language, which means that character case is important. This means that the following code will define two different variables: \n 1. int age; \n 2. int Age; \n Therefore, the variable Age will not represent the same thing as the variable age."
+			"Also, you cannot use C++ keywords such as <b>for</b> or <b>if</b> as a variable name. But there are not many such words: alignas, alignof, asm, auto, bool, break, case, catch, char, char16_t, char32_t, class, const, constexpr, const_cast, continue, decltype, default, delete, do, double, dynamic_cast, else, enum, explicit, export, extern, false, float, for, friend, goto, if, inline, int, long, mutubale, namespace, new, noexcept, nullptr, operator, private, protected, public, register, reinterpret_cast, return, short, signed, sizeof, static, static_assert, static_cast, struct, switch, template, this, thread_local, throw, true, try, typedef, typeid, typename, union, unsigned, using, virtual, void, volatile, wchar_t, while."
+			"Also, you cannot declare more than one variable with the same name, for example: \n 1. int age; \n 2. int age; \n Such a definition will cause an error at compile time."
+		],
+		
+		"page_2":
+		[
+			"<b>Initializing</b>",
+			"Once a variable is defined, you can assign some value to it: \n 1. int age; \n 2. age = 20;"
+			"For example, let's define a variable in a program and display its value on the console: \n 1. #include <iostream> \n 2. int main() \n 3. { \n 4. int age; \n 5. age=28; \n 6. std::cout<<'Age='<<age; \n 7. return 0; \n 8. }"
+			"Using a sequence of operators <b><<</b>, you can output multiple values to the console. \n After compiling and running the compiled program, the number 28 will be displayed on the console. However, it is also possible to give a variable an initial value as soon as it is defined. This technique is called <b>initialization</b>, i.e. giving the variable an initial value:"
+			"1. #include <iostream> \n 2. int main() \n 3. { \n 4. int age = 28; \n 5. std::cout<<'Age ='<<age; \n 6. return 0; \n 7. }"
+		],
+		
+		"page_3":
+		[
+			"<b>Default initialization</b>",
+			"If the variable is not initialized, it is initialized by default. And the variable gets some default value, which depends on where the variable is defined."
+			"If a variable that represents a built-in type (e.g., int type) is defined inside a function, it gets an undefined value. If a built-in type variable is defined outside a function, it gets the default value that corresponds to its type. For numeric types, this is the number 0. For example:"
+			"1. #include <iostream> \n 2. int x; \n 3. int main() \n 4. { \n 5. int y; \n 6. std::cout<<'X='<<x<<'\n'; \n 7. std::cout<<'Y='<<y; \n 8. return 0; \n 9. }"
+			"The variable x is defined outside the function, so it will get a default value of 0."
+			"Much more complicated is the case with the y variable, which is defined inside the main function - its value will be undefined and much will depend on the compiler used. In particular, the output of a program compiled with the G++ compiler may look like this:"
+			"<b>x=0</b> \n <b>y=4200475</b>"
+			"And in Visual Studio, missing a value for the y variable will cause an error. \n But in any case, before using a variable, it is better to explicitly assign it a specific value rather than relying on the default value."
+		],
+		
+		"page_4":
+		[
+			"<b>Changing the value</b>",
+			"A key feature of variables is that we can change their values:"
+			"1. #include <iostream> \n 2. int main() \n 3. { \n 4. int x = 6; \n 5. x = 8; \n 6. x = 10; \n 7. std::cout<<'X='<<x; // X=10 \n 8. return 0; \n 9. }"
 		]
 	},
 	"arithmetical_operations": 
