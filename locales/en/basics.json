@@ -44,48 +44,48 @@
 		[
 			"<b>Symbol types</b>",
 			"The types char, wchar_t, char16_t and char32_t are used to represent characters in the application. Lets define some variables: \n 1. <code>char c = d;</code> \n 2. <code>wchar_t d = c;</code> \n",
-			"A char variable takes one character in single quotes as its value: char c = 'd'. You can also assign a number from the list above: char c = 120. In this case, the value of the variable c will be the character that has the code 120 in the ASCII character table."
-			"Note that you should not use std::cout to output wchar_t characters to the console, but use the <b>std::wcout</b> stream:"
-			"1. #include <iostream> \n 2. int main() \n 3. { /n 4. char a = 'H'; \n 5. wchar_t b ='e'; \n 6. std::wcout<<a<<b<<'/n'; \n 7. return 0; \n 8. }"
-			"The std::wcout stream can work with both char and wchar_t. And the std::cout thread for the wchar_t variable will print its numeric code instead of the character."
-			"The <b>char16_t</b> and <b>char32_t</b> types were added to the C++11 standard, which are oriented to use Unicode. However, threads for working with these types have not been implemented at the OS level yet. So, if you need to output these variables to the console, you have to convert them to char or wchar_t types:"
-			"1. #include <iostream> \n 2. int main() \n 3. { /n 4. char a = 'H'; \n 5. wchar_t b = 'e'; \n 6. char16_t c = 'l'; \n 7. char32_t d = 'o'; \n 8. std::cout<<a<<(char)b<<(char)c<<(char)d<<'/n'; \n 9. return 0; \n 10. }"
+			"A char variable takes one character in single quotes as its value: char c = 'd'. You can also assign a number from the list above: char c = 120. In this case, the value of the variable c will be the character that has the code 120 in the ASCII character table.",
+			"Note that you should not use std::cout to output wchar_t characters to the console, but use the <b>std::wcout</b> stream:",
+			"1. #include <iostream> \n 2. int main() \n 3. { /n 4. char a = 'H'; \n 5. wchar_t b ='e'; \n 6. std::wcout<<a<<b<<'/n'; \n 7. return 0; \n 8. }",
+			"The std::wcout stream can work with both char and wchar_t. And the std::cout thread for the wchar_t variable will print its numeric code instead of the character.",
+			"The <b>char16_t</b> and <b>char32_t</b> types were added to the C++11 standard, which are oriented to use Unicode. However, threads for working with these types have not been implemented at the OS level yet. So, if you need to output these variables to the console, you have to convert them to char or wchar_t types:",
+			"1. #include <iostream> \n 2. int main() \n 3. { /n 4. char a = 'H'; \n 5. wchar_t b = 'e'; \n 6. char16_t c = 'l'; \n 7. char32_t d = 'o'; \n 8. std::cout<<a<<(char)b<<(char)c<<(char)d<<'/n'; \n 9. return 0; \n 10. }",
 			"In this case, a <b>char</b>-conversion operation is specified before the variables, so that the values of the b, c, and d variables are converted to char and can be printed to the console using the std::cout stream."
 		],
 		
 		"page_5":
 		[
 			"<b>Integer types</b>",
-			"Integer types are represented by the following types: <b>short, unsigned short, int, unsigned int, long, unsigned long, long long and unsigned long long:</b>"
+			"Integer types are represented by the following types: <b>short, unsigned short, int, unsigned int, long, unsigned long, long long and unsigned long long:</b>",
 			"1. <b>short</b> a = -10; \n 2. unsigned <b>short</b> b = 10; \n 3. <b>int</b> c = -30; \n 4. unsigned <b>int</b> d = 60; \n 5. <b>long</b> e = -170; \n 6. unsigned <b>long</b> f = 45; \n 7. <b>long long</b> g = 89;"
 		],
 		
 		"page_6":
 		[
 			"<b>Floating point number types</b>",
-			"Floating-point or fractional number types are represented by <b>float, double</b>, and <b>long double:</b>"
+			"Floating-point or fractional number types are represented by <b>float, double</b>, and <b>long double:</b>",
 			"1. <b>float</b> a = -10.45; \n 2. <b>double</b> b = 0.00105; \n 3. <b>long double</b> c = 30.890045;"
 		],
 		
 		"page_7":
 		[
 			"<b>Dimensions of data types</b>",
-			"The list above shows the size that each type occupies in memory. However, it is worth noting that compiler developers can choose the size limits for types on their own, based on the hardware capabilities of the computer. The standard specifies only the minimum values that must be. For example, for the int and short types, the minimum value is 16 bits, for the long type - 32 bits, for the long double type. In this case, the size of the long type must not be smaller than the size of the int type, and the size of the int type must not be smaller than the size of the short type, and the size of the long double type must be larger than double. For example, the g++ compiler under Windows uses 12 bytes for long double, while the compiler integrated into Visual Studio also working under Windows uses 8 bytes for long double. This means that even within the framework of one platform different compilers may have different approaches to the sizes of some data types. But in general, the sizes used are the ones specified above when describing the data types."
-			"However, there are situations where you need to know exactly the size of a certain type. And for that, C++ has the <b>sizeof()</b> operator, which returns the size in bytes of the memory that the variable occupies:"
-			"1. #include <iostream> \n 2. int main() \n 3. { \n 4. <b>long double</b> number = 2; \n 5. std::cout<<'sizeof(number)='<<sizeof(number); \n 6. return 0; \n 7. }"
-			"Console output when compiling in g++:"
-			"<b>sizeof(number) = 12</b>"
-			"When defining variables, it is important to understand that the value of a variable must not exceed the limits that are delineated for its type. For example:"
-			"1. unsigned <b>short</b> number = -65535;"
+			"The list above shows the size that each type occupies in memory. However, it is worth noting that compiler developers can choose the size limits for types on their own, based on the hardware capabilities of the computer. The standard specifies only the minimum values that must be. For example, for the int and short types, the minimum value is 16 bits, for the long type - 32 bits, for the long double type. In this case, the size of the long type must not be smaller than the size of the int type, and the size of the int type must not be smaller than the size of the short type, and the size of the long double type must be larger than double. For example, the g++ compiler under Windows uses 12 bytes for long double, while the compiler integrated into Visual Studio also working under Windows uses 8 bytes for long double. This means that even within the framework of one platform different compilers may have different approaches to the sizes of some data types. But in general, the sizes used are the ones specified above when describing the data types.",
+			"However, there are situations where you need to know exactly the size of a certain type. And for that, C++ has the <b>sizeof()</b> operator, which returns the size in bytes of the memory that the variable occupies:",
+			"1. #include <iostream> \n 2. int main() \n 3. { \n 4. <b>long double</b> number = 2; \n 5. std::cout<<'sizeof(number)='<<sizeof(number); \n 6. return 0; \n 7. }",
+			"Console output when compiling in g++:",
+			"<b>sizeof(number) = 12</b>",
+			"When defining variables, it is important to understand that the value of a variable must not exceed the limits that are delineated for its type. For example:",
+			"1. unsigned <b>short</b> number = -65535;",
 			"Compilation of such code may pass without errors, although some compilers, like G++, may give warnings that the value will be truncated. However, when you compile, the variable number will get a value of 1, the result of converting -65535 to unsigned short. So again, the result will not be exactly what is expected. The value of a variable is just a set of bits in memory, which are interpreted according to a certain type. And for different types, the same set of bits can be interpreted differently. Therefore, it is important to consider the value ranges for a particular type when assigning a value to a variable."
 		],
 		
 		"page_8":
 		[
 			"<b>Specifier auto</b>",
-			"Sometimes it can be difficult to determine the type of an expression. And according to the latest standards, you can let the compiler output the type of an object by itself. The <b>auto</b> specifier is used for this purpose. If we define a variable with the specifier <b>auto</b>, this variable must be initialized with some value:"
-			"1. auto number = 5;"
-			"Based on the value assigned, the compiler will print the type of the variable. Uninitialized variables with the specifier 'auto' are not allowed:"
+			"Sometimes it can be difficult to determine the type of an expression. And according to the latest standards, you can let the compiler output the type of an object by itself. The <b>auto</b> specifier is used for this purpose. If we define a variable with the specifier <b>auto</b>, this variable must be initialized with some value:",
+			"1. auto number = 5;",
+			"Based on the value assigned, the compiler will print the type of the variable. Uninitialized variables with the specifier 'auto' are not allowed:",
 			"1. auto number;"
 		]
 	},
@@ -95,40 +95,40 @@
 		"name": "Variables",
 		"page_1":
 		[
-			"Like many programming languages, C++ uses <b>variables</b> to store data. A variable has a type, a name, and a value. The type determines what information the variable can store."
-			"Before any variable can be used, it must be defined. The syntax for defining a variable is as follows:"
-			"1. Variable_type Variable_name;"
-			"The simplest definition of a variable: \n 1. int age; \n Here the variable age is defined, which is of type <b>int</b>. Since the variable definition is an instruction, it is followed by a semicolon."
-			"Also note that C++ is a case-sensitive language, which means that character case is important. This means that the following code will define two different variables: \n 1. int age; \n 2. int Age; \n Therefore, the variable Age will not represent the same thing as the variable age."
-			"Also, you cannot use C++ keywords such as <b>for</b> or <b>if</b> as a variable name. But there are not many such words: alignas, alignof, asm, auto, bool, break, case, catch, char, char16_t, char32_t, class, const, constexpr, const_cast, continue, decltype, default, delete, do, double, dynamic_cast, else, enum, explicit, export, extern, false, float, for, friend, goto, if, inline, int, long, mutubale, namespace, new, noexcept, nullptr, operator, private, protected, public, register, reinterpret_cast, return, short, signed, sizeof, static, static_assert, static_cast, struct, switch, template, this, thread_local, throw, true, try, typedef, typeid, typename, union, unsigned, using, virtual, void, volatile, wchar_t, while."
+			"Like many programming languages, C++ uses <b>variables</b> to store data. A variable has a type, a name, and a value. The type determines what information the variable can store.",
+			"Before any variable can be used, it must be defined. The syntax for defining a variable is as follows:",
+			"1. Variable_type Variable_name;",
+			"The simplest definition of a variable: \n 1. int age; \n Here the variable age is defined, which is of type <b>int</b>. Since the variable definition is an instruction, it is followed by a semicolon.",
+			"Also note that C++ is a case-sensitive language, which means that character case is important. This means that the following code will define two different variables: \n 1. int age; \n 2. int Age; \n Therefore, the variable Age will not represent the same thing as the variable age.",
+			"Also, you cannot use C++ keywords such as <b>for</b> or <b>if</b> as a variable name. But there are not many such words: alignas, alignof, asm, auto, bool, break, case, catch, char, char16_t, char32_t, class, const, constexpr, const_cast, continue, decltype, default, delete, do, double, dynamic_cast, else, enum, explicit, export, extern, false, float, for, friend, goto, if, inline, int, long, mutubale, namespace, new, noexcept, nullptr, operator, private, protected, public, register, reinterpret_cast, return, short, signed, sizeof, static, static_assert, static_cast, struct, switch, template, this, thread_local, throw, true, try, typedef, typeid, typename, union, unsigned, using, virtual, void, volatile, wchar_t, while.",
 			"Also, you cannot declare more than one variable with the same name, for example: \n 1. int age; \n 2. int age; \n Such a definition will cause an error at compile time."
 		],
 		
 		"page_2":
 		[
 			"<b>Initializing</b>",
-			"Once a variable is defined, you can assign some value to it: \n 1. int age; \n 2. age = 20;"
-			"For example, let's define a variable in a program and display its value on the console: \n 1. #include <iostream> \n 2. int main() \n 3. { \n 4. int age; \n 5. age=28; \n 6. std::cout<<'Age='<<age; \n 7. return 0; \n 8. }"
-			"Using a sequence of operators <b><<</b>, you can output multiple values to the console. \n After compiling and running the compiled program, the number 28 will be displayed on the console. However, it is also possible to give a variable an initial value as soon as it is defined. This technique is called <b>initialization</b>, i.e. giving the variable an initial value:"
+			"Once a variable is defined, you can assign some value to it: \n 1. int age; \n 2. age = 20;",
+			"For example, let's define a variable in a program and display its value on the console: \n 1. #include <iostream> \n 2. int main() \n 3. { \n 4. int age; \n 5. age=28; \n 6. std::cout<<'Age='<<age; \n 7. return 0; \n 8. }",
+			"Using a sequence of operators <b><<</b>, you can output multiple values to the console. \n After compiling and running the compiled program, the number 28 will be displayed on the console. However, it is also possible to give a variable an initial value as soon as it is defined. This technique is called <b>initialization</b>, i.e. giving the variable an initial value:",
 			"1. #include <iostream> \n 2. int main() \n 3. { \n 4. int age = 28; \n 5. std::cout<<'Age ='<<age; \n 6. return 0; \n 7. }"
 		],
 		
 		"page_3":
 		[
 			"<b>Default initialization</b>",
-			"If the variable is not initialized, it is initialized by default. And the variable gets some default value, which depends on where the variable is defined."
-			"If a variable that represents a built-in type (e.g., int type) is defined inside a function, it gets an undefined value. If a built-in type variable is defined outside a function, it gets the default value that corresponds to its type. For numeric types, this is the number 0. For example:"
-			"1. #include <iostream> \n 2. int x; \n 3. int main() \n 4. { \n 5. int y; \n 6. std::cout<<'X='<<x<<'\n'; \n 7. std::cout<<'Y='<<y; \n 8. return 0; \n 9. }"
-			"The variable x is defined outside the function, so it will get a default value of 0."
-			"Much more complicated is the case with the y variable, which is defined inside the main function - its value will be undefined and much will depend on the compiler used. In particular, the output of a program compiled with the G++ compiler may look like this:"
-			"<b>x=0</b> \n <b>y=4200475</b>"
+			"If the variable is not initialized, it is initialized by default. And the variable gets some default value, which depends on where the variable is defined.",
+			"If a variable that represents a built-in type (e.g., int type) is defined inside a function, it gets an undefined value. If a built-in type variable is defined outside a function, it gets the default value that corresponds to its type. For numeric types, this is the number 0. For example:",
+			"1. #include <iostream> \n 2. int x; \n 3. int main() \n 4. { \n 5. int y; \n 6. std::cout<<'X='<<x<<'\n'; \n 7. std::cout<<'Y='<<y; \n 8. return 0; \n 9. }",
+			"The variable x is defined outside the function, so it will get a default value of 0.",
+			"Much more complicated is the case with the y variable, which is defined inside the main function - its value will be undefined and much will depend on the compiler used. In particular, the output of a program compiled with the G++ compiler may look like this:",
+			"<b>x=0</b> \n <b>y=4200475</b>",
 			"And in Visual Studio, missing a value for the y variable will cause an error. \n But in any case, before using a variable, it is better to explicitly assign it a specific value rather than relying on the default value."
 		],
 		
 		"page_4":
 		[
 			"<b>Changing the value</b>",
-			"A key feature of variables is that we can change their values:"
+			"A key feature of variables is that we can change their values:",
 			"1. #include <iostream> \n 2. int main() \n 3. { \n 4. int x = 6; \n 5. x = 8; \n 6. x = 10; \n 7. std::cout<<'X='<<x; // X=10 \n 8. return 0; \n 9. }"
 		]
 	},
@@ -137,28 +137,28 @@
 		"name": "Arithmetical operations",
 		"page_1":
 		[
-			"Arithmetic operations are performed on numbers. The values that are involved in the operation are called operands. In the C++ programming language, arithmetic operations are binary (performed on two operands) and unary (performed on one operand). Binary operations include the following:"
-			"<b>+</b> \n The addition operation returns the sum of two numbers: \n 1. int a = 10; \n 2. int b = 7; \n 3. int c = a + b; //17 \n 4. int d = 4 + b; //11"
-			"<b>-</b> \n The subtraction operation returns the difference of two numbers: \n int a = 10; \n 2. int b = 7; \n 3. int c = a - b; //3 \n 4. int d = 41 - b; //34"
-			"<b>*</b> \n The multiplication operation returns the product of two numbers: \n int a = 10; \n 2. int b = 7; \n 3. int c = a * b; //70 \n 4. int d = b * 5; //35"
-			"<b>/</b> \n The division operation returns the quotient of two numbers: \n int a = 20; \n 2. int b = 5; \n 3. int c = a / b; //4 \n 4. double d = 22.5 * 4.5; //5 \n Be careful when dividing, because if two integers are involved in the operation, the result of the division will be rounded to an integer, even if the result is assigned to a float or double variable:"
-			"1. <b>double</b> k = 10 / 4; //2 \n 2. std::cout<<k; \n For the result to represent a floating-point number, one of the operands must also represent a floating-point number: \n 1. <b>double</b> k = 10.0 / 4 //2.5 \n 2. std::cout<<k;"
-			"<b>%</b> \n The operation of obtaining the remainder of an integer division: \n 1. int a = 33; \n 2. int b = 5; \n 3. int c = a % b; //3 \n 4. int d = 22 % 4 //2 (22-4*5=2)"
+			"Arithmetic operations are performed on numbers. The values that are involved in the operation are called operands. In the C++ programming language, arithmetic operations are binary (performed on two operands) and unary (performed on one operand). Binary operations include the following:",
+			"<b>+</b> \n The addition operation returns the sum of two numbers: \n 1. int a = 10; \n 2. int b = 7; \n 3. int c = a + b; //17 \n 4. int d = 4 + b; //11",
+			"<b>-</b> \n The subtraction operation returns the difference of two numbers: \n int a = 10; \n 2. int b = 7; \n 3. int c = a - b; //3 \n 4. int d = 41 - b; //34",
+			"<b>*</b> \n The multiplication operation returns the product of two numbers: \n int a = 10; \n 2. int b = 7; \n 3. int c = a * b; //70 \n 4. int d = b * 5; //35",
+			"<b>/</b> \n The division operation returns the quotient of two numbers: \n int a = 20; \n 2. int b = 5; \n 3. int c = a / b; //4 \n 4. double d = 22.5 * 4.5; //5 \n Be careful when dividing, because if two integers are involved in the operation, the result of the division will be rounded to an integer, even if the result is assigned to a float or double variable:",
+			"1. <b>double</b> k = 10 / 4; //2 \n 2. std::cout<<k; \n For the result to represent a floating-point number, one of the operands must also represent a floating-point number: \n 1. <b>double</b> k = 10.0 / 4 //2.5 \n 2. std::cout<<k;",
+			"<b>%</b> \n The operation of obtaining the remainder of an integer division: \n 1. int a = 33; \n 2. int b = 5; \n 3. int c = a % b; //3 \n 4. int d = 22 % 4 //2 (22-4*5=2)",
 			"There are also two unary arithmetic operations that are performed on the same number: ++ (increment) and -- (decrement). Each of these operations has two varieties: prefix and postfix:"
 		],
 		
 		"page_2":
 		[
 			"<b>Prefix increment</b>",
-			"Increases the value of the variable by one and the result is used as the value of the expression ++x \n 1. int a = 8; \n 2. int b = ++a; \n 3. std::cout<<a,<'\n'; //9 \n 4. std::cout<<b<<'\n'; //9"
+			"Increases the value of the variable by one and the result is used as the value of the expression ++x \n 1. int a = 8; \n 2. int b = ++a; \n 3. std::cout<<a,<'\n'; //9 \n 4. std::cout<<b<<'\n'; //9",
 			"<b>Postfix increment</b>",
-			"Increases the value of the variable by one, but the value of the x++ expression will be what it was before the increase by one \n 1. int a = 8; \n 2. int b = a++; \n 3. std::cout<<a,<'\n'; //9 \n 4. std::cout<<b<<'\n'; //8"
+			"Increases the value of the variable by one, but the value of the x++ expression will be what it was before the increase by one \n 1. int a = 8; \n 2. int b = a++; \n 3. std::cout<<a,<'\n'; //9 \n 4. std::cout<<b<<'\n'; //8",
 			"<b>Prefix decrement</b>",
-			"Decreases the value of the variable by one, and the resulting value is used as the value of the expression --x \n 1. int a = 8; \n 2. int b = --a; \n 3. std::cout<<a,<'\n'; //7 \n 4. std::cout<<b<<'\n'; //7"
+			"Decreases the value of the variable by one, and the resulting value is used as the value of the expression --x \n 1. int a = 8; \n 2. int b = --a; \n 3. std::cout<<a,<'\n'; //7 \n 4. std::cout<<b<<'\n'; //7",
 			"<b>Postfix decrement</b>",
-			"Reduces the value of the variable by one, but the value of the expression x-- will be what it was before the reduction by one \n 1. int a = 8; \n 2. int b = a--; \n 3. std::cout<<a,<'\n'; //7 \n 4. std::cout<<b<<'\n'; //8"
-			"Arithmetic operations are calculated from left to right. Some operations have a higher priority than others and are therefore executed first. The operations are in decreasing order of priority: \n + (increment), - (decrement) \n * (multiplication), / (division), % (remainder of division) \n + (addition), - (subtraction)"
-			"The priority of operations should be considered when performing a set of arithmetic expressions: \n 1. int a = 8; \n 2. int b = 7; \n 3. int c = a + 5 * ++b; //48 \n 4. std::cout<<c; \n Although the operations are performed from left to right, the increment ++b operation will be performed first, which will increment the value of the b variable and return it as the result, since this operation has higher priority. Then the multiplication 5 * ++b is performed, and only last is the addition a + 5 * ++b performed"
+			"Reduces the value of the variable by one, but the value of the expression x-- will be what it was before the reduction by one \n 1. int a = 8; \n 2. int b = a--; \n 3. std::cout<<a,<'\n'; //7 \n 4. std::cout<<b<<'\n'; //8",
+			"Arithmetic operations are calculated from left to right. Some operations have a higher priority than others and are therefore executed first. The operations are in decreasing order of priority: \n + (increment), - (decrement) \n * (multiplication), / (division), % (remainder of division) \n + (addition), - (subtraction)",
+			"The priority of operations should be considered when performing a set of arithmetic expressions: \n 1. int a = 8; \n 2. int b = 7; \n 3. int c = a + 5 * ++b; //48 \n 4. std::cout<<c; \n Although the operations are performed from left to right, the increment ++b operation will be performed first, which will increment the value of the b variable and return it as the result, since this operation has higher priority. Then the multiplication 5 * ++b is performed, and only last is the addition a + 5 * ++b performed",
 			"The brackets allow you to redefine the order of calculations. For example: \n 1. int a = 8; \n 2. int b = 7; \n 3. int c = (a + 5) * ++b; //104 \n 4. std::cout<<c; \n Despite the fact that the addition operation has a lower priority, it is the addition and not the multiplication that will be performed first, since the addition operation is enclosed in brackets."
 		]
 			
@@ -169,26 +169,26 @@
 		"name": "Static typization",
 		"page_1":
 		[
-			"C++ is a statically typed programming language. That is, if we define a data type for a variable, we will not be able to change it later. Therefore, a variable can only get values of the type it represents. Often, however, it is necessary to assign a variable values of other types. And in this case, type conversions are used. \n The compiler can perform a number of transformations implicitly, that is, automatically. For example:"
-			"1. #include <iostream> \n 2. int main() \n 3. { \n 4. int code = 'g'; \n 5. char letter = 103; \n 6. std::cout<<letter<<'in ASCII is'<<code<<'\n'; \n 7. return 0; \n 8. }"
-			"In this case, a numeric variable of int type is assigned the character 'g'. This character will be automatically converted to a number. In fact, the variable will get the numeric code of this character in the ASCII table. \n The variable letter, on the contrary, is assigned a number, although it is a char variable. This number will be converted to a character and the letter variable will store the character whose code in the ASCII table is 103, i.e. the 'g' character."
-			"The result of this program will be the following console output: \n <b>g in ASCII is 103</b> \n How transformations are performed:"
-			"A variable of type <b>bool</b> is assigned a value of another type. In this case the variable gets <b>false</b> if the value is 0. In all other cases the variable gets <b>true</b>. \n 1. bool a = 1; //true \n 2. bool b = 0 //false \n 3. bool c='g'; //true \n 4. bool d = 3.4 //true"
-			"A numeric or character variable is assigned a value of type <b>bool</b>. In this case, the variable receives 1 if the value is <b>true</b>, or receives 0 if the assigned value is <b>false</b>. \n 1. int c = true; //1 \n 2. double d = false; //0"
-			"An integer variable is assigned a fractional number. In this case the fractional part after the decimal point is discarded. \n 1. int a = 3.4 //3 \n 2. int b = 3.6 //3"
-			"A variable that represents a floating point type is assigned an integer. In this case, if the integer contains more bits than the variable type can hold, then some of the information is truncated. \n 1. float a = 35005; //35005 \n 2. double b = 3500500000033; //3.5005e+012"
-			"A variable of unsigned type is assigned a value outside its range. In this case the result will be the remainder of a division by a modulo. For example, <b>unsigned char</b> can hold values from 0 to 255. If you assign it a value outside this range the compiler will give you the remainder modulo 256 (since unsigned char can hold 256 values). So if you assign value -1 to a variable of unsigned char type it will get 256 - |-1/256| = 255"
+			"C++ is a statically typed programming language. That is, if we define a data type for a variable, we will not be able to change it later. Therefore, a variable can only get values of the type it represents. Often, however, it is necessary to assign a variable values of other types. And in this case, type conversions are used. \n The compiler can perform a number of transformations implicitly, that is, automatically. For example:",
+			"1. #include <iostream> \n 2. int main() \n 3. { \n 4. int code = 'g'; \n 5. char letter = 103; \n 6. std::cout<<letter<<'in ASCII is'<<code<<'\n'; \n 7. return 0; \n 8. }",
+			"In this case, a numeric variable of int type is assigned the character 'g'. This character will be automatically converted to a number. In fact, the variable will get the numeric code of this character in the ASCII table. \n The variable letter, on the contrary, is assigned a number, although it is a char variable. This number will be converted to a character and the letter variable will store the character whose code in the ASCII table is 103, i.e. the 'g' character.",
+			"The result of this program will be the following console output: \n <b>g in ASCII is 103</b> \n How transformations are performed:",
+			"A variable of type <b>bool</b> is assigned a value of another type. In this case the variable gets <b>false</b> if the value is 0. In all other cases the variable gets <b>true</b>. \n 1. bool a = 1; //true \n 2. bool b = 0 //false \n 3. bool c='g'; //true \n 4. bool d = 3.4 //true",
+			"A numeric or character variable is assigned a value of type <b>bool</b>. In this case, the variable receives 1 if the value is <b>true</b>, or receives 0 if the assigned value is <b>false</b>. \n 1. int c = true; //1 \n 2. double d = false; //0",
+			"An integer variable is assigned a fractional number. In this case the fractional part after the decimal point is discarded. \n 1. int a = 3.4 //3 \n 2. int b = 3.6 //3",
+			"A variable that represents a floating point type is assigned an integer. In this case, if the integer contains more bits than the variable type can hold, then some of the information is truncated. \n 1. float a = 35005; //35005 \n 2. double b = 3500500000033; //3.5005e+012",
+			"A variable of unsigned type is assigned a value outside its range. In this case the result will be the remainder of a division by a modulo. For example, <b>unsigned char</b> can hold values from 0 to 255. If you assign it a value outside this range the compiler will give you the remainder modulo 256 (since unsigned char can hold 256 values). So if you assign value -1 to a variable of unsigned char type it will get 256 - |-1/256| = 255",
 			"1. unsigned char a = -5; //251 \n 2. unsigned short b = -3500; //62036 () \n 3. unsigned int c = -5000000000; //4244967296 \n A signed variable is assigned a value outside its range. In this case the result is undefined. The program may work fine, giving an adequate result, or it may work incorrectly."
 		],
 		
 		"page_2":
 		[
 			"<b>Dangerous and safe conversions</b>",
-			"Those conversions in which there is no loss of information are safe. As a rule, these are conversions from a type with a lower capacity to a type with a higher capacity. In particular, these are the following chains of conversions:"
-			"<b>bool -> char -> short -> int -> double -> long double</b> \n <b>bool -> char -> short -> int -> long -> long long</b> \n <b>unsigned char -> unsigned short -> unsigned int -> unsigned long</b> \n <b>float -> double -> long double</b>"
-			"Examples of safe transformations: \n 1. short a = 'g'; //conversion from char to short \n 2. int b = 10; \n 3. double c = b; //conversion from int to double \n 4. float d = 3.4 \n 5. double e = d //conversion from float to double \n 6. double f =35; //conversion from int to double"
-			"But there are also dangerous conversions. In such conversions we can potentially lose data accuracy. As a rule, these are conversions from a type with higher digit capacity to a type with lower digit capacity. \n 1. char letter = 295; \n 2. std::cout<<letter;"
-			"In this case, the letter variable is assigned a value that is outside the range of valid values for the char type, i.e., greater than 255. \n And in examples like these, much depends on the compiler. In some cases compilers will give a warning when compiling, but the program can still be compiled successfully. In other cases the compilers give no warning. This is actually the danger, that the program compiles successfully, but nevertheless there is a risk of losing data accuracy."
+			"Those conversions in which there is no loss of information are safe. As a rule, these are conversions from a type with a lower capacity to a type with a higher capacity. In particular, these are the following chains of conversions:",
+			"<b>bool -> char -> short -> int -> double -> long double</b> \n <b>bool -> char -> short -> int -> long -> long long</b> \n <b>unsigned char -> unsigned short -> unsigned int -> unsigned long</b> \n <b>float -> double -> long double</b>",
+			"Examples of safe transformations: \n 1. short a = 'g'; //conversion from char to short \n 2. int b = 10; \n 3. double c = b; //conversion from int to double \n 4. float d = 3.4 \n 5. double e = d //conversion from float to double \n 6. double f =35; //conversion from int to double",
+			"But there are also dangerous conversions. In such conversions we can potentially lose data accuracy. As a rule, these are conversions from a type with higher digit capacity to a type with lower digit capacity. \n 1. char letter = 295; \n 2. std::cout<<letter;",
+			"In this case, the letter variable is assigned a value that is outside the range of valid values for the char type, i.e., greater than 255. \n And in examples like these, much depends on the compiler. In some cases compilers will give a warning when compiling, but the program can still be compiled successfully. In other cases the compilers give no warning. This is actually the danger, that the program compiles successfully, but nevertheless there is a risk of losing data accuracy.",
 			"And, as a rule, in such cases, the assigned value is truncated to a valid value during compilation. For example, in the example above, the number 295 will be truncated to 39. That is, the following variables will contain the same value: \n 1. char letter1 = 295; \n 2. char letter2 = 39;"
 		]
 	},
