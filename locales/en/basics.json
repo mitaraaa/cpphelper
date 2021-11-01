@@ -166,8 +166,33 @@
 	
 	"static_typization": 
 	{
-		"name": "Static typization"
+		"name": "Static typization",
+		"page_1":
+		[
+			"C++ is a statically typed programming language. That is, if we define a data type for a variable, we will not be able to change it later. Therefore, a variable can only get values of the type it represents. Often, however, it is necessary to assign a variable values of other types. And in this case, type conversions are used. \n The compiler can perform a number of transformations implicitly, that is, automatically. For example:"
+			"1. #include <iostream> \n 2. int main() \n 3. { \n 4. int code = 'g'; \n 5. char letter = 103; \n 6. std::cout<<letter<<'in ASCII is'<<code<<'\n'; \n 7. return 0; \n 8. }"
+			"In this case, a numeric variable of int type is assigned the character 'g'. This character will be automatically converted to a number. In fact, the variable will get the numeric code of this character in the ASCII table. \n The variable letter, on the contrary, is assigned a number, although it is a char variable. This number will be converted to a character and the letter variable will store the character whose code in the ASCII table is 103, i.e. the 'g' character."
+			"The result of this program will be the following console output: \n <b>g in ASCII is 103</b> \n How transformations are performed:"
+			"A variable of type <b>bool</b> is assigned a value of another type. In this case the variable gets <b>false</b> if the value is 0. In all other cases the variable gets <b>true</b>. \n 1. bool a = 1; //true \n 2. bool b = 0 //false \n 3. bool c='g'; //true \n 4. bool d = 3.4 //true"
+			"A numeric or character variable is assigned a value of type <b>bool</b>. In this case, the variable receives 1 if the value is <b>true</b>, or receives 0 if the assigned value is <b>false</b>. \n 1. int c = true; //1 \n 2. double d = false; //0"
+			"An integer variable is assigned a fractional number. In this case the fractional part after the decimal point is discarded. \n 1. int a = 3.4 //3 \n 2. int b = 3.6 //3"
+			"A variable that represents a floating point type is assigned an integer. In this case, if the integer contains more bits than the variable type can hold, then some of the information is truncated. \n 1. float a = 35005; //35005 \n 2. double b = 3500500000033; //3.5005e+012"
+			"A variable of unsigned type is assigned a value outside its range. In this case the result will be the remainder of a division by a modulo. For example, <b>unsigned char</b> can hold values from 0 to 255. If you assign it a value outside this range the compiler will give you the remainder modulo 256 (since unsigned char can hold 256 values). So if you assign value -1 to a variable of unsigned char type it will get 256 - |-1/256| = 255"
+			"1. unsigned char a = -5; //251 \n 2. unsigned short b = -3500; //62036 () \n 3. unsigned int c = -5000000000; //4244967296 \n A signed variable is assigned a value outside its range. In this case the result is undefined. The program may work fine, giving an adequate result, or it may work incorrectly."
+		],
+		
+		"page_2":
+		[
+			"<b>Dangerous and safe conversions</b>",
+			"Those conversions in which there is no loss of information are safe. As a rule, these are conversions from a type with a lower capacity to a type with a higher capacity. In particular, these are the following chains of conversions:"
+			"<b>bool -> char -> short -> int -> double -> long double</b> \n <b>bool -> char -> short -> int -> long -> long long</b> \n <b>unsigned char -> unsigned short -> unsigned int -> unsigned long</b> \n <b>float -> double -> long double</b>"
+			"Examples of safe transformations: \n 1. short a = 'g'; //conversion from char to short \n 2. int b = 10; \n 3. double c = b; //conversion from int to double \n 4. float d = 3.4 \n 5. double e = d //conversion from float to double \n 6. double f =35; //conversion from int to double"
+			"But there are also dangerous conversions. In such conversions we can potentially lose data accuracy. As a rule, these are conversions from a type with higher digit capacity to a type with lower digit capacity. \n 1. char letter = 295; \n 2. std::cout<<letter;"
+			"In this case, the letter variable is assigned a value that is outside the range of valid values for the char type, i.e., greater than 255. \n And in examples like these, much depends on the compiler. In some cases compilers will give a warning when compiling, but the program can still be compiled successfully. In other cases the compilers give no warning. This is actually the danger, that the program compiles successfully, but nevertheless there is a risk of losing data accuracy."
+			"And, as a rule, in such cases, the assigned value is truncated to a valid value during compilation. For example, in the example above, the number 295 will be truncated to 39. That is, the following variables will contain the same value: \n 1. char letter1 = 295; \n 2. char letter2 = 39;"
+		]
 	},
+	
 	"constants": 
 	{
 		"name": "Constants"
