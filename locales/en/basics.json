@@ -36,14 +36,25 @@
 			"<b>long double:</b> represents a double-precision floating-point real number of at least 8 bytes (64 bits). The range of valid values may differ depending on the size of the memory occupied.",
 			"<b>void:</b> type without value.",
 			"Thus, all data types except void can be divided into three groups: character (char, wchar_t, char16_t, char32_t), integer (short, int, long, long long) and floating-point number types (float, double, long double)."
-		]
+		],
+		"page_4":
+		[
+			"<b>Symbol types<b/n>",
+			"The types char, wchar_t, char16_t and char32_t are used to represent characters in the application. Lets define some variables: \n 1. <code>char c = d;</code> \n 2. <code>wchar_t d = c;</code> \n",
+			"A char variable takes one character in single quotes as its value: char c = 'd'. You can also assign a number from the list above: char c = 120. In this case, the value of the variable c will be the character that has the code 120 in the ASCII character table."
+			"Note that you should not use std::cout to output wchar_t characters to the console, but use the <b>std::wcout</b> stream:"
+			"1. include <iostream> /n 2. int main() /n 3. { /n 4. char a = 'H'; /n 5. wchar_t b ='e'; /n 6. std::wcout<<a<<b<<'/n'; /n 7. return 0; /n 8. }"
+			"The std::wcout stream can work with both char and wchar_t. And the std::cout thread for the wchar_t variable will print its numeric code instead of the character."
+			"The <b>char16_t</b> and <b>char32_t</b> types were added to the C++11 standard, which are oriented to use Unicode. However, threads for working with these types have not been implemented at the OS level yet. So, if you need to output these variables to the console, you have to convert them to char or wchar_t types:"
+			"1. include <iostream> /n 2. int main() /n 3. { /n 4. char a = 'H'; /n 5. wchar_t b = 'e'; /n 6. char16_t c = 'l'; /n 7. char32_t d = 'o'; /n 8. std::cout<<a<<(char)b<<(char)c<<(char)d<<'/n'; /n 9. return 0; /n 10. }"
+			"In this case, a <b>char</b>-conversion operation is specified before the variables, so that the values of the b, c, and d variables are converted to char and can be printed to the console using the std::cout stream."
+			]
 	},
 	"variables": 
 	{
 		"name": "Variables",
 		"page_1":
 		[
-			"The types char, wchar_t, char16_t and char32_t are used to represent characters in the application. Lets define some variables: \n 1. <code>char c = d;</code> \n 2. <code>wchar_t d = c;</code> \n"
 		]
 	},
 	"arithmetical_operations": 
