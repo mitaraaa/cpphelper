@@ -46,10 +46,10 @@
 			"The types char, wchar_t, char16_t and char32_t are used to represent characters in the application. Lets define some variables: \n<code>char c = d;</code> \n<code>wchar_t d = c;</code> \n",
 			"A char variable takes one character in single quotes as its value: char c = 'd'. You can also assign a number from the list above: char c = 120. In this case, the value of the variable c will be the character that has the code 120 in the ASCII character table.",
 			"Note that you should not use std::cout to output wchar_t characters to the console, but use the <b>std::wcout</b> stream:",
-			"<code>#include &lt;iostream&gt; \nint main() \n{\nchar a = 'H';\nwchar_t b = 'e'; \nstd::wcout&lt;&lt;a&lt;&lt;b&lt;&lt;'\n'; \nreturn 0; \n}</code>",
+			"<code>#include &lt;iostream&gt; \nint main() \n{\nchar a = 'H';\nwchar_t b = 'e'; \nstd::wcout&lt;&lt;a&lt;&lt;b&lt;&lt;'\\n'; \nreturn 0; \n}</code>",
 			"The std::wcout stream can work with both char and wchar_t. And the std::cout thread for the wchar_t variable will print its numeric code instead of the character.",
 			"The <b>char16_t</b> and <b>char32_t</b> types were added to the C++11 standard, which are oriented to use Unicode. However, threads for working with these types have not been implemented at the OS level yet. So, if you need to output these variables to the console, you have to convert them to char or wchar_t types:",
-			"<code>#include &lt;iostream&gt; \nint main() \n{\nchar a = 'H';\nwchar_t b = 'e'; \nchar16_t c = 'l'; \nchar32_t d = 'o'; \nstd::cout&lt;&lt;a&lt;&lt;(char)b&lt;&lt;(char)c&lt;&lt;(char)d&lt;&lt;'\n'; \nreturn 0; \n}</code>",
+			"<code>#include &lt;iostream&gt; \nint main() \n{\nchar a = 'H';\nwchar_t b = 'e'; \nchar16_t c = 'l'; \nchar32_t d = 'o'; \nstd::cout&lt;&lt;a&lt;&lt;(char)b&lt;&lt;(char)c&lt;&lt;(char)d&lt;&lt;'\\n'; \nreturn 0; \n}</code>",
 			"In this case, a <b>char</b>-conversion operation is specified before the variables, so that the values of the b, c, and d variables are converted to char and can be printed to the console using the std::cout stream."
 		],
 		
