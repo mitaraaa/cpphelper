@@ -134,8 +134,36 @@
 	},
 	"arithmetical_operations": 
 	{
-		"name": "Arithmetical operations"
+		"name": "Arithmetical operations",
+		"page_1":
+		[
+			"Arithmetic operations are performed on numbers. The values that are involved in the operation are called operands. In the C++ programming language, arithmetic operations are binary (performed on two operands) and unary (performed on one operand). Binary operations include the following:"
+			"<b>+</b> \n The addition operation returns the sum of two numbers: \n 1. int a = 10; \n 2. int b = 7; \n 3. int c = a + b; //17 \n 4. int d = 4 + b; //11"
+			"<b>-</b> \n The subtraction operation returns the difference of two numbers: \n int a = 10; \n 2. int b = 7; \n 3. int c = a - b; //3 \n 4. int d = 41 - b; //34"
+			"<b>*</b> \n The multiplication operation returns the product of two numbers: \n int a = 10; \n 2. int b = 7; \n 3. int c = a * b; //70 \n 4. int d = b * 5; //35"
+			"<b>/</b> \n The division operation returns the quotient of two numbers: \n int a = 20; \n 2. int b = 5; \n 3. int c = a / b; //4 \n 4. double d = 22.5 * 4.5; //5 \n Be careful when dividing, because if two integers are involved in the operation, the result of the division will be rounded to an integer, even if the result is assigned to a float or double variable:"
+			"1. <b>double</b> k = 10 / 4; //2 \n 2. std::cout<<k; \n For the result to represent a floating-point number, one of the operands must also represent a floating-point number: \n 1. <b>double</b> k = 10.0 / 4 //2.5 \n 2. std::cout<<k;"
+			"<b>%</b> \n The operation of obtaining the remainder of an integer division: \n 1. int a = 33; \n 2. int b = 5; \n 3. int c = a % b; //3 \n 4. int d = 22 % 4 //2 (22-4*5=2)"
+			"There are also two unary arithmetic operations that are performed on the same number: ++ (increment) and -- (decrement). Each of these operations has two varieties: prefix and postfix:"
+		],
+		
+		"page_2":
+		[
+			"<b>Prefix increment</b>",
+			"Increases the value of the variable by one and the result is used as the value of the expression ++x \n 1. int a = 8; \n 2. int b = ++a; \n 3. std::cout<<a,<'\n'; //9 \n 4. std::cout<<b<<'\n'; //9"
+			"<b>Postfix increment</b>",
+			"Increases the value of the variable by one, but the value of the x++ expression will be what it was before the increase by one \n 1. int a = 8; \n 2. int b = a++; \n 3. std::cout<<a,<'\n'; //9 \n 4. std::cout<<b<<'\n'; //8"
+			"<b>Prefix decrement</b>",
+			"Decreases the value of the variable by one, and the resulting value is used as the value of the expression --x \n 1. int a = 8; \n 2. int b = --a; \n 3. std::cout<<a,<'\n'; //7 \n 4. std::cout<<b<<'\n'; //7"
+			"<b>Postfix decrement</b>",
+			"Reduces the value of the variable by one, but the value of the expression x-- will be what it was before the reduction by one \n 1. int a = 8; \n 2. int b = a--; \n 3. std::cout<<a,<'\n'; //7 \n 4. std::cout<<b<<'\n'; //8"
+			"Arithmetic operations are calculated from left to right. Some operations have a higher priority than others and are therefore executed first. The operations are in decreasing order of priority: \n + (increment), - (decrement) \n * (multiplication), / (division), % (remainder of division) \n + (addition), - (subtraction)"
+			"The priority of operations should be considered when performing a set of arithmetic expressions: \n 1. int a = 8; \n 2. int b = 7; \n 3. int c = a + 5 * ++b; //48 \n 4. std::cout<<c; \n Although the operations are performed from left to right, the increment ++b operation will be performed first, which will increment the value of the b variable and return it as the result, since this operation has higher priority. Then the multiplication 5 * ++b is performed, and only last is the addition a + 5 * ++b performed"
+			"The brackets allow you to redefine the order of calculations. For example: \n 1. int a = 8; \n 2. int b = 7; \n 3. int c = (a + 5) * ++b; //104 \n 4. std::cout<<c; \n Despite the fact that the addition operation has a lower priority, it is the addition and not the multiplication that will be performed first, since the addition operation is enclosed in brackets."
+		]
+			
 	},
+	
 	"static_typization": 
 	{
 		"name": "Static typization"
