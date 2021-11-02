@@ -195,16 +195,58 @@
 	
 	"constants": 
 	{
-		"name": "Constants"
+		"name": "Constants",
+		"page_1":
+		[
+			"A distinctive feature of variables is that we can change their value many times during the course of the program: \n<code>int x = 7; \nx = 9; \nx = 5;</code> \nBut in addition to variables, you can also define constants in the C++ programming language. Their value is set once and we cannot change it later. A constant is defined in much the same way as a variable, except for the keyword <b>const</b> at the beginning of the definition of a constant. For example:",
+			"<code>const int x = 22; \nstd::coutt&lt;&lt;x;</code> \nIf we want to assign a value to a constant after defining it, the compiler will not be able to compile the program and will print an error: \n<code>const int x = 22; \nx = 78;</code>",
+			"That is, such code will not work. And since you can't change the value of a constant, it always has to be initialized if we want it to have some value. \nIf the constant is not initialized, the compiler will also throw an error and will not be able to compile the program, as in the following case: \n<code>const int x;</code>",
+			"You can pass regular literals as a value to constants as well as dynamically deductible values, such as values of variables or other constants: \n<code>int a = 10; \nconst int b = 7; \nconst int d = b; \nconst int x = a</code>",
+			"Usually values are defined as constants that should remain constant throughout the program and cannot be changed. For example, if programs perform mathematical operations using the PI number, it would be optimal to define this value as a constant, since it is in principle constant anyway: \n<code>const float  pi = 3.14</code>"
+		]
 	},
+	
 	"console_io": 
 	{
-		"name": "Console I/O"
+		"name": "Console I/O",
+		"page_1":
+		[
+			"By default the C++ language does not have built-in tools for console input and console output, these tools are provided by the <b>iostream</b> library. There are two types defined: <b>istream</b> and <b>ostream</b>. istream represents an input stream, and ostream represents an output stream. \nIn general, the term 'stream' in this case represents a sequence of characters that is written to or read from the I/O device. And in this case the console is considered as the input-output device.",
+			"In general, the term 'stream' in this case represents a sequence of characters that is written to or read from the I/O device. And in this case the console is considered as the input-output device. \nTo write or output characters to the console, the <b>cout</b> object is used, which represents the ostream type. And to read from the console, the <b>cin</b> object is used. \nTo use these objects, the iostream library must be included at the beginning of the source file:",
+			"<code>#include <iostream></code>",
+			"<b>Console output</b> \nThe <b>&lt;&lt;</b> operator is used to output to the console. This operator gets two operands. The left operand represents an object of type ostream, in this case the cout object. And the right operand is the value to be output to the console.",
+			"Since the &lt;&lt; operator returns the left operand - cout, we can pass multiple values to the console with the help of a chain of operators. For example, let's define a simple output program to the console:",
+			"<code>#include <iostream> \nint main() \n{ \nint age = 33; \ndouble weight = 81.23; \nstd::cout &lt;&lt; 'Name:' &lt;&lt; 'Tom' &lt;&lt; '\n'; std::cout << 'Weight:' &lt;&lt; weight &lt;&lt; std::endl; \nreturn 0; \n}</code>",
+			"Console program output: \n<b>Name: Tom \nAge: 33 \nWeight: 81.23</b> \nTo the operator &lt;&lt; different values are passed - strings, values of variables, which are displayed on the console.",
+			"Strings can contain control sequences that are interpreted in a certain way. For example, the sequence '\n' is interpreted as a line feed. Of the other control sequences, '\t' is also often used, which is interpreted as a tabulation.",
+			"You can also terminate the chain of &lt;&lt; operators with <b>std::endl</b>, which causes a line feed and buffer reset. When output to the thread, the data is first placed in the buffer. And the buffer reset ensures that all the data passed to the console for output will be immediately output to the console."
+		],
+		
+		"page_2":
+		[
+			"<b>Console input</b>",
+			"To read data from a console, the input operator <b>&lt;&lt:</b> is used, which takes two operands. The left operand represents the object of type istream (in this case the cin object) from which the data is read, and the right operand represents the object into which the data is read. \nFor example, read the data from the console:",
+			"<code>#include <iostream> \nint main() \n{ \nint age; \ndouble weight; \nstd::cout &lt;&lt; 'Input age:'; \nstd::cin &lt;&lt; age; \nstd::cout &lt;&lt; 'Input weight:'; \nstd::cin &lt;&lt; weight; \nstd::cout &lt;&lt; 'Your age:' &lt;&lt; age &lt;&lt; '\t your weight:' &lt;&lt; weight &lt;&lt; std::endl; \nreturn 0; \n}</code>"
+			"Here, after the prompt, the program waits for the values for the variables age and weight. \nAn example of how the program works: \n<b>Input age: 32 \nInput weight: 67.45 \nYour age: 32	your weight: 67.45</b></code>",
+			"It is worth noting that since the input operator in the first case will be adding data to the integer variable age, it expects a number. In the case of the variable weight, the input operator expects a fractional number, and the separator between the integer part and the fractional part must be a dot. Therefore, we cannot enter any values, such as strings. In this case the program may output an incorrect result.",
+			"The input operator &lt;&lt; returns the left operand, a cin object, so we can chain read data into different variables: \n<code>#include <iostream> \nint main() \n{ \nint age; \ndouble weight; \nstd::cout &lt;&lt; 'Input age:'; \nstd::cin &lt;&lt; age &lt;&lt; weight; \nstd::cout &lt;&lt; 'Your age:' &Lt;&lt; age &lt;&lt; '\t your weight:' &Lt;&lt; weight &lt;&lt; std::endl; \nreturn 0; \n}</code>",
+			"An example of how the program works: \n<b>Input age: 32 67.45 \nYour age: 32	your weight: 67.45</b> \nAfter entering one of the values, you will need to enter a space and then enter the next value."
+		]
 	},
+	
 	"namespaces": 
 	{
-		"name": "Namespaces"
+		"name": "Namespaces",
+		"page_1":
+		[
+			"The previous topics used std::cout and std::cin objects for reading and writing, respectively. And they were used with prefix <b>std::</b>. This prefix indicates that cout, cin, and endl objects are defined in the <b>std</b> namespace. The double colon ::: represents a scope operator that allows you to specify in which namespace the object is defined. And without a prefix we cannot use these objects by default.",
+			"However, such a notation may seem a bit cumbersome. In this case, too, you can use the using statement, which allows you to enter objects from different namespaces into the program. \nThe format of the using statement is as follows: \n<code>using namespace::object</code>",
+			"For example, let us have the following program: \n<code>#include <iostream> \nint main() \n{ \nint age; \nstd::cout &lt;&lt; 'Input age:'; \nstd::cin &lt;&lt; age; \nstd::cout &lt;&lt; 'Your age:' &lt;&lt; age &lt;&lt; std::endl; \nreturn 0; \n}</code> \nThree objects from the std namespace are used here: cout, cin, and endl. Let's rewrite the program using:",
+			"<code>#include <iostream> \nusing std::cin; \nusing std::cout; \nusing std::endl; \nint main() \n{ \nint age; \ncout &lt;&lt; 'Input age:'; \ncin &lt;&lt; age; \ncout &lt;&lt; 'Your age:' &lt;&lt; age &lt;&lt; endl; \nreturn 0; \n}</code>",
+			"For each object in std space a different using expression is defined. The program will work the same way as before."
+		]
 	},
+	
 	"bit_operations": 
 	{
 		"name": "Bit operations"
