@@ -362,12 +362,54 @@
 	
 	"links": 
 	{
-		"name": "Links"
+		"name": "Links",
+		"page_1":
+		[
+			"A <b>reference</b> represents a way to manipulate an object. In fact, a reference is an alternative name for an object. The ampersand sign & is used to define a reference: \n<code>int number = 5; \nint &amprefNumber = number;</code>",
+			"In this case a refNumber reference is defined that refers to a number object. The reference definition uses the same type that represents the object to which the reference is made, which in this case is int. \nIn this case, you can't just define a link:",
+			"<code>int &amprefNumber;</code> \nIt must necessarily point to some object. \nAlso, you cannot assign a literal value to a reference, such as a number: \n<code>int &refNumber = 10;</code> \nOnce a reference has been established, we can manipulate through it the object to which it refers:",
+			"<code>#include <iostream> \nint main() \n{ \nint number = 5; \nint &amprefNumber = number; \nstd::cout &lt;&lt; refNumber &lt;&lt; std::endl; // 5 \nrefNumber = 20; \nstd::cout &lt;&lt; number &lt;&lt; std::endl;   // 20 \nreturn 0; \n}</code> \nChanges to the link will inevitably affect the referenced object as well.",
+			"You can define not only references to variables, but also references to constants. But the reference itself must be a constant: \n<code>const int number = 5; \nconst int &amprefNumber = number; \nstd::cout &lt;&lt; refNumber &lt;&lt; std::endl; // 5 \n//refNumber = 20; you cannot change the value by reference</code>",
+			"We cannot initialize a non-constant reference with a constant object: \n<code>const int number = 5; \nint &amprefNumber = number; // error</code> \nA constant reference can also point to an ordinary variable, but we cannot change its value:",
+			"<code>int number = 5; \nconst int &amprefNumber = number; \nstd::cout &lt;&lt; refNumber &lt;&lt; std::endl; // 5 \n//refNumber = 20; we cannot change the value by reference to the constant \n// but we can change the variable itself \nnumber = 20; \nstd::cout &lt;&lt; refNumber &lt;&lt; std::endl; // 20</code>",
+			"In this case, although we cannot directly change the value by constant reference, we can nevertheless change the object itself, which will naturally lead to a change of the constant reference."
+		]
 	},
+	
 	"arrays": 
 	{
-		"name": "Arrays"
+		"name": "Arrays",
+		"page_1":
+		[
+			"An <b>array</b> is a set of data of the same type. The formal definition of an array is as follows: \n<code>type_variable name_array [length_array]</code> \nAfter the variable type comes the name of the array, followed by its size in square brackets. For example, let's define an array of 4 numbers: \n<code>int numbers[4];</code>",
+			"This array has four numbers, but all of these numbers have an undefined value. However, we can initialize and assign some initial values to these numbers through curly braces: \n<codeint numbers[4] = {1,2,3,4};</code> \nThe values in curly braces are also called initializers. If there are fewer initializers than there are elements in the array, initializers are used for the first elements. If there are more initializers than there are elements in the array, an error will occur during compilation:",
+			"<code>int numbers[4] = {1, 2, 3, 4, 5, 6};</code> \nHere the array has size 4, but 6 values are passed to it. \nIf the size of the array is not explicitly specified, it is derived from the number of initializers: \n<code>int numbers[] = {1, 2, 3, 4, 5, 6};</code> \nIn this case there are 6 elements in the array.",
+			"Character arrays initialization has its own peculiarities. We can pass a character array both a set of initializers and a string: \n<code>char s1[] = {'h', 'e', 'l', 'l', 'o'}; \nchar s2[] = 'world';</code> \nAnd in the second case, the s2 array will have 6 elements instead of 5, because the zero character '\0' is automatically added to the character array when it is initialized with a string.",
+			"It is not allowed to assign one array to another array: \n<code>int nums1[] = {1,2,3,4,5}; \nint nums2[] = nums1; //error \nnums2 = nums1; // error</code> \nAfter defining an array, we can refer to its individual elements by an index. Indexes start with zero, so to address the first element we must use index 0. By accessing an element by index we can get its value or change it:",
+			"<code>#include <iostream> \nint main() \n{ \nint numbers[4] = {1,2,3,4}; \nint first_number = numbers[0]; \nstd::cout &lt;&lt; first_number &lt;&lt; std::endl; // 1 \nnumbers[0] = 34; //change the element \nstd::cout &lt;&lt; numbers[0] &lt;&Lt; std::endl; // 34 \nreturn 0; \n}</code> \nThe number of array elements can also be defined through a constant: \n<code>const int n = 4; \nint numbers[n] = {1,2,3,4};</code>"
+		],
+		
+		"page_2":
+		[
+			"<b>Array enumeration</b> \nUsing loops, you can run through the entire array and refer to its elements via indexes: \n<code>#include <iostream> \nint main() \n{ \nint numbers[4] = {1,2,3,4}; \nint size = sizeof(numbers)/sizeof(numbers[0]); \nfor(int i=0; i &lt; size; i++) \nstd::cout &lt;&lt; numbers[i] &lt;&lt; std::endl; \nreturn 0; \n}</code>",
+			"To loop through an array, you must first find the length of the array. The <b>sizeof</b> operator is used to find the length. In fact, the length of an array is equal to the total length of its elements. All elements represent the same type and occupy the same size in memory. Therefore, using the sizeof(numbers) expression, we find the length of the entire array in bytes, and using the sizeof(numbers[0]) expression, we find the length of one element in bytes. By dividing the two values, you can get the number of elements in the array. And then, using the for loop, loop through all the elements until the i-count equals the length of the array. As a result, all elements of the array will be displayed on the console:",
+			"<b>1 \n2 \n3 \n4</b> \nBut there is also another form of the <b>for</b> loop, which is designed specifically to work with collections, including arrays. This form has the following formal definition: \n<code>for(type variable : collection) \n{ \ninstructions; \n}</code> \nUse this form to enumerate the array:",
+			"<code>#include <iostream> \nint main() \n{ \nint numbers[4] = {1,2,3,4}; \nfor(int number : numbers) \nstd::cout &lt;&lt; number &lt;&lt; std::endl; \nreturn 0; \n}</code> \nWhen the array is searched, each element to be searched will be placed in the variable number, the value of which is printed to the console in the loop.",
+			"If we don't know the type of the objects in the array, we can use the specifier auto to define the type: \n<code>for(auto number : numbers) \nstd::cout &lt;&lt; number &lt;&lt; std::endl;</code>"
+		],
+		
+		"page_3":
+		[
+			"<b>Multidimensional arrays</b> \nIn addition to one-dimensional arrays, there are multidimensional arrays in C++. The elements of such arrays are themselves arrays in which the elements can also be arrays. For example, let's define a two-dimensional array of numbers: \n<code>int numbers[3][2];</code>",
+			"Such an array consists of three elements, with each element representing an array of two elements. Initialize such an array: \n<code>int numbers[3][2] = { {1, 2}, {4, 5}, {7, 8} };</code> \nNested curly brackets outline the elements for each subarray. Such an array can also be represented as a table:",
+			"1 2\n4 5 \n7 8 \nYou can also omit curly braces during initialization: \n<code>int numbers[3][2] = { 1, 2, 4, 5, 7, 8 };</code> \nIt is also possible to initialize not all elements, but only some of them: \n<code>int numbers[3][2] = { {1, 2}, {}, {7} };</code> \nAnd to refer to the elements of a nested array, you need two indexes:",
+			"<code>int numbers[3][2] = { {1, 2}, {3, 4}, {5, 6} }; \nstd::cout &lt;&lt; numbers[1][0] &lt;&lt; std::endl;    // 3 \nnumbers[1][0] = 12;             // item change \nstd::cout &lt;&lt; numbers[1][0] &lt;&lt; std::endl;    // 12</code> \nLet's go through a two-dimensional array:",
+			"<code>#include <iostream> \nint main() \n{ \nconst int rows = 3, columns = 2; \nint numbers[rows][columns] = { {1, 2}, {3, 4}, {5, 6} }; \nfor(int i=0; i < rows; i++) \n{ \nfor(int j=0; j < columns; j++) \n{ \nstd::cout &lt;&lt; numbers[i] [j] &lt;&lt; '\t'; \n} \nstd::cout &lt;&lt; std::endl; \n} \nreturn 0; \n}</code> \nYou can also use another form of the for loop to try elements of a multidimensional array:",
+			"<code>#include <iostream> \nint main() \n{ \nconst int rows = 3, columns = 2; \nint numbers[rows][columns] = { {1, 2}, {3, 4}, {5, 6} }; \nfor(auto &subnumbers : numbers) \n{ \nfor(int number : subnumbers) \n{ \nstd::cout &lt;&lt; number &lt;&lt; '\t'; \n} \nstd::cout &lt;&lt; std::endl; \n} \nreturn 0; \n}</code>",
+			"References are used to enumerate arrays that are part of an array. That is, in the outer for(auto &subnumbers : numbers) cycle, &subnumbers represents a reference to a subarray in the array. In the internal for(int number : subnumbers) loop, from each subarray in subnumbers, we get its individual elements into the variable number and output its value to the console."
+		]
 	},
+	
 	"strings": 
 	{
 		"name": "Strings"
