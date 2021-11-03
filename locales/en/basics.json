@@ -305,7 +305,9 @@
 		"page_2":
 		[
 			"<b>Switch design</b> \nAnother form of program branching is the <b>switch...case</b> construction. It has the following form: \n<code>switch(expression) \n{ \ncase constant_1: instruction_1; \ncase constant_2: instruction_2; \ndefault: instructions; \n}</code>",
-			"The keyword <b>switch</b> is followed by the expression to be compared in parentheses. The value of this expression is sequentially compared with the values after the case statement. And if a match is found, then a certain saese block will be executed.
+			"The keyword <b>switch</b> is followed by the expression to be compared in parentheses. The value of this expression is sequentially compared with the values after the <b>case</b> statement. And if a match is found, then a certain <b>case</b> block will be executed. \nThe switch construct may end with the <b>default</b> block. It is optional and is executed if the value after switch does not match any of the case statements. For example:",
+			
+			
 
 	},
 	"loops": 
