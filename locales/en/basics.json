@@ -249,15 +249,64 @@
 	
 	"bit_operations": 
 	{
-		"name": "Bit operations"
+		"name": "Bit operations",
+		"page_1":
+		[
+			"Bitwise operations are performed on individual bits or bits of numbers. These operations are performed on integers only. \n<b>Shift operations</b> \nEach integer in memory is represented as a certain number of bits. And shift operations allow to shift the bit representation of a number by several bits to the right or to the left. Shift operations apply only to integer operands. There are two operations:",
+			"<b>&lt;&lt;</b> \nShifts the bit representation of the number represented by the first operand to the left by the number of digits specified by the second operand.",
+			"<b>&gt;&gt;</b> \nShifts the bit representation of a number to the right by a specified number of digits. \nApplication of operations: \n<code>int a = 2 &lt;&lt; 2; //10 two digits to the left = 1000 - 8 \nint b = 16 &gt;&gt; 3; //10000 by three digits to the right = 10 - 2",
+			"The number 2 in binary representation is 10. If we shift the number 10 two digits to the left, we get 1000, which in the decimal system is equal to the number 8. \nThe number 16 in binary representation is 10000. If we shift the number 10 three digits to the right (the last three digits are discarded), we get 10, which in the decimal system represents number 2.",
+			"<b>Digit-by-digit operations</b> \nThe bitwise operations are also performed only on the corresponding bits of integer operands: \n<b>&amp:</b> is a bitwise conjunction (AND operation or bitwise multiplication). Returns 1 if both of the corresponding digits of both numbers are 1",
+			"<b>|:</b> disjunction (OR operation or digit-by-digit addition). Returns 1 if at least one of the corresponding digits of both numbers is 1 \n<b>^:</b> is a bitwise exclusive OR. Returns 1 if only one of the corresponding digits of both numbers is 1",
+			"<b>~:</b> bitwise negation or inversion. Inverts all bits of an operand. If a bit is 1 it becomes 0, and if it is 0 it becomes 1. \nApplication of operations:",
+			"<code>int a = 5 | 2 //101 | 010 = 111 - 7 \nint b = 6 &amp 2; // 110 &amp 010 = 10  - 2 \nint c = 5 ^ 2; // 101 ^ 010 = 111 - 7 \nint d = ~9; // -10",
+			"For example, the expression 5 | 2 equals 7. The number 5 in binary notation is 101, and the number 2 is 10 or 010. Add the corresponding digits of both numbers. In addition, if at least one digit equals 1, then the sum of both digits equals 1. Therefore we obtain: \n1 0 1 \n0 1 0 \n1 1 1 \nAs a result, we get the number 111, which in decimal form represents the number 7.",
+			"Take another expression 6 &amp 2. The number 6 in binary notation is 110, and the number 2 is 10 or 010. Multiply the corresponding digits of both numbers. The product of both digits is 1 if both these digits are 1. Otherwise, the product is 0. Therefore we obtain: \n1 1 0 \n0 1 0 \n0 1 0 \nWe get the number 010, which in the decimal system is 2."
+		]
 	},
-	"logical_operations": 
+	
+	"assignment_operations": 
 	{
-		"name": "Logical operations"
+		"name": "Assignment operations",
+		"page_1":
+		[
+			"<b>Assignment operations</b>",
+			"Assignment operations allow you to assign some value. These operations are performed on two operands, and the left operand can only represent a modifiable named expression, such as a variable.",
+			"The basic assignment operation = allows you to assign the value of the right operand to the left operand: \n<code>int x; \nx=2;</code> \nThat is, in this case the variable x (the left operand) will have the value 2 (the right operand).",
+			"It is worth noting that the type of the right operand value may not always coincide with the type of the left operand. In this case the compiler tries to convert the value of the right operand to the type of the left operand. \nIn this case, the assignment operations are right-handed, that is, they are performed from right to left. And, thus, you can perform multiple assignments:",
+			"<code>int  a, b, c; \na = b = c = 34;</code> \nHere first the value of the expression c = 34 is calculated. The value of the right operand - 34 is assigned to the left operand c. Then the expression b = c is calculated: the value of the right operand <b>c</b> (34) is assigned to the left operand <b>b</b>. And finally the expression a = b is calculated: the value of the right operand <b>b</b> (34) is assigned to the left operand <b>a</b>.",
+			"In addition, it should be noted that assignment operations have the lowest priority compared to other types of operations, so they are executed last: \n<code>int x; \nx= 3 + 5;</code> \nAccording to the priority of operations, the expression 3 + 5 is executed first, and only then its value is assigned to the variable x. All other assignment operations are a combination of a simple assignment operation with other operations:",
+			"<b>+=:</b> assignment after addition. Assigns to the left operand the sum of the left and right operands: <b>A += B</b> is equivalent to <b>A = A + B</b> \n<b>-=:</b> assignment after subtraction. Assigns to the left operand the difference of the left and right operands: <b>A -= B</b> is equivalent to <b>A = A - B</b>",
+			"<b>*=:</b> assignment after multiplication. Assigns to the left operand the product of the left and right operands: <b>A *= B</b> is equivalent to <b>A = A * B</b> \n<b>/=:</b> assignment after division. Assigns to the left operand the quotient of the left and right operands: <b>A /= B</b> is equivalent to <b>A = A / B</b>",
+			"<b>%=:</b> assignment after modulo division. Assigns to the left operand the remainder of an integer division of the left operand by the right operand: <b>A %= B</b> is equivalent to <b>A = A % B</b> \n<b>&lt;&lt;=:</b> assignment after a bit shift to the left. Assigns to the left operand the result of shifting its bit representation to the left by a certain number of bits equal to the value of the right operand: <b>A &lt;&lt;= B</b> is equivalent to <b>A = A &lt;&lt; B</b>",
+			"<b>&gt;&gt;=:</b> assignment after a bit shift to the right. Assigns to the left operand the result of shifting its bit representation to the right by a certain number of bits equal to the value of the right operand: <b>A &gt;&gt;= B</b> is equivalent to <b>A = A &gt;&gt; B</b> \n<b>&amp=:</b> assignment after bitwise conjunction. Assigns to the left operand the result of bitwise conjunction of its bitwise representation with the bitwise representation of the right operand: <b>A &amp= B</b> is equivalent to <b>A = A &amp B</b>",
+			"<b>|=:</b> assignment after bitwise disjunction. Assigns to the left operand the result of the bitwise disjunction of its bitwise representation with the bitwise representation of the right operand: <b>A |= B</b> is equivalent to <b>A = A | B</b> \n<b>^=:</b> assignment after exclusive OR operation. Assigns to the left operand the result of the exclusive OR operation of its bit representation with the bit representation of the right operand: <b>A ^= B</b> is equivalent to <b>A = A ^ B</b>",
+			"Examples of operations: \n<code> int a = 5; \na += 10 // 15 \na -= 3; // 12 \na *= 2; // 24 \na /= 6; // 4 \na &lt;&lt;= 4; // 64 \na &gt;&gt;= 2; // 16</code>"
+		]
 	},
+	
 	"conditional_constructions": 
 	{
-		"name": "Conditional constructions"
+		"name": "Conditional constructions",
+		"page_1":
+		[
+			"Conditional constructions guide the program along one of the possible paths depending on the condition. \n<b>Construct if</b> \nThe <b>if</b> statement checks if the condition is true, and if it is true, it executes a block of instructions. This operator has the following abbreviated form:",
+			"<code>if (condition) \n{ \ninstructions; \n}</code> \nThe <i>condition</i> is a conditional expression that returns <b>true</b> or <b>false</b>. If the condition returns true, the subsequent instructions in the if block are executed. If the condition returns false, the subsequent instructions are not executed. The instruction block is enclosed in curly braces. \nFor example:",
+			"<code>#include <iostream> \nint main() \n{ \nint x = 60; \nif(x &gt; 50) \n{ \nstd::cout &lt;&lt; 'x is greater than 50 \n'; \n} \nif(x &lt; 30) \n{ \nstd::cout &lt;&lt; 'x is less than 30 \n'; \n} \nstd::cout &lt;&lt; 'End of Program' &lt;&lt; '\n'; \nreturn 0; \n}",
+			"Two conditional if constructions are defined here. They will check whether the value of variable x is greater or less than the defined value. As an instruction, in both cases they output some string to the console. \nIn the first case x &gt; 50 the condition is true because the value of the variable x is indeed greater than 50, so the condition will return true, and hence the instructions in the if block will be executed.",
+			"In the second case, the operation of the relation x &lt; 30 will return false, since the condition is false, so the subsequent block of instructions will not be executed. As a result, when you run the program the output of the console will look like this: \n<b>x greater than 50 \nEnd of Program</b> \nWe can also use the full form of the if construct, which includes the else operator:",
+			"<code>if(condition_expression) \ninstruction_1 \nelse \ninstruction_2</code> \nAfter else statement we can define a set of instructions that are executed if the condition in the if statement returns false. That is, if the condition is true, the instructions after the if statement are executed, and if the expression is false, the instructions after the else statement are executed.",
+			"<code>int x = 50; \nif(x &gt; 60) \nstd::cout &lt;&lt; 'x is greater than 60 \n'; \nelse \nstd::cout &lt;&lt; 'x is less or equal 60 \n'; \nIn this case, the condition x &gt; 60 is false, that is, it returns false, so the else block will be executed. And as a result the console will print the string 'x is less or equal 60 \n'.",
+			"Often, however, there are not two possible alternatives, but many more. For example, in the case above we can count three conditions: the variable x can be greater than 60, less than 60, and equal to 60. To check the alternative conditions, we can type <b>else if:</b>",
+			"<code>int x = 60; \nif(x &gt; 60) \n{ \nstd::cout &lt;&lt; 'x is greater than 60 \n'; \n} \nelse if (x &lt; 60) \n{ \nstd::cout &lt;&lt; 'x is less than 60 \n'; \n} \nelse \n{ \nstd::cout &lt;&lt; 'x is equal 60 \n'; \nThat is, in this case we get three branches of events in the program. \nIf only one instruction needs to be executed in an if or else or else-if block, the curly braces can be omitted:",
+			"<code>int x = 60; \nif(x &gt; 60) \nstd::cout &lt;&lt; 'x is greater than 60 \n'; \nelse if (x &lt; 60) \nstd::cout &lt;&lt; 'x is less than 60 \n'; \nelse \nstd::cout &lt;&lt; 'x is equal 60 \n'; \n}</code>"
+		],
+		
+		"page_2":
+		[
+			"<b>Switch design</b> \nAnother form of program branching is the <b>switch...case</b> construction. It has the following form: \n<code>switch(expression) \n{ \ncase constant_1: instruction_1; \ncase constant_2: instruction_2; \ndefault: instructions; \n}</code>",
+			"The keyword <b>switch</b> is followed by the expression to be compared in parentheses. The value of this expression is sequentially compared with the values after the case statement. And if a match is found, then a certain saese block will be executed.
+
 	},
 	"loops": 
 	{
