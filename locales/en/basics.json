@@ -306,14 +306,60 @@
 		[
 			"<b>Switch design</b> \nAnother form of program branching is the <b>switch...case</b> construction. It has the following form: \n<code>switch(expression) \n{ \ncase constant_1: instruction_1; \ncase constant_2: instruction_2; \ndefault: instructions; \n}</code>",
 			"The keyword <b>switch</b> is followed by the expression to be compared in parentheses. The value of this expression is sequentially compared with the values after the <b>case</b> statement. And if a match is found, then a certain <b>case</b> block will be executed. \nThe switch construct may end with the <b>default</b> block. It is optional and is executed if the value after switch does not match any of the case statements. For example:",
-			
-			
-
+			"<code>#include <iostream> \nint main() \n{ \nint x = 2; \nswitch(x) \n{ \ncase 1: \nstd::cout &lt;&lt; 'x = 1' << '\n'; \nbreak; \ncase 2: \nstd::cout &lt;&lt; 'x = 2' &lt;&lt; '\n'; \nbreak; \ncase 3: \nstd::cout &lt;&lt; 'x = 3' &lt;&lt; '\n'; \nbreak; \ndefault: \nstd::cout &lt;&lt; 'x is undefined' &lt;&lt; 'n'; \nbreak; \n \nreturn 0; \n}</code> \nTo avoid executing subsequent case/default blocks, a break operator is placed at the end of each block. That is, in this case the operator will be executed",
+			"<code>case 2: \nstd::cout &lt;&lt; 'x = 2' &lt;&lt; '\n'; \nbreak; \nAfter the break operator is executed, the switch..case construct will exit, and the rest of the case statements will be ignored. Therefore, the following line will be displayed on the console <b>x=2</b> \nIt is worth noting the importance of the break operator. If we don't specify it in a case block, then after that block the execution will go to the next case block. For example, remove all break statements from the previous example:",
+			"<code>#include <iostream> \nint main() \n{ \nint x = 2; \nswitch(x) \n{ \ncase 1: \nstd::cout &lt;&lt; 'x = 1' &lt;&lt; '\n'; \ncase 2: \nstd::cout &lt;&lt; 'x = 2' &lt;&lt; '\n'; \ncase 3: \nstd::cout &lt;&lt; 'x = 3' &lt;&lt; '\n'; \ndefault: \nstd::cout &lt;&lt; 'x is undefined' &llt;&lt; '\n'; \n} \nreturn 0; \n}</code>",
+			"In this case again the case 2: operator will be executed, since the variable x=2. However, since this case block does not end with the break operator, the set of instructions after case 3: will be executed after it ends, even though the variable x is still 2. As a result, we will get the following console output: <b>\nx = 2 \nx = 3 \nx is undefined</b>"
+		],
+		
+		"page_3":
+		[
+			"<b>Ternary operator</b> \nThe ternary operator ?: shortens the definition of the simplest conditional if constructions and has the following form: \n<code>[first operand - condition] ? [second operand] : [third operand]</code>",
+			"The operator uses three operands at once. Depending on the condition, the ternary operator returns the second or third operand: if the condition is true (i.e., true), it returns the second operand; if the condition is false (i.e., false), it returns the third operand. For example:",
+			"<code>#include <iostream> \nint main() \n{ \nsetlocale(LC_ALL, ""); \nint x = 5; \nint y = 3; \nchar sign; \nstd::cout &lt;&lt; 'Enter the operation character: '; \nstd::cin &gt;&gt; sign; \nint result = sign=='+'?x + y:x - y; \nstd::cout &lt;&lt; 'Result: ' &lt;&lt; result &lt;&lt; '\n'; \nreturn 0;</codde>",
+			"In this case the sign of the operation is entered. Here the result of the ternary operation is the variable result. And if the sign variable contains a "+" sign, then result will be equal to the second operand - (x+y). Otherwise result is equal to the third operand."
+		]
 	},
+	
 	"loops": 
 	{
-		"name": "Loops"
+		"name": "Loops",
+		"page_1":
+		[
+			"Loops are used to perform some actions many times depending on a certain condition. The following kinds of loops are available in C++: \n<b>for \nwhile \ndo...while",
+			"<b>The while loop</b> \nThe while loop executes some code as long as its condition is true, that is, it returns true. It has the following formal definition: \n<code>while(condition) \n{ \n// actions to be performed \n}</code> \nAfter the <b>while</b> keyword there is a conditional expression in brackets that returns true or false. Then in curly braces there is a set of instructions that make up the body of the loop. And as long as the condition returns true, the instructions in the loop body will be executed.",
+			"For example, let's output the squares of numbers from 1 to 9: \n<code>#include <iostream> \nint main() \n{ \nint i = 1; \nwhile(i < 10) \n{ \nstd::cout &lt;&lt; i &lt;&lt; ' * ' &lt;&lt; i &lt;&lt; ' = ' &lt;&lt; i * i &lt;&lt; std::endl; \ni++; \n} \nreturn 0; \n}</code> \nHere, as long as condition i &lt; 10 is true, the while loop will be executed, in which the square of the number is output to the console and the i variable is incremented. At some point the variable i will increase to 10, condition i &lt; 10 will return false, and the loop will end.",
+			"Console program output: \n<b>1 * 1 = 1 \n2 * 2 = 4 \n3 * 3 = 9 \n4 * 4 = 16 \n5 * 5 = 25 \n6 * 6 = 36 \n7 * 7 = 49 \n8 * 8 = 64 \n9 * 9 = 81</b> \nEach single pass of the loop is called an iteration. That is, in the example above there were 9 iterations.",
+			"If the loop contains one instruction, the curly brackets can be omitted: \n<code>int i = 0; \nwhile(++i &lt; 10) \nstd::cout &lt;&lt; i &lt;&lt; ' * ' &lt;&lt; i &lt;&lt; ' = ' &lt;&lt; i * i &lt;&lt; std::endl;</code>"
+		],
+		
+		"page_2":
+		[
+			"<b>The loop for</b> \nThe for loop has the following formal definition: \n<code>for (expression_1; expression_2; expression_3) \n{ \n// loop body \n}</code>",
+			"<i>Expression_1</i> is executed once at the beginning of the loop and represents the setting of initial conditions, usually the initialization of counters - special variables that are used to control the loop. <i>Expression_2</i> represents a condition, on fulfillment of which the loop is executed. Typically, a comparison operation is used as a condition, and if it returns a non-zero value (i.e., the condition is true), the loop body is executed, and then expression_3 is calculated. <i>Expression_3</i> specifies a change in loop parameters, and it is not uncommon to increase loop counters here by one.",
+			"For example, let's rewrite a program to output the squares of numbers using the for loop: \n<code>#include <iostream> \nint main() \n{ \nfor(int i =1; i &lt; 10; i++) \n{ \nstd::cout &lt;&lt; i &lt;&lt; ' * ' &lt;&lt; i &lt;&lt; ' = ' &lt;&lt; i * i &lt;&lt; std::endl; \n} \nreturn 0; \n}</code>",
+			"The first part of the loop declaration, int i = 1, creates and initializes the i counter. In fact, this is the same as declaring and initializing a variable. The counter does not necessarily have to be of type int. It can be another numeric type, for example float. And its value will be 1 before the loop is executed. The second part is the condition under which the loop will be executed. In this case the loop will be executed until the variable i equals 10.",
+			"And the third part is the increment of the counter by one. Again, we do not need to increase by one. We can decrease: i--. You can change to another value: i+=2. \nAs a result, the loop will run 9 times until the i variable equals 10. And each time this value will be incremented by 1. And essentially we will get the same result as in the while loop: \n<b>1 * 1 = 1 \n2 * 2 = 4 \n3 * 3 = 9 \n4 * 4 = 16 \n5 * 5 = 25 \n6 * 6 = 36 \n7 * 7 = 49 \n8 * 8 = 64 \n9 * 9 = 81</b>",
+			"It is not necessary to specify all three expressions in the loop definition, we can omit one or even all of them: \n<code>int i = 1; \nfor(; i &lt; 10;) \n{ \nstd::cout &lt;&lt; i &lt;&lt; ' * ' &lt;&lt; i &lt;&lt; ' = ' &lt;&lt; i * i &lt;&lt; std::endl; \ni++; \n}</code> \nFormally, the definition of the loop remains the same, only now the first and third expressions in the loop definition are absent: for (; i &lt; 10;). The counter variable is defined and initialized outside the loop, and it is incremented in the loop itself.",
+			"You can define nested loops. For example, print a multiplication table: \n<code>#include <iostream> \nint main() \n{ \nfor (int i=1; i &lt; 10; i++) \n{ for(int j = 1; j &lt; 10; j++) \n{ \nstd::cout &lt;&lt; i * j &lt;&lt; '\t'; \n} \nstd::cout &lt;&lt; std::endl; \n} \return 0; \n}</code>"
+		],
+		
+		"page_3":
+		[
+			"<b>The do loop</b> \nIn the do loop, first the loop code is executed and then the condition in the while instruction is checked. As long as the condition is true, i.e., not equal to 0, the loop is repeated. Formal definition of a loop:",
+			"<code>do \n{ \ninstructions \n} \nwhile(condition);</code> \nFor example: \n#include <iostream> \nint main() \n{ \nint i = 6; \ndo \n{ \nstd::cout &lt;&lt; i &lt;&lt; std::endl; \ni--; \n} \nwhile(i&gt;0); \nreturn 0; \n}</code> \nHere the loop code will run 6 times until i equals zero.",
+			"But it is important to note that the do loop guarantees at least one action, even if the condition in the while instruction is not true. That is, we can write: \n<code>int i = -1; \ndo \n{ \nstd::cout &lt;&lt; i &lt;&lt; std::endl; \ni--; \n} \nwhile(i&gt;0); \n}</code> \nEven though we have a variable i less than 0, the loop will still execute once."
+		],
+		
+		"page_4":
+		[
+			"<b>Operators continue and break</b> \nSometimes it may be necessary to exit a loop before it is complete. In this case you can use the <b>break</b> operator. For example:",
+			"<code>#include <iostream> \nint main() \n{ \nint i = 1; \nfor ( ; ; ) \n{ \nstd::cout &lt;&lt; i &lt;&lt; ' * ' &lt;&lt; i &lt;&lt; ' = ' <&lt;&lt; i * i &lt;&lt; std::endl; \ni++; \nif (i &gt; 9) break; \n} \nreturn 0; \n}</code>",
+			"Here, when the value of variable i reaches 10, the cycle is exited using the break operator. \nUnlike the break operator, the <b>continue</b> operator advances to the next iteration. For example, we need to calculate the sum of only odd numbers from some range:",
+			"<code>#include <iostream> \nint main() \n{ \nint result = 0; \nfor (int i=0; i&lt;10; i++) \n{ \nif (i % 2 == 0) continue; \nresult +=i; \n} \nstd::cout &lt;&lt; 'result = ' &lt;&lt; result &lt;&lt; std::endl; // 25 \nreturn 0;</code> \nTo find out if the number is even, we get the remainder of the integer division by 2, and if it is 0, we use the continue operator to go to the next iteration of the loop. And if the number is odd, we add it to the remaining odd numbers."
+		]
 	},
+	
 	"links": 
 	{
 		"name": "Links"
