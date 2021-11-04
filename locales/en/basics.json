@@ -412,6 +412,36 @@
 	
 	"strings": 
 	{
-		"name": "Strings"
-	}
-}
+		"name": "Strings",
+		"page_1":
+		[
+			"The type <b>string</b> is used to store strings in C++. To use this type, it must be included in the code using the <b>include</b> directive: \n<code>#include <string> \n#include <iostream> \nint main() \n{ \nstd::string hello = 'Hello World!'; \nstd::cout &lt;&lt; hello &lt;&lt; '\n'; \nreturn 0; \n} \n} \n}>/code>",
+			"The string type is defined in the standard library and when using it, you must specify the <b>std</b> namespace. \nOr you can use the using expression to avoid specifying the std prefix: <code>using std::string;</code>,
+			"In this case, the value of the variable <i>hello</i>, which represents the type <i>string</i>, is output to the console. \nWhen compiling through g++ you may need to specify the <i>-static</i> flag. That is, if the code is defined in the <i>hello.cpp</i> file, the compile command for g++ may look like this",
+			"<code>g++ hello.cpp -o hello -static</code> \nYou can use different methods to initialize strings: \n<ccode>#include <string> \n#include <iostream> \nint main() \n{ \nstd::string s1; // blank line \nstd::string s2 = 'hello'; // hello \nstd::string s3('welcome');  // welcome \nstd::string s4(5, 'h');  // hhhhh \nstd::string s5 = s2;  // hello \nstd::cout &lt;&lt; s1 &lt;&lt; '\n'; \nstd::cout &lt;&lt; s2 &lt;&lt; '\n'; \nstd::cout &lt;&lt; s3 &lt;&lt; '\n'; \nstd::cout &lt;&lt; s4 &lt;&lt; '\n'; \nstd::cout &lt;&lt; s5 &lt;&lt; '\n'; \nreturn 0; \n}>/code>",
+			"The console output of this program: <b>hello \nwelcome \nhhhhh \nhello</b> \nIf we do not assign any value to a variable of type string when defining it, by default it contains an empty string: <code>std::string s1;</code> \nYou can also initialize a variable with a string literal that is enclosed in double quotes:",
+			"<code>std::string s2 = 'hello';</code> \nAlternatively, you can pass the string in parentheses after the variable definition: \n<code>std::string s3('welcome');</code> \nIf you want the string to contain a certain number of certain characters, you can specify the number of characters and the character itself in brackets:",
+			"<code>std::string s4(5, 'h');</code> \nAnd you can also pass a copy of another string to a variable: \n<code>std::string s5 = s2;</code>"
+		],
+		
+		"page_2":
+		[
+			"<b>String concatenation</b> \nA number of operations can be performed on strings. In particular, you can combine strings using the standard addition operation: <code>#include <iostream> \nusing std::cout; \nusing std::endl; \nusing std::string; \nint main() \n{ \nstring s1 = 'hello'; \nstring s2 = 'world'; \nstring s3 = s1 + " " + s2; // hello world \ncout &lt;&lt; s3 &lt;&lt; endl; \nreturn 0; \n}</code>",
+			"<b>String Comparison</b> \nComparison operations can be applied to strings. The == operator returns true if all characters of both strings are equal. \n<code>std::string s1 = 'hello'; \nstd::string s2 = 'world'; \nbool result = s1 == s2;  // false \nresult = s1 == 'Hello';     // false \nresult = s1 == 'hello';     // true</code>",
+			"The characters must be case-matched as well. \nThe != operation returns true if the two strings do not match. \n<code>std::string s1 = 'hello'; \nstd::string s2 = 'world'; \nbool result = s1 != s2;     // true result = s1 != 'Hello';     // true \nresult = s1 != 'hello';     // false</code>",
+			"The other basic comparison operations <b>&lt;, &lt;=, &gt;, &gt;=</b> compare strings depending on the case and alphabetic order of characters. For example, the string 'b' is conditionally larger than the string 'a', because the character b comes after the character a. And the string 'a' is larger than the string 'A'. If the first characters of the string are equal, then subsequent characters are compared:",
+			"<code>std::string s1 = 'Aport'; \nstd::string s2 = 'Apricot'; \nbool result = s1 &gt; s2;       // false</code> \nIn this case, the condition s1 &gt; s2 is false, that is, s2 is greater than s1, because when the first two characters ('Ap') are equal, the third character of the second line ('o') stands in the alphabet before the third character of the second line ('p'), that is, 'o' is less than 'p'.",
+		],
+		
+		"page_3":
+		[
+			"<b>Line size</b> \nUsing the method <b>size()</b> you can find out the size of the string, i.e. how many characters it consists of: \n<code>std::string s1 = 'hello'; \nstd::cout << s1.size() &lt;7lt; std::endl;    // 5</code> \nIf the string is empty, it contains 0 characters. In this case we can use the method empty() - it returns true if the string is empty:",
+			"<code>std::string s1 = ''; \nif(s1.empty()) \nstd::cout &lt;&lt; 'String is empty' &lt;&Lt; std::endl;</code> \n<b>Reading a string from the console</b> \nYou can use the std::cin object to read the entered string from the console:",
+			"<code>#include <iostream> \n#include <string> \nint main() \n{ \nstd::string name; \nstd::cout &lt;&lt; 'Input your name:'; \nstd::cin &gt;&gt; name; \nstd::cout &lt;&Lt; 'Your name: ' &lt;&lt; name &lt;&lt; std::endl; \nreturn 0; \n}</code>,
+			
+
+
+
+
+
+
