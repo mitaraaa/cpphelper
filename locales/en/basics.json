@@ -195,42 +195,251 @@
 	
 	"constants": 
 	{
-		"name": "Constants"
+		"name": "Constants",
+		"page_1":
+		[
+			"A distinctive feature of variables is that we can change their value many times during the course of the program: \n<code>int x = 7; \nx = 9; \nx = 5;</code> \nBut in addition to variables, you can also define constants in the C++ programming language. Their value is set once and we cannot change it later. A constant is defined in much the same way as a variable, except for the keyword <b>const</b> at the beginning of the definition of a constant. For example:",
+			"<code>const int x = 22; \nstd::coutt&lt;&lt;x;</code> \nIf we want to assign a value to a constant after defining it, the compiler will not be able to compile the program and will print an error: \n<code>const int x = 22; \nx = 78;</code>",
+			"That is, such code will not work. And since you can't change the value of a constant, it always has to be initialized if we want it to have some value. \nIf the constant is not initialized, the compiler will also throw an error and will not be able to compile the program, as in the following case: \n<code>const int x;</code>",
+			"You can pass regular literals as a value to constants as well as dynamically deductible values, such as values of variables or other constants: \n<code>int a = 10; \nconst int b = 7; \nconst int d = b; \nconst int x = a</code>",
+			"Usually values are defined as constants that should remain constant throughout the program and cannot be changed. For example, if programs perform mathematical operations using the PI number, it would be optimal to define this value as a constant, since it is in principle constant anyway: \n<code>const float  pi = 3.14</code>"
+		]
 	},
+	
 	"console_io": 
 	{
-		"name": "Console I/O"
+		"name": "Console I/O",
+		"page_1":
+		[
+			"By default the C++ language does not have built-in tools for console input and console output, these tools are provided by the <b>iostream</b> library. There are two types defined: <b>istream</b> and <b>ostream</b>. istream represents an input stream, and ostream represents an output stream. \nIn general, the term 'stream' in this case represents a sequence of characters that is written to or read from the I/O device. And in this case the console is considered as the input-output device.",
+			"In general, the term 'stream' in this case represents a sequence of characters that is written to or read from the I/O device. And in this case the console is considered as the input-output device. \nTo write or output characters to the console, the <b>cout</b> object is used, which represents the ostream type. And to read from the console, the <b>cin</b> object is used. \nTo use these objects, the iostream library must be included at the beginning of the source file:",
+			"<code>#include &lt;iostream&gt;</code>",
+			"<b>Console output</b> \nThe <b>&lt;&lt;</b> operator is used to output to the console. This operator gets two operands. The left operand represents an object of type ostream, in this case the cout object. And the right operand is the value to be output to the console.",
+			"Since the &lt;&lt; operator returns the left operand - cout, we can pass multiple values to the console with the help of a chain of operators. For example, let's define a simple output program to the console:",
+			"<code>#include &lt;iostream&gt; \nint main() \n{ \nint age = 33; \ndouble weight = 81.23; \nstd::cout &lt;&lt; 'Name:' &lt;&lt; 'Tom' &lt;&lt; '\n'; std::cout << 'Weight:' &lt;&lt; weight &lt;&lt; std::endl; \nreturn 0; \n}</code>",
+			"Console program output: \n<b>Name: Tom \nAge: 33 \nWeight: 81.23</b> \nTo the operator &lt;&lt; different values are passed - strings, values of variables, which are displayed on the console.",
+			"Strings can contain control sequences that are interpreted in a certain way. For example, the sequence '\n' is interpreted as a line feed. Of the other control sequences, '\t' is also often used, which is interpreted as a tabulation.",
+			"You can also terminate the chain of &lt;&lt; operators with <b>std::endl</b>, which causes a line feed and buffer reset. When output to the thread, the data is first placed in the buffer. And the buffer reset ensures that all the data passed to the console for output will be immediately output to the console."
+		],
+		
+		"page_2":
+		[
+			"<b>Console input</b>",
+			"To read data from a console, the input operator <b>&lt;&lt:</b> is used, which takes two operands. The left operand represents the object of type istream (in this case the cin object) from which the data is read, and the right operand represents the object into which the data is read. \nFor example, read the data from the console:",
+			"<code>#include &lt;iostream&gt; \nint main() \n{ \nint age; \ndouble weight; \nstd::cout &lt;&lt; 'Input age:'; \nstd::cin &lt;&lt; age; \nstd::cout &lt;&lt; 'Input weight:'; \nstd::cin &lt;&lt; weight; \nstd::cout &lt;&lt; 'Your age:' &lt;&lt; age &lt;&lt; '\t your weight:' &lt;&lt; weight &lt;&lt; std::endl; \nreturn 0; \n}</code>"
+			"Here, after the prompt, the program waits for the values for the variables age and weight. \nAn example of how the program works: \n<b>Input age: 32 \nInput weight: 67.45 \nYour age: 32	your weight: 67.45</b></code>",
+			"It is worth noting that since the input operator in the first case will be adding data to the integer variable age, it expects a number. In the case of the variable weight, the input operator expects a fractional number, and the separator between the integer part and the fractional part must be a dot. Therefore, we cannot enter any values, such as strings. In this case the program may output an incorrect result.",
+			"The input operator &lt;&lt; returns the left operand, a cin object, so we can chain read data into different variables: \n<code>#include <iostream> \nint main() \n{ \nint age; \ndouble weight; \nstd::cout &lt;&lt; 'Input age:'; \nstd::cin &lt;&lt; age &lt;&lt; weight; \nstd::cout &lt;&lt; 'Your age:' &Lt;&lt; age &lt;&lt; '\t your weight:' &Lt;&lt; weight &lt;&lt; std::endl; \nreturn 0; \n}</code>",
+			"An example of how the program works: \n<b>Input age: 32 67.45 \nYour age: 32	your weight: 67.45</b> \nAfter entering one of the values, you will need to enter a space and then enter the next value."
+		]
 	},
+	
 	"namespaces": 
 	{
-		"name": "Namespaces"
+		"name": "Namespaces",
+		"page_1":
+		[
+			"The previous topics used std::cout and std::cin objects for reading and writing, respectively. And they were used with prefix <b>std::</b>. This prefix indicates that cout, cin, and endl objects are defined in the <b>std</b> namespace. The double colon ::: represents a scope operator that allows you to specify in which namespace the object is defined. And without a prefix we cannot use these objects by default.",
+			"However, such a notation may seem a bit cumbersome. In this case, too, you can use the using statement, which allows you to enter objects from different namespaces into the program. \nThe format of the using statement is as follows: \n<code>using namespace::object</code>",
+			"For example, let us have the following program: \n<code>#include <iostream> \nint main() \n{ \nint age; \nstd::cout &lt;&lt; 'Input age:'; \nstd::cin &lt;&lt; age; \nstd::cout &lt;&lt; 'Your age:' &lt;&lt; age &lt;&lt; std::endl; \nreturn 0; \n}</code> \nThree objects from the std namespace are used here: cout, cin, and endl. Let's rewrite the program using:",
+			"<code>#include <iostream> \nusing std::cin; \nusing std::cout; \nusing std::endl; \nint main() \n{ \nint age; \ncout &lt;&lt; 'Input age:'; \ncin &lt;&lt; age; \ncout &lt;&lt; 'Your age:' &lt;&lt; age &lt;&lt; endl; \nreturn 0; \n}</code>",
+			"For each object in std space a different using expression is defined. The program will work the same way as before."
+		]
 	},
+	
 	"bit_operations": 
 	{
-		"name": "Bit operations"
+		"name": "Bit operations",
+		"page_1":
+		[
+			"Bitwise operations are performed on individual bits or bits of numbers. These operations are performed on integers only. \n<b>Shift operations</b> \nEach integer in memory is represented as a certain number of bits. And shift operations allow to shift the bit representation of a number by several bits to the right or to the left. Shift operations apply only to integer operands. There are two operations:",
+			"<b>&lt;&lt;</b> \nShifts the bit representation of the number represented by the first operand to the left by the number of digits specified by the second operand.",
+			"<b>&gt;&gt;</b> \nShifts the bit representation of a number to the right by a specified number of digits. \nApplication of operations: \n<code>int a = 2 &lt;&lt; 2; //10 two digits to the left = 1000 - 8 \nint b = 16 &gt;&gt; 3; //10000 by three digits to the right = 10 - 2",
+			"The number 2 in binary representation is 10. If we shift the number 10 two digits to the left, we get 1000, which in the decimal system is equal to the number 8. \nThe number 16 in binary representation is 10000. If we shift the number 10 three digits to the right (the last three digits are discarded), we get 10, which in the decimal system represents number 2.",
+			"<b>Digit-by-digit operations</b> \nThe bitwise operations are also performed only on the corresponding bits of integer operands: \n<b>&amp:</b> is a bitwise conjunction (AND operation or bitwise multiplication). Returns 1 if both of the corresponding digits of both numbers are 1",
+			"<b>|:</b> disjunction (OR operation or digit-by-digit addition). Returns 1 if at least one of the corresponding digits of both numbers is 1 \n<b>^:</b> is a bitwise exclusive OR. Returns 1 if only one of the corresponding digits of both numbers is 1",
+			"<b>~:</b> bitwise negation or inversion. Inverts all bits of an operand. If a bit is 1 it becomes 0, and if it is 0 it becomes 1. \nApplication of operations:",
+			"<code>int a = 5 | 2 //101 | 010 = 111 - 7 \nint b = 6 &amp 2; // 110 &amp 010 = 10  - 2 \nint c = 5 ^ 2; // 101 ^ 010 = 111 - 7 \nint d = ~9; // -10",
+			"For example, the expression 5 | 2 equals 7. The number 5 in binary notation is 101, and the number 2 is 10 or 010. Add the corresponding digits of both numbers. In addition, if at least one digit equals 1, then the sum of both digits equals 1. Therefore we obtain: \n1 0 1 \n0 1 0 \n1 1 1 \nAs a result, we get the number 111, which in decimal form represents the number 7.",
+			"Take another expression 6 &amp 2. The number 6 in binary notation is 110, and the number 2 is 10 or 010. Multiply the corresponding digits of both numbers. The product of both digits is 1 if both these digits are 1. Otherwise, the product is 0. Therefore we obtain: \n1 1 0 \n0 1 0 \n0 1 0 \nWe get the number 010, which in the decimal system is 2."
+		]
 	},
-	"logical_operations": 
+	
+	"assignment_operations": 
 	{
-		"name": "Logical operations"
+		"name": "Assignment operations",
+		"page_1":
+		[
+			"<b>Assignment operations</b>",
+			"Assignment operations allow you to assign some value. These operations are performed on two operands, and the left operand can only represent a modifiable named expression, such as a variable.",
+			"The basic assignment operation = allows you to assign the value of the right operand to the left operand: \n<code>int x; \nx=2;</code> \nThat is, in this case the variable x (the left operand) will have the value 2 (the right operand).",
+			"It is worth noting that the type of the right operand value may not always coincide with the type of the left operand. In this case the compiler tries to convert the value of the right operand to the type of the left operand. \nIn this case, the assignment operations are right-handed, that is, they are performed from right to left. And, thus, you can perform multiple assignments:",
+			"<code>int  a, b, c; \na = b = c = 34;</code> \nHere first the value of the expression c = 34 is calculated. The value of the right operand - 34 is assigned to the left operand c. Then the expression b = c is calculated: the value of the right operand <b>c</b> (34) is assigned to the left operand <b>b</b>. And finally the expression a = b is calculated: the value of the right operand <b>b</b> (34) is assigned to the left operand <b>a</b>.",
+			"In addition, it should be noted that assignment operations have the lowest priority compared to other types of operations, so they are executed last: \n<code>int x; \nx= 3 + 5;</code> \nAccording to the priority of operations, the expression 3 + 5 is executed first, and only then its value is assigned to the variable x. All other assignment operations are a combination of a simple assignment operation with other operations:",
+			"<b>+=:</b> assignment after addition. Assigns to the left operand the sum of the left and right operands: <b>A += B</b> is equivalent to <b>A = A + B</b> \n<b>-=:</b> assignment after subtraction. Assigns to the left operand the difference of the left and right operands: <b>A -= B</b> is equivalent to <b>A = A - B</b>",
+			"<b>*=:</b> assignment after multiplication. Assigns to the left operand the product of the left and right operands: <b>A *= B</b> is equivalent to <b>A = A * B</b> \n<b>/=:</b> assignment after division. Assigns to the left operand the quotient of the left and right operands: <b>A /= B</b> is equivalent to <b>A = A / B</b>",
+			"<b>%=:</b> assignment after modulo division. Assigns to the left operand the remainder of an integer division of the left operand by the right operand: <b>A %= B</b> is equivalent to <b>A = A % B</b> \n<b>&lt;&lt;=:</b> assignment after a bit shift to the left. Assigns to the left operand the result of shifting its bit representation to the left by a certain number of bits equal to the value of the right operand: <b>A &lt;&lt;= B</b> is equivalent to <b>A = A &lt;&lt; B</b>",
+			"<b>&gt;&gt;=:</b> assignment after a bit shift to the right. Assigns to the left operand the result of shifting its bit representation to the right by a certain number of bits equal to the value of the right operand: <b>A &gt;&gt;= B</b> is equivalent to <b>A = A &gt;&gt; B</b> \n<b>&amp=:</b> assignment after bitwise conjunction. Assigns to the left operand the result of bitwise conjunction of its bitwise representation with the bitwise representation of the right operand: <b>A &amp= B</b> is equivalent to <b>A = A &amp B</b>",
+			"<b>|=:</b> assignment after bitwise disjunction. Assigns to the left operand the result of the bitwise disjunction of its bitwise representation with the bitwise representation of the right operand: <b>A |= B</b> is equivalent to <b>A = A | B</b> \n<b>^=:</b> assignment after exclusive OR operation. Assigns to the left operand the result of the exclusive OR operation of its bit representation with the bit representation of the right operand: <b>A ^= B</b> is equivalent to <b>A = A ^ B</b>",
+			"Examples of operations: \n<code> int a = 5; \na += 10 // 15 \na -= 3; // 12 \na *= 2; // 24 \na /= 6; // 4 \na &lt;&lt;= 4; // 64 \na &gt;&gt;= 2; // 16</code>"
+		]
 	},
+	
 	"conditional_constructions": 
 	{
-		"name": "Conditional constructions"
+		"name": "Conditional constructions",
+		"page_1":
+		[
+			"Conditional constructions guide the program along one of the possible paths depending on the condition. \n<b>Construct if</b> \nThe <b>if</b> statement checks if the condition is true, and if it is true, it executes a block of instructions. This operator has the following abbreviated form:",
+			"<code>if (condition) \n{ \ninstructions; \n}</code> \nThe <i>condition</i> is a conditional expression that returns <b>true</b> or <b>false</b>. If the condition returns true, the subsequent instructions in the if block are executed. If the condition returns false, the subsequent instructions are not executed. The instruction block is enclosed in curly braces. \nFor example:",
+			"<code>#include <iostream> \nint main() \n{ \nint x = 60; \nif(x &gt; 50) \n{ \nstd::cout &lt;&lt; 'x is greater than 50 \n'; \n} \nif(x &lt; 30) \n{ \nstd::cout &lt;&lt; 'x is less than 30 \n'; \n} \nstd::cout &lt;&lt; 'End of Program' &lt;&lt; '\n'; \nreturn 0; \n}",
+			"Two conditional if constructions are defined here. They will check whether the value of variable x is greater or less than the defined value. As an instruction, in both cases they output some string to the console. \nIn the first case x &gt; 50 the condition is true because the value of the variable x is indeed greater than 50, so the condition will return true, and hence the instructions in the if block will be executed.",
+			"In the second case, the operation of the relation x &lt; 30 will return false, since the condition is false, so the subsequent block of instructions will not be executed. As a result, when you run the program the output of the console will look like this: \n<b>x greater than 50 \nEnd of Program</b> \nWe can also use the full form of the if construct, which includes the else operator:",
+			"<code>if(condition_expression) \ninstruction_1 \nelse \ninstruction_2</code> \nAfter else statement we can define a set of instructions that are executed if the condition in the if statement returns false. That is, if the condition is true, the instructions after the if statement are executed, and if the expression is false, the instructions after the else statement are executed.",
+			"<code>int x = 50; \nif(x &gt; 60) \nstd::cout &lt;&lt; 'x is greater than 60 \n'; \nelse \nstd::cout &lt;&lt; 'x is less or equal 60 \n'; \nIn this case, the condition x &gt; 60 is false, that is, it returns false, so the else block will be executed. And as a result the console will print the string 'x is less or equal 60 \n'.",
+			"Often, however, there are not two possible alternatives, but many more. For example, in the case above we can count three conditions: the variable x can be greater than 60, less than 60, and equal to 60. To check the alternative conditions, we can type <b>else if:</b>",
+			"<code>int x = 60; \nif(x &gt; 60) \n{ \nstd::cout &lt;&lt; 'x is greater than 60 \n'; \n} \nelse if (x &lt; 60) \n{ \nstd::cout &lt;&lt; 'x is less than 60 \n'; \n} \nelse \n{ \nstd::cout &lt;&lt; 'x is equal 60 \n'; \nThat is, in this case we get three branches of events in the program. \nIf only one instruction needs to be executed in an if or else or else-if block, the curly braces can be omitted:",
+			"<code>int x = 60; \nif(x &gt; 60) \nstd::cout &lt;&lt; 'x is greater than 60 \n'; \nelse if (x &lt; 60) \nstd::cout &lt;&lt; 'x is less than 60 \n'; \nelse \nstd::cout &lt;&lt; 'x is equal 60 \n'; \n}</code>"
+		],
+		
+		"page_2":
+		[
+			"<b>Switch design</b> \nAnother form of program branching is the <b>switch...case</b> construction. It has the following form: \n<code>switch(expression) \n{ \ncase constant_1: instruction_1; \ncase constant_2: instruction_2; \ndefault: instructions; \n}</code>",
+			"The keyword <b>switch</b> is followed by the expression to be compared in parentheses. The value of this expression is sequentially compared with the values after the <b>case</b> statement. And if a match is found, then a certain <b>case</b> block will be executed. \nThe switch construct may end with the <b>default</b> block. It is optional and is executed if the value after switch does not match any of the case statements. For example:",
+			"<code>#include &lt;iostream&gt; \nint main() \n{ \nint x = 2; \nswitch(x) \n{ \ncase 1: \nstd::cout &lt;&lt; 'x = 1' << '\n'; \nbreak; \ncase 2: \nstd::cout &lt;&lt; 'x = 2' &lt;&lt; '\n'; \nbreak; \ncase 3: \nstd::cout &lt;&lt; 'x = 3' &lt;&lt; '\n'; \nbreak; \ndefault: \nstd::cout &lt;&lt; 'x is undefined' &lt;&lt; 'n'; \nbreak; \n \nreturn 0; \n}</code> \nTo avoid executing subsequent case/default blocks, a break operator is placed at the end of each block. That is, in this case the operator will be executed",
+			"<code>case 2: \nstd::cout &lt;&lt; 'x = 2' &lt;&lt; '\n'; \nbreak; \nAfter the break operator is executed, the switch..case construct will exit, and the rest of the case statements will be ignored. Therefore, the following line will be displayed on the console <b>x=2</b> \nIt is worth noting the importance of the break operator. If we don't specify it in a case block, then after that block the execution will go to the next case block. For example, remove all break statements from the previous example:",
+			"<code>#include <iostream> \nint main() \n{ \nint x = 2; \nswitch(x) \n{ \ncase 1: \nstd::cout &lt;&lt; 'x = 1' &lt;&lt; '\n'; \ncase 2: \nstd::cout &lt;&lt; 'x = 2' &lt;&lt; '\n'; \ncase 3: \nstd::cout &lt;&lt; 'x = 3' &lt;&lt; '\n'; \ndefault: \nstd::cout &lt;&lt; 'x is undefined' &llt;&lt; '\n'; \n} \nreturn 0; \n}</code>",
+			"In this case again the case 2: operator will be executed, since the variable x=2. However, since this case block does not end with the break operator, the set of instructions after case 3: will be executed after it ends, even though the variable x is still 2. As a result, we will get the following console output: <b>\nx = 2 \nx = 3 \nx is undefined</b>"
+		],
+		
+		"page_3":
+		[
+			"<b>Ternary operator</b> \nThe ternary operator ?: shortens the definition of the simplest conditional if constructions and has the following form: \n<code>[first operand - condition] ? [second operand] : [third operand]</code>",
+			"The operator uses three operands at once. Depending on the condition, the ternary operator returns the second or third operand: if the condition is true (i.e., true), it returns the second operand; if the condition is false (i.e., false), it returns the third operand. For example:",
+			"<code>#include &lt;iostream&gt; \nint main() \n{ \nsetlocale(LC_ALL, ""); \nint x = 5; \nint y = 3; \nchar sign; \nstd::cout &lt;&lt; 'Enter the operation character: '; \nstd::cin &gt;&gt; sign; \nint result = sign=='+'?x + y:x - y; \nstd::cout &lt;&lt; 'Result: ' &lt;&lt; result &lt;&lt; '\n'; \nreturn 0;</codde>",
+			"In this case the sign of the operation is entered. Here the result of the ternary operation is the variable result. And if the sign variable contains a "+" sign, then result will be equal to the second operand - (x+y). Otherwise result is equal to the third operand."
+		]
 	},
+	
 	"loops": 
 	{
-		"name": "Loops"
+		"name": "Loops",
+		"page_1":
+		[
+			"Loops are used to perform some actions many times depending on a certain condition. The following kinds of loops are available in C++: \n<b>for \nwhile \ndo...while",
+			"<b>The while loop</b> \nThe while loop executes some code as long as its condition is true, that is, it returns true. It has the following formal definition: \n<code>while(condition) \n{ \n// actions to be performed \n}</code> \nAfter the <b>while</b> keyword there is a conditional expression in brackets that returns true or false. Then in curly braces there is a set of instructions that make up the body of the loop. And as long as the condition returns true, the instructions in the loop body will be executed.",
+			"For example, let's output the squares of numbers from 1 to 9: \n<code>#include <iostream> \nint main() \n{ \nint i = 1; \nwhile(i < 10) \n{ \nstd::cout &lt;&lt; i &lt;&lt; ' * ' &lt;&lt; i &lt;&lt; ' = ' &lt;&lt; i * i &lt;&lt; std::endl; \ni++; \n} \nreturn 0; \n}</code> \nHere, as long as condition i &lt; 10 is true, the while loop will be executed, in which the square of the number is output to the console and the i variable is incremented. At some point the variable i will increase to 10, condition i &lt; 10 will return false, and the loop will end.",
+			"Console program output: \n<b>1 * 1 = 1 \n2 * 2 = 4 \n3 * 3 = 9 \n4 * 4 = 16 \n5 * 5 = 25 \n6 * 6 = 36 \n7 * 7 = 49 \n8 * 8 = 64 \n9 * 9 = 81</b> \nEach single pass of the loop is called an iteration. That is, in the example above there were 9 iterations.",
+			"If the loop contains one instruction, the curly brackets can be omitted: \n<code>int i = 0; \nwhile(++i &lt; 10) \nstd::cout &lt;&lt; i &lt;&lt; ' * ' &lt;&lt; i &lt;&lt; ' = ' &lt;&lt; i * i &lt;&lt; std::endl;</code>"
+		],
+		
+		"page_2":
+		[
+			"<b>The loop for</b> \nThe for loop has the following formal definition: \n<code>for (expression_1; expression_2; expression_3) \n{ \n// loop body \n}</code>",
+			"<i>Expression_1</i> is executed once at the beginning of the loop and represents the setting of initial conditions, usually the initialization of counters - special variables that are used to control the loop. <i>Expression_2</i> represents a condition, on fulfillment of which the loop is executed. Typically, a comparison operation is used as a condition, and if it returns a non-zero value (i.e., the condition is true), the loop body is executed, and then expression_3 is calculated. <i>Expression_3</i> specifies a change in loop parameters, and it is not uncommon to increase loop counters here by one.",
+			"For example, let's rewrite a program to output the squares of numbers using the for loop: \n<code>#include <iostream> \nint main() \n{ \nfor(int i =1; i &lt; 10; i++) \n{ \nstd::cout &lt;&lt; i &lt;&lt; ' * ' &lt;&lt; i &lt;&lt; ' = ' &lt;&lt; i * i &lt;&lt; std::endl; \n} \nreturn 0; \n}</code>",
+			"The first part of the loop declaration, int i = 1, creates and initializes the i counter. In fact, this is the same as declaring and initializing a variable. The counter does not necessarily have to be of type int. It can be another numeric type, for example float. And its value will be 1 before the loop is executed. The second part is the condition under which the loop will be executed. In this case the loop will be executed until the variable i equals 10.",
+			"And the third part is the increment of the counter by one. Again, we do not need to increase by one. We can decrease: i--. You can change to another value: i+=2. \nAs a result, the loop will run 9 times until the i variable equals 10. And each time this value will be incremented by 1. And essentially we will get the same result as in the while loop: \n<b>1 * 1 = 1 \n2 * 2 = 4 \n3 * 3 = 9 \n4 * 4 = 16 \n5 * 5 = 25 \n6 * 6 = 36 \n7 * 7 = 49 \n8 * 8 = 64 \n9 * 9 = 81</b>",
+			"It is not necessary to specify all three expressions in the loop definition, we can omit one or even all of them: \n<code>int i = 1; \nfor(; i &lt; 10;) \n{ \nstd::cout &lt;&lt; i &lt;&lt; ' * ' &lt;&lt; i &lt;&lt; ' = ' &lt;&lt; i * i &lt;&lt; std::endl; \ni++; \n}</code> \nFormally, the definition of the loop remains the same, only now the first and third expressions in the loop definition are absent: for (; i &lt; 10;). The counter variable is defined and initialized outside the loop, and it is incremented in the loop itself.",
+			"You can define nested loops. For example, print a multiplication table: \n<code>#include <iostream> \nint main() \n{ \nfor (int i=1; i &lt; 10; i++) \n{ for(int j = 1; j &lt; 10; j++) \n{ \nstd::cout &lt;&lt; i * j &lt;&lt; '\t'; \n} \nstd::cout &lt;&lt; std::endl; \n} \return 0; \n}</code>"
+		],
+		
+		"page_3":
+		[
+			"<b>The do loop</b> \nIn the do loop, first the loop code is executed and then the condition in the while instruction is checked. As long as the condition is true, i.e., not equal to 0, the loop is repeated. Formal definition of a loop:",
+			"<code>do \n{ \ninstructions \n} \nwhile(condition);</code> \nFor example: \n#include <iostream> \nint main() \n{ \nint i = 6; \ndo \n{ \nstd::cout &lt;&lt; i &lt;&lt; std::endl; \ni--; \n} \nwhile(i&gt;0); \nreturn 0; \n}</code> \nHere the loop code will run 6 times until i equals zero.",
+			"But it is important to note that the do loop guarantees at least one action, even if the condition in the while instruction is not true. That is, we can write: \n<code>int i = -1; \ndo \n{ \nstd::cout &lt;&lt; i &lt;&lt; std::endl; \ni--; \n} \nwhile(i&gt;0); \n}</code> \nEven though we have a variable i less than 0, the loop will still execute once."
+		],
+		
+		"page_4":
+		[
+			"<b>Operators continue and break</b> \nSometimes it may be necessary to exit a loop before it is complete. In this case you can use the <b>break</b> operator. For example:",
+			"<code>#include <iostream> \nint main() \n{ \nint i = 1; \nfor ( ; ; ) \n{ \nstd::cout &lt;&lt; i &lt;&lt; ' * ' &lt;&lt; i &lt;&lt; ' = ' <&lt;&lt; i * i &lt;&lt; std::endl; \ni++; \nif (i &gt; 9) break; \n} \nreturn 0; \n}</code>",
+			"Here, when the value of variable i reaches 10, the cycle is exited using the break operator. \nUnlike the break operator, the <b>continue</b> operator advances to the next iteration. For example, we need to calculate the sum of only odd numbers from some range:",
+			"<code>#include &lt;iostream&gt; \nint main() \n{ \nint result = 0; \nfor (int i=0; i&lt;10; i++) \n{ \nif (i % 2 == 0) continue; \nresult +=i; \n} \nstd::cout &lt;&lt; 'result = ' &lt;&lt; result &lt;&lt; std::endl; // 25 \nreturn 0;</code> \nTo find out if the number is even, we get the remainder of the integer division by 2, and if it is 0, we use the continue operator to go to the next iteration of the loop. And if the number is odd, we add it to the remaining odd numbers."
+		]
 	},
+	
 	"links": 
 	{
-		"name": "Links"
+		"name": "Links",
+		"page_1":
+		[
+			"A <b>reference</b> represents a way to manipulate an object. In fact, a reference is an alternative name for an object. The ampersand sign & is used to define a reference: \n<code>int number = 5; \nint &amprefNumber = number;</code>",
+			"In this case a refNumber reference is defined that refers to a number object. The reference definition uses the same type that represents the object to which the reference is made, which in this case is int. \nIn this case, you can't just define a link:",
+			"<code>int &amprefNumber;</code> \nIt must necessarily point to some object. \nAlso, you cannot assign a literal value to a reference, such as a number: \n<code>int &refNumber = 10;</code> \nOnce a reference has been established, we can manipulate through it the object to which it refers:",
+			"<code>#include &lt;iostream&gt; \nint main() \n{ \nint number = 5; \nint &amprefNumber = number; \nstd::cout &lt;&lt; refNumber &lt;&lt; std::endl; // 5 \nrefNumber = 20; \nstd::cout &lt;&lt; number &lt;&lt; std::endl;   // 20 \nreturn 0; \n}</code> \nChanges to the link will inevitably affect the referenced object as well.",
+			"You can define not only references to variables, but also references to constants. But the reference itself must be a constant: \n<code>const int number = 5; \nconst int &amprefNumber = number; \nstd::cout &lt;&lt; refNumber &lt;&lt; std::endl; // 5 \n//refNumber = 20; you cannot change the value by reference</code>",
+			"We cannot initialize a non-constant reference with a constant object: \n<code>const int number = 5; \nint &amprefNumber = number; // error</code> \nA constant reference can also point to an ordinary variable, but we cannot change its value:",
+			"<code>int number = 5; \nconst int &amprefNumber = number; \nstd::cout &lt;&lt; refNumber &lt;&lt; std::endl; // 5 \n//refNumber = 20; we cannot change the value by reference to the constant \n// but we can change the variable itself \nnumber = 20; \nstd::cout &lt;&lt; refNumber &lt;&lt; std::endl; // 20</code>",
+			"In this case, although we cannot directly change the value by constant reference, we can nevertheless change the object itself, which will naturally lead to a change of the constant reference."
+		]
 	},
+	
 	"arrays": 
 	{
-		"name": "Arrays"
+		"name": "Arrays",
+		"page_1":
+		[
+			"An <b>array</b> is a set of data of the same type. The formal definition of an array is as follows: \n<code>type_variable name_array [length_array]</code> \nAfter the variable type comes the name of the array, followed by its size in square brackets. For example, let's define an array of 4 numbers: \n<code>int numbers[4];</code>",
+			"This array has four numbers, but all of these numbers have an undefined value. However, we can initialize and assign some initial values to these numbers through curly braces: \n<codeint numbers[4] = {1,2,3,4};</code> \nThe values in curly braces are also called initializers. If there are fewer initializers than there are elements in the array, initializers are used for the first elements. If there are more initializers than there are elements in the array, an error will occur during compilation:",
+			"<code>int numbers[4] = {1, 2, 3, 4, 5, 6};</code> \nHere the array has size 4, but 6 values are passed to it. \nIf the size of the array is not explicitly specified, it is derived from the number of initializers: \n<code>int numbers[] = {1, 2, 3, 4, 5, 6};</code> \nIn this case there are 6 elements in the array.",
+			"Character arrays initialization has its own peculiarities. We can pass a character array both a set of initializers and a string: \n<code>char s1[] = {'h', 'e', 'l', 'l', 'o'}; \nchar s2[] = 'world';</code> \nAnd in the second case, the s2 array will have 6 elements instead of 5, because the zero character '\0' is automatically added to the character array when it is initialized with a string.",
+			"It is not allowed to assign one array to another array: \n<code>int nums1[] = {1,2,3,4,5}; \nint nums2[] = nums1; //error \nnums2 = nums1; // error</code> \nAfter defining an array, we can refer to its individual elements by an index. Indexes start with zero, so to address the first element we must use index 0. By accessing an element by index we can get its value or change it:",
+			"<code>#include <iostream> \nint main() \n{ \nint numbers[4] = {1,2,3,4}; \nint first_number = numbers[0]; \nstd::cout &lt;&lt; first_number &lt;&lt; std::endl; // 1 \nnumbers[0] = 34; //change the element \nstd::cout &lt;&lt; numbers[0] &lt;&Lt; std::endl; // 34 \nreturn 0; \n}</code> \nThe number of array elements can also be defined through a constant: \n<code>const int n = 4; \nint numbers[n] = {1,2,3,4};</code>"
+		],
+		
+		"page_2":
+		[
+			"<b>Array enumeration</b> \nUsing loops, you can run through the entire array and refer to its elements via indexes: \n<code>#include <iostream> \nint main() \n{ \nint numbers[4] = {1,2,3,4}; \nint size = sizeof(numbers)/sizeof(numbers[0]); \nfor(int i=0; i &lt; size; i++) \nstd::cout &lt;&lt; numbers[i] &lt;&lt; std::endl; \nreturn 0; \n}</code>",
+			"To loop through an array, you must first find the length of the array. The <b>sizeof</b> operator is used to find the length. In fact, the length of an array is equal to the total length of its elements. All elements represent the same type and occupy the same size in memory. Therefore, using the sizeof(numbers) expression, we find the length of the entire array in bytes, and using the sizeof(numbers[0]) expression, we find the length of one element in bytes. By dividing the two values, you can get the number of elements in the array. And then, using the for loop, loop through all the elements until the i-count equals the length of the array. As a result, all elements of the array will be displayed on the console:",
+			"<b>1 \n2 \n3 \n4</b> \nBut there is also another form of the <b>for</b> loop, which is designed specifically to work with collections, including arrays. This form has the following formal definition: \n<code>for(type variable : collection) \n{ \ninstructions; \n}</code> \nUse this form to enumerate the array:",
+			"<code>#include &lt;iostream&gt; \nint main() \n{ \nint numbers[4] = {1,2,3,4}; \nfor(int number : numbers) \nstd::cout &lt;&lt; number &lt;&lt; std::endl; \nreturn 0; \n}</code> \nWhen the array is searched, each element to be searched will be placed in the variable number, the value of which is printed to the console in the loop.",
+			"If we don't know the type of the objects in the array, we can use the specifier auto to define the type: \n<code>for(auto number : numbers) \nstd::cout &lt;&lt; number &lt;&lt; std::endl;</code>"
+		],
+		
+		"page_3":
+		[
+			"<b>Multidimensional arrays</b> \nIn addition to one-dimensional arrays, there are multidimensional arrays in C++. The elements of such arrays are themselves arrays in which the elements can also be arrays. For example, let's define a two-dimensional array of numbers: \n<code>int numbers[3][2];</code>",
+			"Such an array consists of three elements, with each element representing an array of two elements. Initialize such an array: \n<code>int numbers[3][2] = { {1, 2}, {4, 5}, {7, 8} };</code> \nNested curly brackets outline the elements for each subarray. Such an array can also be represented as a table:",
+			"1 2\n4 5 \n7 8 \nYou can also omit curly braces during initialization: \n<code>int numbers[3][2] = { 1, 2, 4, 5, 7, 8 };</code> \nIt is also possible to initialize not all elements, but only some of them: \n<code>int numbers[3][2] = { {1, 2}, {}, {7} };</code> \nAnd to refer to the elements of a nested array, you need two indexes:",
+			"<code>int numbers[3][2] = { {1, 2}, {3, 4}, {5, 6} }; \nstd::cout &lt;&lt; numbers[1][0] &lt;&lt; std::endl;    // 3 \nnumbers[1][0] = 12;             // item change \nstd::cout &lt;&lt; numbers[1][0] &lt;&lt; std::endl;    // 12</code> \nLet's go through a two-dimensional array:",
+			"<code>#include &lt;iostream&gt; \nint main() \n{ \nconst int rows = 3, columns = 2; \nint numbers[rows][columns] = { {1, 2}, {3, 4}, {5, 6} }; \nfor(int i=0; i < rows; i++) \n{ \nfor(int j=0; j < columns; j++) \n{ \nstd::cout &lt;&lt; numbers[i] [j] &lt;&lt; '\t'; \n} \nstd::cout &lt;&lt; std::endl; \n} \nreturn 0; \n}</code> \nYou can also use another form of the for loop to try elements of a multidimensional array:",
+			"<code>#include &lt;iostream&gt; \nint main() \n{ \nconst int rows = 3, columns = 2; \nint numbers[rows][columns] = { {1, 2}, {3, 4}, {5, 6} }; \nfor(auto &subnumbers : numbers) \n{ \nfor(int number : subnumbers) \n{ \nstd::cout &lt;&lt; number &lt;&lt; '\t'; \n} \nstd::cout &lt;&lt; std::endl; \n} \nreturn 0; \n}</code>",
+			"References are used to enumerate arrays that are part of an array. That is, in the outer for(auto &subnumbers : numbers) cycle, &subnumbers represents a reference to a subarray in the array. In the internal for(int number : subnumbers) loop, from each subarray in subnumbers, we get its individual elements into the variable number and output its value to the console."
+		]
 	},
+	
 	"strings": 
 	{
-		"name": "Strings"
+		"name": "Strings",
+		"page_1":
+		[
+			"The type <b>string</b> is used to store strings in C++. To use this type, it must be included in the code using the <b>include</b> directive: \n<code>#include <string> \n#include <iostream> \nint main() \n{ \nstd::string hello = 'Hello World!'; \nstd::cout &lt;&lt; hello &lt;&lt; '\n'; \nreturn 0; \n} \n} \n}>/code>",
+			"The string type is defined in the standard library and when using it, you must specify the <b>std</b> namespace. \nOr you can use the using expression to avoid specifying the std prefix: <code>using std::string;</code>,
+			"In this case, the value of the variable <i>hello</i>, which represents the type <i>string</i>, is output to the console. \nWhen compiling through g++ you may need to specify the <i>-static</i> flag. That is, if the code is defined in the <i>hello.cpp</i> file, the compile command for g++ may look like this",
+			"<code>g++ hello.cpp -o hello -static</code> \nYou can use different methods to initialize strings: \n<ccode>#include <string> \n#include <iostream> \nint main() \n{ \nstd::string s1; // blank line \nstd::string s2 = 'hello'; // hello \nstd::string s3('welcome');  // welcome \nstd::string s4(5, 'h');  // hhhhh \nstd::string s5 = s2;  // hello \nstd::cout &lt;&lt; s1 &lt;&lt; '\n'; \nstd::cout &lt;&lt; s2 &lt;&lt; '\n'; \nstd::cout &lt;&lt; s3 &lt;&lt; '\n'; \nstd::cout &lt;&lt; s4 &lt;&lt; '\n'; \nstd::cout &lt;&lt; s5 &lt;&lt; '\n'; \nreturn 0; \n}>/code>",
+			"The console output of this program: <b>hello \nwelcome \nhhhhh \nhello</b> \nIf we do not assign any value to a variable of type string when defining it, by default it contains an empty string: <code>std::string s1;</code> \nYou can also initialize a variable with a string literal that is enclosed in double quotes:",
+			"<code>std::string s2 = 'hello';</code> \nAlternatively, you can pass the string in parentheses after the variable definition: \n<code>std::string s3('welcome');</code> \nIf you want the string to contain a certain number of certain characters, you can specify the number of characters and the character itself in brackets:",
+			"<code>std::string s4(5, 'h');</code> \nAnd you can also pass a copy of another string to a variable: \n<code>std::string s5 = s2;</code>"
+		],
+		
+		"page_2":
+		[
+			"<b>String concatenation</b> \nA number of operations can be performed on strings. In particular, you can combine strings using the standard addition operation: <code>#include <iostream> \nusing std::cout; \nusing std::endl; \nusing std::string; \nint main() \n{ \nstring s1 = 'hello'; \nstring s2 = 'world'; \nstring s3 = s1 + " " + s2; // hello world \ncout &lt;&lt; s3 &lt;&lt; endl; \nreturn 0; \n}</code>",
+			"<b>String Comparison</b> \nComparison operations can be applied to strings. The == operator returns true if all characters of both strings are equal. \n<code>std::string s1 = 'hello'; \nstd::string s2 = 'world'; \nbool result = s1 == s2;  // false \nresult = s1 == 'Hello';     // false \nresult = s1 == 'hello';     // true</code>",
+			"The characters must be case-matched as well. \nThe != operation returns true if the two strings do not match. \n<code>std::string s1 = 'hello'; \nstd::string s2 = 'world'; \nbool result = s1 != s2;     // true result = s1 != 'Hello';     // true \nresult = s1 != 'hello';     // false</code>",
+			"The other basic comparison operations <b>&lt;, &lt;=, &gt;, &gt;=</b> compare strings depending on the case and alphabetic order of characters. For example, the string 'b' is conditionally larger than the string 'a', because the character b comes after the character a. And the string 'a' is larger than the string 'A'. If the first characters of the string are equal, then subsequent characters are compared:",
+			"<code>std::string s1 = 'Aport'; \nstd::string s2 = 'Apricot'; \nbool result = s1 &gt; s2;       // false</code> \nIn this case, the condition s1 &gt; s2 is false, that is, s2 is greater than s1, because when the first two characters ('Ap') are equal, the third character of the second line ('o') stands in the alphabet before the third character of the second line ('p'), that is, 'o' is less than 'p'.",
+		],
+		
+		"page_3":
+		[
+			"<b>Line size</b> \nUsing the method <b>size()</b> you can find out the size of the string, i.e. how many characters it consists of: \n<code>std::string s1 = 'hello'; \nstd::cout << s1.size() &lt;7lt; std::endl;    // 5</code> \nIf the string is empty, it contains 0 characters. In this case we can use the method empty() - it returns true if the string is empty:",
+			"<code>std::string s1 = ''; \nif(s1.empty()) \nstd::cout &lt;&lt; 'String is empty' &lt;&Lt; std::endl;</code> \n<b>Reading a string from the console</b> \nYou can use the std::cin object to read the entered string from the console:",
+			"<code>#include &lt;iostream&gt; \n#include <string> \nint main() \n{ \nstd::string name; \nstd::cout &lt;&lt; 'Input your name:'; \nstd::cin &gt;&gt; name; \nstd::cout &lt;&Lt; 'Your name: ' &lt;&lt; name &lt;&lt; std::endl; \nreturn 0; \n}</code> \nConsole output: \n<b>Input your name: Tom \nYour name: Tom</b>",
+			"<b>Receiving and changing string characters</b> \nLike an array, we can use indices to access, retrieve, and modify individual characters in a string: \n<code>std::string hello = 'Hello'; \nchar c = hello[1];      // e \nhello[0]='M'; \nstd::cout &lt;&lt; hello &lt;&lt; std::endl;    // Mello</code>",
+			"<b>Symbol arrays</b> \nAn array of characters, the last element of which represents a null character '\0', can be used as a string: <code>#include <iostream> \nint main() \n{ \nchar letters[] = {'h', 'e', 'l', 'l', 'o', '\0'}; \nstd::cout &lt;&lt; letters &lt;&lt; std::endl; \nreturn 0; \n}</code>",
+			"This code will print the string 'hello' to the console. A similar string array definition would also be equivalent to the following: \n<code>char letters[] = 'hello';</code> \nHowever, this use of string array is inherited from the C language, and when writing C++ programs when working with strings, you should give preference to the built-in <i>string</i> type rather than an array of characters."
+		]
 	}
-}
