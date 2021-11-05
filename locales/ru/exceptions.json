@@ -1,7 +1,7 @@
 {
 	"id": "exceptions",
 	"name": "<b>Исключения</b>",
-	"overview": "This section explains concepts that are critical to understanding <b>exceptions</b>",
+	"overview": "В этом разделе объясняются концепции, которые имеют решающее значение для понимания <b>исключений</b>.",
 
 	"exception_handling": 
 	{
