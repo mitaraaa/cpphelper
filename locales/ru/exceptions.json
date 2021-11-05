@@ -1,0 +1,42 @@
+{
+	"id": "exceptions",
+	"name": "<b>Исключения</b>",
+	"overview": "This section explains concepts that are critical to understanding <b>exceptions</b>",
+
+	"exception_handling": 
+	{
+		"name": "Обработка исключений",
+		"page_1":
+		[
+    "В процессе работы программы могут возникать различные ошибки. Например, при передаче файла по сети оборвется сетевое подключение или будут введены некорректные и недопустимые данные, которые вызовут падение программы. Такие ошибки еще называются исключениями. Если исключение не обработано, то при его возникновении программа прекращает свою работу. \nНапример, в следующей программе происходит деление чисел:",
+    "<code>#include &lt;iostream&gt; \ndouble divide(int, int); \nint main() \n{ \nint x = 500; \nint y = 0; \ndouble z = divide(x, y); \nstd::cout &lt;&lt; z &lt;&lt; std::endl; \nstd::cout &lt;&lt; 'The End...' &lt;&lt; std::endl; \nreturn 0; \n} \ndouble divide(int a, int b) \n{ \nreturn a / b; \n}</code>",
+    "Эта программа успешно скомпилируется, но при ее выполнении возникнет ошибка, поскольку в коде производится деление на ноль, после чего программа аварийно завершится. \nС одной стороны, мы можем в функции divide определить проверку и выполнять деление, если параметр b не равен 0. Однако нам в любом случае надо возвращать из функции divide некоторый результат - некоторое число. То есть мы не можем просто написать:",
+    "<code>double divide(int a, int b) \n{ \nif (b != 0) \nreturn a / b; \nelse \nstd::cout &lt;&lt; 'Error! b must not be equal to 0' &lt;&lt; std::endl; \n}</code> \nИ в этом случае нам надо известить систему о возникшей ошибке. Для этого используется оператор <b>throw</b>.",
+    "Оператор throw генерирует исключение. Через оператор <b>throw</b> можно передать информацию об ошибке. Например, функция divide могла бы выглядеть следующим образом: \n<code>double divide(int a, int b) \n{ \nif (b == 0) \nthrow 'Division by zero!'; \nreturn a / b; \n}</code>",
+    "То есть если параметр b равен 0, то генерируем исключение. \nНо это исключение еще надо обработать в коде, где будет вызываться функция divide. Для обработки исключений применяется конструкция <b>try...catch</b>. Она имеет следующую форму: \n<code>try \n{ \ninstructions that may raise an exception \n} \ncatch(declaration_exception) \n{ \nexception handling \n}</code>",
+    "В блок после ключевого слова <b>try</b> помещается код, который потенциально может сгенерировать исключение. \nПосле ключевого слова <b>catch</b> в скобках идет параметр, который передает информацию об исключении. Затем в блоке производится собственно обработка исключения. \nТак изменим весь код следующим образом:",
+    "<code>#include &lt;iostream&gt; \ndouble divide(int, int); \nint main() \n{ \nint x = 500; \nint y = 0; \ntry \n{ \ndouble z = divide(x, y); \nstd::cout &lt;&lt; z &lt;&lt; std::endl; \n} \ncatch (...) \n{ \nstd::cout &lt;&lt; 'Error!' &lt;&lt; std::endl; \n} \nstd::cout &lt;&lt; 'The End...' &lt;&lt; std::endl; \nreturn 0; \n} \ndouble divide(int a, int b) \n{ \nif (b == 0) \nthrow 'Division by zero!'; \nreturn a / b; \n}</code>",
+    "Код, который потенциально может сгенерировать исключение - вызов функции divide помещается в блок try. \nВ блоке catch идет обработка исключения. Причем многоточие в скобках после оператора catch (catch(...)) позволяет обработать любое исключение.",
+    "В итоге когда выполнение программы дойдет до строки double z = divide(x, y);, будет сгенерировано исключение, поэтому последующие инструкции из блока try выполняться не будут, а управление перейдет в блок catch, в котором на консоль просто выводится сообщение об ошибке. После выполнения блока catch программа аварийно не завершится, а продолжит свою работу, выполняя операторы после бллока catch: \n<b>Error! \nThe End...</b>",
+    "Чтобы скомпилировать данный пример с конструкцией try...catch с помощью g++ может потребоваться использование флага <i>-static</i>: \n<b>g++ app.cpp -o app -static</b> \nОднако в данном случае мы только знаем, что произошла какая-то ошибка, а какая именно, неизвестно. Поэтому в выражении catch мы можем получить то сообщение, которое передается оператору throw:",
+    "<code>int main() \n{ \nint x = 500; \nint y = 0; \ntry \n{ \ndouble z = divide(x, y); \nstd::cout &lt;&lt; z &lt;&lt; std::endl; \n} \ncatch (const char* msg) \n{ \nstd::cout &lt;&lt; msg &lt;&lt; std::endl; \n} \nstd::cout &lt;&lt; 'The End...' &lt;&lt; std::endl; \nreturn 0; \n}</code>",
+    "С помощью параметра const char* msg получаем сообщение, которое предано оператору throw, и выводит это сообщение на консоль. И в этом случае консольный вывод будет выглядеть следующим образом: \n<b>Division by zero! \nThe End...</b> \nТаким образом, мы можем узнать суть возникшего исключения."
+    ]
+    },
+    
+    "exception_type":
+    {
+    "name": "Тип exception",
+    "page_2":
+    [
+    "Все исключения в языке C++ описываются типом <b>exception</b>, который определен в заголовочном файле <b>&lt;exception&gt;</b>. И при обработке исключений мы также можем использовать данный класс. Например:",
+    "<code>#include &lt;iostream&gt; \n#include &lt;exception&gt; \ndouble divide(int, int); \nint main() \n{ \nint x = 500; \nint y = 0; \ntry \n{ \ndouble z = divide(x, y); \nstd::cout &lt;&lt; z &lt;&lt; std::endl; \n} \ncatch (const std::exception& err) \n{ \nstd::cout &lt;&lt; 'Error!!!' &lt;&lt; std::endl; \n} \nstd::cout &lt;&lt; 'The End...' &lt;&lt; std::endl; \nreturn 0; \n} \ndouble divide(int a, int b) \n{ \nif (b == 0) \nthrow std::exception(); \nreturn a / b; \n}</code>",
+    "Прежде всего, оператору throw передается объект типа <b>std::exception<\b>. Данный объект инициализируется строкой 'Division by zero!', которая передает информацию о характере ошибки.",
+    "<code>throw std::exception('Division by zero!');</code> \nЕсли мы хотим отловить исключения типа exception, то нам надо в выражении catch определить переменную этого типа: \n<code>catch (const std::exception& err)</code>",
+    "То есть здесь err представляет переменную типа exception. Не обязательно определять переменную именно как константную ссылку, можно определить ее и так: \n<code>catch (std::exception err)</code> \nЕсли мы не собираемся использовать эту переменную в блоке catch, то можно указать просто тип исключения:",
+    "<code>catch (std::exception) \n{ \nstd::cout &lt;&lt; 'errrorr' &lt;&lt; std::endl; \n}</code> \nТакже стоит отметить различия в реализации компиляторов. Так, Visual Studio позволяет инициализировать объект exception строкой. Например, можно передать сообщение об ошибке:",
+    "<code>#include &lt;iostream&gt; \n#include &lt;exception&gt; \ndouble divide(int, int); \nint main() \n{ \nint x = 500; \nint y = 0; \ntry \n{ \ndouble z = divide(x, y); \nstd::cout &lt;&lt; z &lt;&lt; std::endl; \n} \ncatch (std::exception err) \n{ \nstd::cout &lt;&lt; err.what() &lt;&lt; std::endl; \n} \nstd::cout &lt;&lt; 'The End...' &lt;&lt; std::endl; \nreturn 0; \n} \ndouble divide(int a, int b) \n{ \nif (b == 0) \nthrow std::exception('Division by zero!'); \nreturn a / b; \n}</code>",
+    "С помощью метода <b>what()</b> в блоке catch можно получить переданное сообщение и, к примеру, вывести его на консоль: \n<code>catch (std::exception err) \n{ \nstd::cout &lt;&lt; err.what() &lt;&lt; std::endl; \n}</code> \nBut this code will not work in g++ because the exception type for g++ cannot be initialized by string."
+    ]
+    }
+}
