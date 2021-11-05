@@ -23,17 +23,14 @@
 	
 	"declaring_and_defining":
 	{
-	"name": "Declaring and defining",
-	"page_1":
-	[
-		"В языке C++ можно разделять объявление и определение функций в том числе по отношению к функциям, которые создаются в классах. Для этого используется выражение имя_класса::имя_функции(параметры) { тело_функции}. \nНапример, возьмем следующий класс Person:",
-		"<code>class Person \n{ \npublic: \nstring name; \nint age; \nPerson(string n, int a) \n{ \nname = n; age = a; \n} \nvoid move() \n{ \ncout &lt;&lt; name &lt;&lt; ' is moving' &lt;&lt; endl; \n} \n};</code>",
-		"Разобъем класс, вынеся реализацию его методов во вне: \n<code>#include &lt;iostream&gt; \n#include &lt;string&gt; \nusing std::string; \nusing std::cout; \nusing std::endl; \nclass Person \n{ \npublic: \nstring name; \nint age; \nPerson(string n, int a); \nvoid move(); \n}; \nPerson::Person(string n, int a) \n{ \nname = n; age = a; \n} \nvoid Person::move() \n{ \ncout &lt;&lt; name &lt;&lt; ' is moving' &lt;&lt; endl; \n} \nint main() \n{ \nPerson tom('Tom', 22); \ncout &lt;&lt; 'Name: ' &lt;&lt; tom.name &lt;&Lt; '\tAge: ' &lt;&lt; tom.age &lt;&lt; endl; \ntom.move(); \nreturn 0; \n}</code>",
-		"Теперь функции класса Person (в данном случае конструктор и функция move) в самом классе имеют только объявления. Реализации функций размещены вне класса Person. \nКонсольный вывод программы: \n<b>Name: Tom Age: 22 \nTom is moving</b>"
-	]
+		"name": "Declaring and defining",
+		"page_1":
+		[
+			"В языке C++ можно разделять объявление и определение функций в том числе по отношению к функциям, которые создаются в классах. Для этого используется выражение имя_класса::имя_функции(параметры) { тело_функции}. \nНапример, возьмем следующий класс Person:",
+			"<code>class Person \n{ \npublic: \nstring name; \nint age; \nPerson(string n, int a) \n{ \nname = n; age = a; \n} \nvoid move() \n{ \ncout &lt;&lt; name &lt;&lt; ' is moving' &lt;&lt; endl; \n} \n};</code>",
+			"Разобъем класс, вынеся реализацию его методов во вне: \n<code>#include &lt;iostream&gt; \n#include &lt;string&gt; \nusing std::string; \nusing std::cout; \nusing std::endl; \nclass Person \n{ \npublic: \nstring name; \nint age; \nPerson(string n, int a); \nvoid move(); \n}; \nPerson::Person(string n, int a) \n{ \nname = n; age = a; \n} \nvoid Person::move() \n{ \ncout &lt;&lt; name &lt;&lt; ' is moving' &lt;&lt; endl; \n} \nint main() \n{ \nPerson tom('Tom', 22); \ncout &lt;&lt; 'Name: ' &lt;&lt; tom.name &lt;&Lt; '\tAge: ' &lt;&lt; tom.age &lt;&lt; endl; \ntom.move(); \nreturn 0; \n}</code>",
+			"Теперь функции класса Person (в данном случае конструктор и функция move) в самом классе имеют только объявления. Реализации функций размещены вне класса Person. \nКонсольный вывод программы: \n<b>Name: Tom Age: 22 \nTom is moving</b>"
+		]
 	}
 	
-    
-
-
 }
