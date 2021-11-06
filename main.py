@@ -63,8 +63,10 @@ async def process_language(callback_query: types.CallbackQuery):
 async def process_callback_button(callback_query: types.CallbackQuery):
 	query_text = callback_query.data
 	if query_text.startswith("menu"):
-		if query_text == "menu_basics":
-			await edit_message(bot, "".join(locale.basics["name"] + '\n' + locale.basics["overview"]), callback_query, locale.basics)
+		IDs = ["basics", "functions", "pointers", "object_oriented_lang", "exceptions", "containers", "streams", "patterns"]
+		for ID in IDs:
+			if query_text == f"menu_{ID}":
+				await edit_message(bot, "".join(locale.basics["name"] + '\n' + locale.basics["overview"]), callback_query, getattr(locale, ID))
 	else:
 		for attr in get_attrs():
 			if query_text.startswith(attr):
