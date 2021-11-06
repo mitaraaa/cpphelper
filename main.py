@@ -47,7 +47,7 @@ async def process_navigation_to_menu(callback_query: types.CallbackQuery):
 @dp.callback_query_handler(lambda c: c.data == "lang_en")
 @dp.callback_query_handler(lambda c: c.data == "lang_ru")
 async def process_language(callback_query: types.CallbackQuery):
-	language = "ru" if callback_query == "lang_ru" else "en"
+	language = "ru" if callback_query.data == "lang_ru" else "en"
 	db.set(callback_query.from_user.id, language)
 	locale.set_lang(language)
 
