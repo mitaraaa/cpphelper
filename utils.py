@@ -17,7 +17,7 @@ class Locales():
 		basics = lang.RU_BASICS if selected_language == "ru" else lang.EN_BASICS
 		functions = lang.RU_FUNCTIONS if selected_language == "ru" else lang.EN_FUNCTIONS
 		pointers = lang.RU_POINTERS if selected_language == "ru" else lang.EN_POINTERS
-		oop = lang.RU_OOP if selected_language == "ru" else lang.EN_OOP
+		object_oriented_lang = lang.RU_OOP if selected_language == "ru" else lang.EN_OOP
 		exceptions = lang.RU_EXCEPTIONS if selected_language == "ru" else lang.EN_EXCEPTIONS
 		containers = lang.RU_CONTAINERS if selected_language == "ru" else lang.EN_CONTAINERS
 		streams = lang.RU_STREAMS if selected_language == "ru" else lang.EN_STREAMS
@@ -28,7 +28,7 @@ class Locales():
 	basics = lang.EN_BASICS
 	functions = lang.EN_FUNCTIONS
 	pointers = lang.EN_POINTERS
-	oop = lang.EN_OOP
+	object_oriented_lang = lang.EN_OOP
 	exceptions = lang.EN_EXCEPTIONS
 	containers = lang.EN_CONTAINERS
 	streams = lang.EN_STREAMS
