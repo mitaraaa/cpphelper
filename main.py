@@ -66,7 +66,7 @@ async def process_callback_button(callback_query: types.CallbackQuery):
 		IDs = ["basics", "functions", "pointers", "object_oriented_lang", "exceptions", "containers", "streams", "patterns"]
 		for ID in IDs:
 			if query_text == f"menu_{ID}":
-				await edit_message(bot, "".join(locale.basics["name"] + '\n' + locale.basics["overview"]), callback_query, getattr(locale, ID))
+				await edit_message(bot, "".join(getattr(locale, ID)["name"] + '\n' + getattr(locale, ID)["overview"]), callback_query, getattr(locale, ID))
 	else:
 		for attr in get_attrs():
 			if query_text.startswith(attr):
