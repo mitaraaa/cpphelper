@@ -1,0 +1,19 @@
+{
+	"id": "serial_containers",
+	"name": "<b>Serial containers</b>",
+	"overview": "This section explains concepts that are critical to understanding <b>Serial containers</b>",
+
+	"types": 
+	{
+		"name": "Types",
+		"page_1": 
+		[
+    "Containers are defined in the standard C++ library to manage sets of objects. A container represents a collection of objects of a particular type. A sequential container allows you to control the order in which the items are arranged in the collection, and to control access to those items. \nTypes of sequential containers:",
+    "<b>vector</b>: an array of variable size. \nSupports random access to any element in the container. \nAllows adding and removing elements from anywhere in the container. \n<b>deque</b>: a two-way queue. \nSupports random access to any element in the container. \nIt allows you to add and remove elements at the beginning and the end of the container.",
+   "<b>list</b>: a two-way list. \nSupports only sequential bidirectional access to elements. \nAllows deletion and addition of items at the beginning and end of the container. \n<b>forward_list</b>: a one-way list. \nSupports only unidirectional sequential access to items. \nAllows deletion and addition of elements at the beginning and end of the container.",
+   "<b>array</b>: a fixed size array. \nSupports random access to any element in the container. \nYou cannot add or remove elements from the container. \n<b>string</b>: represents a container, similar to a vector, that consists of characters, i.e. a string",
+   "Thus, the standard C++ library by default contains a number of containers that represent certain data structures. All of them have some common features as well as some specific ones. With the exception of the array class, they all support adding and removing items. The main difference between them is how they provide for adding and removing elements, as well as accessing the elements in the container. And depending on the situation and needs, you can use one or the other type of container.",
+   "To use a specific container, you must add an appropriate header file to the program, which is usually named after the container class. \nIn addition, when defining a container variable, you must set a constraint on the type of elements the container will contain. The type of elements is passed in angle brackets. For example, defining a vector class variable that stores numeric data of type int:",
+   "<code>std::vector<int> v1;</code> \nWhen compiling a program that uses containers with the g++ compiler, you may need to specify the <b>-static</b> flag: \n<b>g++ hello.cpp -o hello -static</b>"
+   ]
+   }
