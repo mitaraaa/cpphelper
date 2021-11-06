@@ -11,6 +11,17 @@ class Locales():
 		navigation = {}
 		basics = {}
 
+	menu = lang.EN_MENU
+	navigation = lang.EN_NAV
+	basics = lang.EN_BASICS
+	functions = lang.EN_FUNCTIONS
+	pointers = lang.EN_POINTERS
+	object_oriented_lang = lang.EN_OOP
+	exceptions = lang.EN_EXCEPTIONS
+	containers = lang.EN_CONTAINERS
+	streams = lang.EN_STREAMS
+	patterns = lang.EN_PATTERNS
+
 	def set_lang(self, selected_language):
 		menu = lang.RU_MENU if selected_language == "ru" else lang.EN_MENU
 		navigation = lang.RU_NAV if selected_language == "ru" else lang.EN_NAV
@@ -23,16 +34,6 @@ class Locales():
 		streams = lang.RU_STREAMS if selected_language == "ru" else lang.EN_STREAMS
 		patterns = lang.RU_PATTERNS if selected_language == "ru" else lang.EN_PATTERNS
 
-	menu = lang.EN_MENU
-	navigation = lang.EN_NAV
-	basics = lang.EN_BASICS
-	functions = lang.EN_FUNCTIONS
-	pointers = lang.EN_POINTERS
-	object_oriented_lang = lang.EN_OOP
-	exceptions = lang.EN_EXCEPTIONS
-	containers = lang.EN_CONTAINERS
-	streams = lang.EN_STREAMS
-	patterns = lang.EN_PATTERNS
 
 # Instance of localization class
 locale = Locales()
