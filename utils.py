@@ -1,3 +1,4 @@
+from logging import exception
 import localization as lang
 import keyboards
 
@@ -14,11 +15,24 @@ class Locales():
 		menu = lang.RU_MENU if selected_language == "ru" else lang.EN_MENU
 		navigation = lang.RU_NAV if selected_language == "ru" else lang.EN_NAV
 		basics = lang.RU_BASICS if selected_language == "ru" else lang.EN_BASICS
+		functions = lang.RU_FUNCTIONS if selected_language == "ru" else lang.EN_FUNCTIONS
+		pointers = lang.RU_POINTERS if selected_language == "ru" else lang.EN_POINTERS
+		object_oriented_lang = lang.RU_OOP if selected_language == "ru" else lang.EN_OOP
+		exceptions = lang.RU_EXCEPTIONS if selected_language == "ru" else lang.EN_EXCEPTIONS
+		containers = lang.RU_CONTAINERS if selected_language == "ru" else lang.EN_CONTAINERS
+		streams = lang.RU_STREAMS if selected_language == "ru" else lang.EN_STREAMS
+		patterns = lang.RU_PATTERNS if selected_language == "ru" else lang.EN_PATTERNS
 
 	menu = lang.EN_MENU
 	navigation = lang.EN_NAV
 	basics = lang.EN_BASICS
-	# ...
+	functions = lang.EN_FUNCTIONS
+	pointers = lang.EN_POINTERS
+	object_oriented_lang = lang.EN_OOP
+	exceptions = lang.EN_EXCEPTIONS
+	containers = lang.EN_CONTAINERS
+	streams = lang.EN_STREAMS
+	patterns = lang.EN_PATTERNS
 
 # Instance of localization class
 locale = Locales()
