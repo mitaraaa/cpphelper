@@ -264,7 +264,6 @@
 			"<code>#include &lt;iostream&gt; \nusing std::cin; \nusing std::cout; \nusing std::endl; \nint main() \n{ \nint age; \ncout &lt;&lt; 'Input age:'; \ncin &lt;&lt; age; \ncout &lt;&lt; 'Your age:' &lt;&lt; age &lt;&lt; endl; \nreturn 0; \n}</code>",
 			"Для каждого объекта из пространства std определяется свое выражение using. При этом программа будет работать также как и раньше."
 		]
-
 	},
 			
 	"bit_operations": 
