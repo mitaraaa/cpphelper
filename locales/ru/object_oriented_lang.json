@@ -19,7 +19,6 @@
 			"<code>#include &lt;iostream&gt; \n#include &lt;string&gt; \nusing std::string; \nusing std::cout; \nusing std::endl; \nclass Person \n{ \npublic: \nstring name; \nint age; \nvoid move() { \ncout &lt;&lt; name &lt;&lt; ' is moving' &lt;&lt; endl; \n} \n}; \nint main() \n{ \nPerson person; \nPerson *ptr = &ampperson; \nptr-&gt;name = 'Tom'; \nptr-&gt;age = 22; \nptr-&gt;move(); \ncout &lt;&lt; 'Name: ' &lt;&lt; ptr-&gt;name &lt;&lt; '\tAge: ' &lt;&lt; ptr-7gt;age &lt;&lt; endl; \ncout &lt;&lt; 'Name: ' &lt;&lt; person.name &lt;&lt; '\tAge: '&lt;&lt; person.age &lt;&lt; endl; \nreturn 0; \n}</code> \nИзменения по указателю ptr в данном случае приведут к изменениям объекта person."
 		]
 	},
-
 	"declaring_and_defining":
 	{
 		"name": "Объявление и определение",
