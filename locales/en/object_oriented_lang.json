@@ -1,0 +1,34 @@
+{
+	"id": "object_oriented_programming",
+	"name": "<b>Object-oriented programming</b>",
+	"overview": "This section explains concepts that are critical to understanding <b>Object-oriented programming</b>",
+
+	"definition_of_classes": 
+	{
+		"name": "Definition of classes",
+		"page_1": 
+		[
+			"In addition to using built-in types such as <i>int, double</i>, etc., we can define our own types or classes. A class represents a composite type that can use other types. \nA class is designed to describe some type of objects. That is, a class is essentially a blueprint of an object. And an object represents a concrete embodiment of a class, its implementation.",
+			"A class can define variables and constants to store the state of the object and functions to define the behavior of the object. \nFor example, let's define the simplest class:",
+			"<code>class Person \n{ \n};</code> \nTo define a class, the keyword <b>class</b> is used, followed by the name of the class itself. In this case, the class is called Person and represents a person. After the class name comes a block of code that defines the body of the class.",
+			"Once a class has been defined, we can create its variables: \n<code>class Person \n{ \n}; \nint main() \n{ \nPerson person; \nreturn 0; \n}</code> \nBut this class doesn't do much. Now let's change it:",
+			"<code>#include &lt;iostream&gt; \n#include &lt;string&gt; \nusing std::string; \nusing std::cout; \nusing std::endl; \nclass Person \n{ \npublic: \nstring name; \nint age; \nvoid move() { \ncout &lt;&lt; name &lt;&Lt; ' is moving' &lt;&lt; endl; \n} \n}; \nint main() \n{ \nPerson person; \nperson.name = 'Tom'; \nperson.age = 22; \ncout &lt;&lt; 'Name: ' &lt;&lt; person.name &lt;&lt; '\tAge: ' &lt;&lt; person.age &lt;&lt; endl; \nperson.move(); \nreturn 0; \n}</code>",
+			"The Person class now has two variables <i>name</i> and <i>age</i>, which are used to store the name and age of a person, respectively. The class also defines the <i>move</i> function, which outputs a string to the console. You should also pay attention to the access modifier <b>public</b>:, which indicates that the variables and functions following it will be accessible from the outside, from external code.",
+			"Then a single object of the Person class is created in the <i>main</i> function. Through a point we can refer to its variables and functions. For example, with the expression \n<code>person.name = 'Tom';</code> \nYou can pass a value to the variable name. And with the help of the expression",
+			"<code>string personName = person.name;</code> \nGet this value in some variable. And we can also call functions on the object: \n<code>person.move(); \nConsole output of this program: \n<b>Name: Tom	Age: 22 \nTom is moving</b>",
+			"<b>Pointers to class objects</b> \nYou can define pointers to class objects, just like to objects of other types. Then you can use a pointer to access class members-variables and methods. However, if a point symbol is used when accessing a normal variable, then an arrow (-&gt;) is used to access class members via pointer:",
+			"<code>#include &lt;iostream&gt; \n#include &lt;string&gt; \nusing std::string; \nusing std::cout; \nusing std::endl; \nclass Person \n{ \npublic: \nstring name; \nint age; \nvoid move() { \ncout &lt;&lt; name &lt;&lt; ' is moving' &lt;&lt; endl; \n} \n}; \nint main() \n{ \nPerson person; \nPerson *ptr = &ampperson; \nptr-&gt;name = 'Tom'; \nptr-&gt;age = 22; \nptr-&gt;move(); \ncout &lt;&lt; 'Name: ' &lt;&lt; ptr-&gt;name &lt;&lt; '\tAge: ' &lt;&lt; ptr-7gt;age &lt;&lt; endl; \ncout &lt;&lt; 'Name: ' &lt;&lt; person.name &lt;&lt; '\tAge: '&lt;&lt; person.age &lt;&lt; endl; \nreturn 0; \n}</code>"
+		]
+		
+	"declaring_and_defining":
+	{
+		"name": "Declaring and defining",
+		"page_1":
+		[
+		"In C++, you can separate the declaration and definition of functions, including functions that are created in classes. The expression class_name::function_name(parameters) {function_body} is used for this purpose. \nFor example, take the following class Person:",
+		"<code>class Person \n{ \npublic: \nstring name; \nint age; \nPerson(string n, int a) \n{ \nname = n; age = a; \n} \nvoid move() \n{ \ncout &lt;&lt; name &lt;&lt; ' is moving' &lt;&lt; endl; \n} \n};</code>",
+		"Break up the class by taking the implementation of its methods outside: \n<code>#include &lt;iostream&gt; \n#include &lt;string&gt; \nusing std::string; \nusing std::cout; \nusing std::endl; \nclass Person \n{ \npublic: \nstring name; \nint age; \nPerson(string n, int a); \nvoid move(); \n}; \nPerson::Person(string n, int a) \n{ \nname = n; age = a; \n} \nvoid Person::move() \n{ \ncout &lt;&lt; name &lt;&lt; ' is moving' &lt;&lt; endl; \n} \nint main() \n{ \nPerson tom('Tom', 22); \ncout &lt;&lt; 'Name: ' &lt;&lt; tom.name &lt;&Lt; '\tAge: ' &lt;&lt; tom.age &lt;&lt; endl; \ntom.move(); \nreturn 0; \n}</code>",
+		"Now the functions of the Person class (in this case the constructor and the move function) have only declarations in the class itself. The function implementations are placed outside the Person class. \nConsole output of the program: \n<b>Name: Tom Age: 22 \nTom is moving</b>"
+		]
+}
+
