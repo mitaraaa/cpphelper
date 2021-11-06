@@ -18,7 +18,7 @@
     "<code>int x = 10; \nint *p  = &x; \nint y = *p; \nstd::cout &lt;&lt; 'Value = ' &lt;&lt; y &lt;&lt; std::endl;    // 10</code> \nAnd also using a pointer we can change the value at the address stored in the pointer:",
     "<code>int x = 10; \nint *p = &x; \n*p = 45; \nstd::cout &lt;&lt; 'x = ' &lt;&lt; x &lt;&lt; std::endl;     // 45</code> \nSince the variable x is located at the address the pointer points to, its value will change accordingly. \nLet's create some more pointers:",
     "<code>#include &lt;iostream&gt; \nint main() \n{ \nshort c = 12; \nint d = 10; \nshort s = 2; \nshort *pc = &ampc;          // get the address of the variable with the type short \nint *pd = &ampd;           // get the address of variable d of int type \nshort *ps = &amps;         // get the address of the variable s of the short type \nstd::cout &lt;&lt; 'Variable c: address=' &lt;&lt; pc &lt;&lt; '\t value=' &lt;&lt; *pc &lt;&lt; std::endl; \nstd::cout &lt;&lt; 'Variable d: address=' &lt;&lt; pd &lt;&lt; '\t value=' &lt;&lt; *pd &lt;&lt; std::endl; \nstd::cout &lt;&lt; 'Variable s: address=' &lt;&lt; ps &lt;&lt; '\t value=' &lt;&lt; *ps &lt;&lt; std::endl; \nreturn 0; \n}</code>",
-    "In my case I get the following console output: \n<b>Variable c: address=0x60fe92	value=12 \nVariable d: address=0x60fe8c	value=10 \nVariable s: address=0x60fe8a	value=2</b>"
+    "In my case I get the following console output: \n<b>Variable c: address=0x60fe92 value=12 \nVariable d: address=0x60fe8c value=10 \nVariable s: address=0x60fe8a value=2</b>"
     ],
     
     "page_2":
@@ -30,7 +30,7 @@
     "When a pointer is assigned to another pointer, in fact the first pointer also starts pointing to the same address as the second pointer. \n<b>Zero pointers</b> \nA null pointer is a pointer that doesn't point to any object. If we don't want the pointer to point to any particular address, we can assign it a conditional null value. There are various ways to create a null pointer:",
     "<code>int *p1 = nullptr; \nint *p2 = NULL; \nint *p3 = 0;</code> \n<b>References to pointers</b> \nSince a reference is not an object, you cannot define a pointer to a reference, but you can define a reference to a pointer. Through such a reference you can change the value to which the pointer points or change the address of the pointer itself:",
     "<code>#include &lt;iostream&gt; \nint main() \n{ \nint a = 10 \nint b = 6; \nint *p = 0; // pointer \nint *&amppRef = p; // reference to the pointer \npRef = &ampa; // the address of the a variable is assigned to the p pointer by reference \nstd::cout &lt;&lt; 'p value=' &lt;&lt; *p &lt;&lt; std::endl; // 10 \n*pRef = 70; // change the value at the pointer address \nstd::cout &lt;&lt; 'a value=' &lt;&Lt; a &Lt;&Lt; std::endl; // 70 \npRef = &b; // change the address, pointed by the pointer \nstd::cout &lt;&lt; 'p value=' &lt;&lt; *p &lt;&Lt; std::endl; // 6 \nreturn 0; \n}</code>"
-    ]
+    ],
     
     "page_3":
     [
@@ -45,7 +45,8 @@
     "To convert a pointer to another type, put the type you want to convert to in parentheses before the pointer. And if we cannot create an object, for example, a <i>void</i> type variable, it will work for a pointer. That is, it is possible to create a <i>void</i> type pointer. \nIn addition, it should be noted that the system interprets a pointer to <i>char</i> type (char *pc = &ampc) as a string when output to the console: <code>std::cout &lt;&lt; 'pc=' &lt;&lt; pc &lt;&lt; std::endl;</code>",
     "Therefore, if we still want to output an address to the console that is stored in a char pointer, the pointer must be converted to another type, such as void* or int*.t*."
     ]
-    }
+  }
+}
 
 
 
