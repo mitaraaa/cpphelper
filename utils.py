@@ -11,16 +11,16 @@ class Locales():
 		navigation = {}
 		basics = {}
 
-	menu = lang.EN_MENU
-	navigation = lang.EN_NAV
-	basics = lang.EN_BASICS
-	functions = lang.EN_FUNCTIONS
-	pointers = lang.EN_POINTERS
-	object_oriented_lang = lang.EN_OOP
-	exceptions = lang.EN_EXCEPTIONS
-	containers = lang.EN_CONTAINERS
-	streams = lang.EN_STREAMS
-	patterns = lang.EN_PATTERNS
+	menu = {}
+	navigation = {}
+	basics = {}
+	functions = {}
+	pointers = {}
+	object_oriented_lang = {}
+	exceptions = {}
+	containers = {}
+	streams = {}
+	patterns = {}
 
 	def set_lang(self, selected_language):
 		menu = lang.RU_MENU if selected_language == "ru" else lang.EN_MENU
