@@ -22,7 +22,7 @@
 	},
 	"exception_type": {
 		"name": "Exception type",
-		"page_2": [
+		"page_1": [
 			"All exceptions in C++ are described by the <b>exception</b> type which is defined in the <b>&lt;exception&gt;</b> header file. And when handling exceptions we can use this class too. For example:",
 			"<code>#include &lt;iostream&gt; \n#include &lt;exception&gt; \ndouble divide(int, int); \nint main() \n{ \nint x = 500; \nint y = 0; \ntry \n{ \ndouble z = divide(x, y); \nstd::cout &lt;&lt; z &lt;&lt; std::endl; \n} \ncatch (const std::exception& err) \n{ \nstd::cout &lt;&lt; 'Error!!!' &lt;&lt; std::endl; \n} \nstd::cout &lt;&lt; 'The End...' &lt;&lt; std::endl; \nreturn 0; \n} \ndouble divide(int a, int b) \n{ \nif (b == 0) \nthrow std::exception(); \nreturn a / b; \n}</code>",
 			"First of all, an object of type <b>std::exception</b> is passed to the throw operator. This object is initialized with the string 'Division by zero!', which conveys information about the nature of the error.",
