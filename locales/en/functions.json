@@ -39,51 +39,5 @@
 			"При объявлении прототипа подобной функции он тоже может содержать значение по умолчанию для параметра. И в этом случае мы можем не определять в функции значение по умолчанию для параметра - оно будет браться из прототипа: \n<code>#include &lt;iostream&gt; \nvoid multiply(int n, int m=3); \nint main() \n{ \nmultiply(4, 5); \nmultiply(4); \nreturn 0; \n} \nvoid multiply(int n, int m) \n{ \nint result = n * m; \nstd::cout &lt;&lt; 'n * m = ' &lt;&lt; result &lt;&lt; std::endl; \n}</code>"
 		]
 	}
-}
-=======
-{
-	"id": "Functions",
-	"name": "<b>Functions</b>",
-	"overview": "This section explains concepts that are critical to understanding <b>functions</b>",
 
-	"definition": 
-	{
-		"name": "Definition",
-		"page_1": 
-    [
-    "<b>Definition of function</b> \nA function defines the actions that a program performs. Functions allow you to select a set of instructions and give it a name. And then call it many times in different parts of the program by the assigned name. A function is essentially a named block of code.",
-    "The formal definition of the function is as follows: \n<code>type function_name(parameters) \n{ \ninstructions \n}</code> \nThe first line represents the function header. The first line specifies the function's return type. If the function does not return any value, the <b>void</b> type is used.",
-    "Then comes the function name, which represents an arbitrary identifier. The same rules apply to function naming as to variable naming. \nThe function name is followed by a parameter list in parentheses. The function may have no parameters, in which case empty brackets are specified.",
-    "The function header is followed by the body of the function in curly brackets, which contains the instructions to be executed. \nTo return the result, the function uses the <b>return</b> operator. If a function has any type other than void as the return type, it must necessarily return some value using the return operator.",
-    "For example, the definition of the main function, which must be in any C++ program and with which its execution begins: \nc<ode>int main() \n{ \nreturn 0; \n}</code> \nThe return type of the function is the <b>int</b> type, so the function must use the <b>return</b> operator and return some value that corresponds to the int type. The return value is placed after the return operator.",
-    "But if the function is of <b>void</b> type, it does not need to return anything. For example, we could define the following function: \n<code>void hello() \n{ \nstd::cout &lt;&lt; 'hello\n'; \n}</code>",
-    "<b>Performing the function</b> \nTo execute a function, it must be called. The function is called in the form: \n<code>function_name(arguments);</code> \nThe function name is followed by brackets that list the arguments - the values for the function parameters.",
-    "For example, let's define and perform the simplest function: \n<code>#include &lt;iostream&gt; \nvoid hello() \n{ \nstd::cout &lt;&lt; 'hello\n'; \n} \nint main() \n{ \nhello(); \nhello(); \nreturn 0; \n}</code>",
-    "In this case, it must be declared before calling the function. The function declaration is also called a prototype. The formal declaration looks like this: \n<code>type of function_name(parameters);</code> \nThis is actually the header of the function. That is, for the <i>hello</i> function the declaration will look like this:",
-    "<code>void hello();</code> \nWe use the function declaration: \n<code>#include &lt;iostream&gt; \nvoid hello(); \nint main() \n{ \nhello(); \nhello(); \nreturn 0; \n} \nvoid hello() \n{ \nstd::cout &lt;&lt; 'hello\n'; \n}</code>",
-    "In this case, even though the function is defined after it is called, but since the function is already declared before it is called, the compiler will already know about the hello function and no problems will occur in the operation of the program."
-    ]
-    },
-    
-    "function_parameters":
-    {
-    "name": "Function parameters",
-    "page_1":
-    [ 
-    "Various values can be passed to a function via parameters. Parameters are listed in parentheses after the function name and are defined as follows: \n<code>type name_parameter</code> \nFor example, let us define the program of the exchange office:",
-    "<code>#include &lt;iostream&gt; \nvoid exchange(double, double); \nint main() \n{ \ndouble rate = 58; \ndouble sum = 5000; \nexchange(rate, sum); \nexchange(60, 5000); \nreturn 0; \n} \nvoid exchange(double currate, double sum) \n{ \ndouble result = sum / currate; \nstd::cout &lt;&lt;  'Rate: ' &lt;&lt; currate &lt;&lt; '\tSum: ' &lt;&lt; sum &lt;&lt; '\tResult: ' &lt;&lt; result &lt;&lt; std::endl; \n}</code>",
-    "When we run the program, we get the following console output: \n<b>Rate: 58	Sum: 5000	Result: 86.2069 \nRate: 60	Sum: 5000	Result: 83.3333</b> \nThe <i>exchange</i> function takes two parameters of type <i>double</i>, called <i>currate</i> (the current exchange rate) and <i>sum</i> (the amount to be exchanged).",
-    "When you call an <i>exchange</i> function, you must pass values to these parameters. The values passed to the parameters of a function when it is called are called arguments. In this case, the usual numbers are passed as arguments. Arguments are passed by position, that is, the first argument is passed to the first parameter, the second argument to the second parameter, and so on. Arguments should correspond to parameters by type or allow an implicit conversion to a parameter type.",
-    "Let's look at another example with functions: \n<code>#include &lt;iostream&gt; \n#include &lt;string&gt; \nvoid square(int); \nvoid display(std::string, int); \nint main() \n{  \ndisplay('Tom', 33); \nsquare(4.56); \nreturn 0; \n} \nvoid square(int x) \n{ \nstd::cout &lt;&lt; 'Square of ' &lt;&lt; x &lt;&lt; ' is equal to ' &lt;&lt; x * x &lt;&Lt; std::endl; \n} \nvoid display(std::string name, int age) \n{ \nstd::cout &Lt;&lt; 'Name: ' &lt;&lt; name &lt;&lt; '\tAge: ' &Lt;&Lt; age &Lt;&Lt; std::endl; \n}</code>",
-    "The <i>display</i> function accepts parameters of the <i>string</i> and <i>int</i> types. When you call this function, it first takes a string ('Tom'), since the <i>string</i> type parameter comes first, and then a number (33), since the <i>int</i> type parameter comes second: display('Tom', 33)",
-    "The <i>square</i> function accepts a number and outputs its square to the console. The parameter of the function represents the <i>int</i> type, but when you call it, it passes a floating-point number, i.e., a value of the <i>double</i> type. Therefore, it converts from double to <i>int</i> type, discards the fractional part, and finally the function gets number 4.",
-    ],
-    
-    "page_2":
-    [
-    "<b>Default Arguments</b> \nA function can take default arguments, that is, some values that the function uses if no value is explicitly passed for the parameters when it is called:",
-    "<code>#include &lt;iostream&gt; \nvoid multiply(int n, int m = 3) \n{ \nint result = n * m; \nstd::cout &lt;&lt; 'n * m = ' &lt;&lt; result &lt;&lt; std::endl; \n} \nint main() \n{ \nmultiply(4, 5); \nmultiply(4); \nreturn 0; \n}</code>",
-    "To set the default value, the parameter is assigned this value int m = 3. And if no value is passed for the second parameter, it will use the default value. Console output of the program: \n<b>n * m = 20 \nn * m = 12",
-    "If we declare a prototype of such a function, it can also contain the default value for a parameter. And in this case we can not define in function a default value for parameter - it will be taken from a prototype: \n<code>#include &lt;iostream&gt; \nvoid multiply(int n, int m=3); \nint main() \n{ \nmultiply(4, 5); \nmultiply(4); \nreturn 0; \n} \nvoid multiply(int n, int m) \n{ \nint result = n * m; \nstd::cout &lt;&lt; 'n * m = ' &lt;&lt; result &lt;&lt; std::endl; \n}</code>",
-    ]
-    }
+}
