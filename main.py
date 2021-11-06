@@ -49,7 +49,7 @@ async def process_navigation_to_menu(callback_query: types.CallbackQuery):
 async def process_language(callback_query: types.CallbackQuery):
 	language = "ru" if callback_query.data == "lang_ru" else "en"
 	db.set(callback_query.from_user.id, language)
-	locale.set_lang(language)
+	set_lang(locale, language)
 
 	await bot.edit_message_text(
 			text=("Выбран язык: Русский" if language == "ru" else "Picked language: English"), 
