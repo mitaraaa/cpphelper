@@ -1,0 +1,36 @@
+{
+	"id": "object_oriented_programming",
+	"name": "<b>Объектно-ориентированное программирование</b>",
+	"overview": "В этом разделе объясняются концепции, которые имеют решающее значение для понимания <b> объектно-ориентированного программирования.</b>",
+
+	"definition_of_classes": 
+	{
+		"name": "Определение классов",
+		"page_1": 
+		[
+			"Кроме использования встроенных типов, таких как int, double и т.д., мы можем определять свои собственные типы или классы. Класс представляет составной тип, который может использовать другие типы. \nКласс предназначен для описания некоторого типа объектов. То есть по сути класс является планом объекта. А объект представляет конкретное воплощение класса, его реализацию.",
+			"Класс может определять переменные и константы для хранения состояния объекта и функции для определения поведения объекта. \nНапример, определим простейший класс:",
+			"<code>class Person \n{ \n};</code> \nДля определения класса применяется ключевое слово <b>class</b>, после которого идет собственно название класса. В данном случае класс называется Person и представляет человека. После названия класса идет блок кода, который определяет тело класса.",
+			"После определения класса мы можем создавать его переменные: \n \n<code>class Person \n{ \n}; \nint main() \n{ \nPerson person; \nreturn 0; \n}</code> \nНо данный класс мало что делает. Теперь изменим его:",
+			"<code>#include &lt;iostream&gt; \n#include &lt;string&gt; \nusing std::string; \nusing std::cout; \nusing std::endl; \nclass Person \n{ \npublic: \nstring name; \nint age; \nvoid move() { \ncout &lt;&lt; name &lt;&Lt; ' is moving' &lt;&lt; endl; \n} \n}; \nint main() \n{ \nPerson person; \nperson.name = 'Tom'; \nperson.age = 22; \ncout &lt;&lt; 'Name: ' &lt;&lt; person.name &lt;&lt; '\tAge: ' &lt;&lt; person.age &lt;&lt; endl; \nperson.move(); \nreturn 0; \n}</code>",
+			"Теперь класс Person имеет две переменных name и age, которые предназначены для хранения имени и возраста человека соответственно. Также класс определяет функцию move, которая выводит строку на консоль. Также стоит обратить внимание на модификатор доступа <b>public:</b>, который указывает, что идущие после него переменные и функции будут доступны извне, из внешнего кода.",
+			"Затем в функции main создается один объект класса Person. Через точку мы можем обратиться к его переменным и функциям. Например, через выражение \n<code>person.name = 'Tom';</code> \nМожно передать значение переменной name. А с помощью выражения",
+			"<code>string personName = person.name;</code> \nПолучить это значение в какую-нибуь переменную. Ну и также мы можем вызывать функции у объекта: \n<code>person.move(); \nConsole output of this program: \n<b>Name: Tom	Age: 22 \nTom is moving</b>",
+			"<b>Указатели на объекты классов</b> \nНа объекты классов, как и на объекты других типов, можно определять указатели. Затем через указатель можно обращаться к членам класса - переменным и методам. Однако если при обращении через обычную переменную используется символ точка, то для для обащения к членам класса через указатель применяется стрелка (-&gt;):",
+			"<code>#include &lt;iostream&gt; \n#include &lt;string&gt; \nusing std::string; \nusing std::cout; \nusing std::endl; \nclass Person \n{ \npublic: \nstring name; \nint age; \nvoid move() { \ncout &lt;&lt; name &lt;&lt; ' is moving' &lt;&lt; endl; \n} \n}; \nint main() \n{ \nPerson person; \nPerson *ptr = &ampperson; \nptr-&gt;name = 'Tom'; \nptr-&gt;age = 22; \nptr-&gt;move(); \ncout &lt;&lt; 'Name: ' &lt;&lt; ptr-&gt;name &lt;&lt; '\tAge: ' &lt;&lt; ptr-7gt;age &lt;&lt; endl; \ncout &lt;&lt; 'Name: ' &lt;&lt; person.name &lt;&lt; '\tAge: '&lt;&lt; person.age &lt;&lt; endl; \nreturn 0; \n}</code> \nИзменения по указателю ptr в данном случае приведут к изменениям объекта person."
+		]
+	},
+	
+	"declaring_and_defining":
+	{
+		"name": "Объявление и определение",
+		"page_1":
+		[
+			"В языке C++ можно разделять объявление и определение функций в том числе по отношению к функциям, которые создаются в классах. Для этого используется выражение имя_класса::имя_функции(параметры) { тело_функции}. \nНапример, возьмем следующий класс Person:",
+			"<code>class Person \n{ \npublic: \nstring name; \nint age; \nPerson(string n, int a) \n{ \nname = n; age = a; \n} \nvoid move() \n{ \ncout &lt;&lt; name &lt;&lt; ' is moving' &lt;&lt; endl; \n} \n};</code>",
+			"Разобъем класс, вынеся реализацию его методов во вне: \n<code>#include &lt;iostream&gt; \n#include &lt;string&gt; \nusing std::string; \nusing std::cout; \nusing std::endl; \nclass Person \n{ \npublic: \nstring name; \nint age; \nPerson(string n, int a); \nvoid move(); \n}; \nPerson::Person(string n, int a) \n{ \nname = n; age = a; \n} \nvoid Person::move() \n{ \ncout &lt;&lt; name &lt;&lt; ' is moving' &lt;&lt; endl; \n} \nint main() \n{ \nPerson tom('Tom', 22); \ncout &lt;&lt; 'Name: ' &lt;&lt; tom.name &lt;&Lt; '\tAge: ' &lt;&lt; tom.age &lt;&lt; endl; \ntom.move(); \nreturn 0; \n}</code>",
+			"Теперь функции класса Person (в данном случае конструктор и функция move) в самом классе имеют только объявления. Реализации функций размещены вне класса Person. \nКонсольный вывод программы: \n<b>Name: Tom Age: 22 \nTom is moving</b>"
+		]
+	}
+	
+}
