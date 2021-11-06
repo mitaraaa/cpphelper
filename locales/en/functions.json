@@ -39,4 +39,5 @@
 			"При объявлении прототипа подобной функции он тоже может содержать значение по умолчанию для параметра. И в этом случае мы можем не определять в функции значение по умолчанию для параметра - оно будет браться из прототипа: \n<code>#include &lt;iostream&gt; \nvoid multiply(int n, int m=3); \nint main() \n{ \nmultiply(4, 5); \nmultiply(4); \nreturn 0; \n} \nvoid multiply(int n, int m) \n{ \nint result = n * m; \nstd::cout &lt;&lt; 'n * m = ' &lt;&lt; result &lt;&lt; std::endl; \n}</code>"
 		]
 	}
+
 }
