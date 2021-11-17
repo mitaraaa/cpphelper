@@ -9,7 +9,6 @@ from emoji import emojize
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.utils.exceptions import MessageNotModified
 
-import localization as lang
 from keyboards import *
 from utils import *
 
