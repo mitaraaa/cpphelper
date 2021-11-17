@@ -29,7 +29,7 @@
 	"std::vector&lt;int&gt; v4(5);               // vector v4 consists from 5 numbers",
 	"std::vector&lt;int&gt; v5(5, 2);            // vector v5 consists from 5numbers, each numbers is equal to 2",
 	"std::vector&lt;int&gt; v6{1, 2, 4, 5};  // vector v6 consists from  1, 2, 4, 5",
-	"std::vector&lt;int&gt; v7 = {1, 2, 3, 5}; // vector v7 consists from 1, 2, 4, 5".
+	"std::vector&lt;int&gt; v7 = {1, 2, 3, 5}; // vector v7 consists from 1, 2, 4, 5"
 ]
 }
 	"vector":{
