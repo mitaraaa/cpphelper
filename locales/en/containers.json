@@ -2,7 +2,6 @@
 	"id": "containers",
 	"name": "<b>Serial containers</b>",
 	"overview": "This section explains concepts that are critical to understanding <b>Serial containers</b>",
-
 	"types": {
 		"name": "Types",
 		"page_1": [
@@ -13,6 +12,43 @@
 			"Thus, the standard C++ library by default contains a number of containers that represent certain data structures. All of them have some common features as well as some specific ones. With the exception of the array class, they all support adding and removing items. The main difference between them is how they provide for adding and removing elements, as well as accessing the elements in the container. And depending on the situation and needs, you can use one or the other type of container.",
 			"To use a specific container, you must add an appropriate header file to the program, which is usually named after the container class. \nIn addition, when defining a container variable, you must set a constraint on the type of elements the container will contain. The type of elements is passed in angle brackets. For example, defining a vector class variable that stores numeric data of type int:",
 			"<code>std::vector&lt;int&gt; v1;</code> \nWhen compiling a program that uses containers with the g++ compiler, you may need to specify the <b>-static</b> flag: \n<b>g++ hello.cpp -o hello -static</b>"
+			"<code>std::vector&lt;int&gt; v1;</code> \nWhen compiling a program that uses containers with the g++ compiler, you may need to specify the <b>-static</b> flag: \n<b>g++ hello.cpp -o hello -static</b>"
 		]
 	}
+	"vector":{
+	"name": "Vector",
+	"page_1":[
+    "A vector represents a container that contains a collection of objects of the same type. To work with vectors, you need to include the header:",
+    "\n<code>#include &lt;vector&gt;</code>"
+	"Let's define the simplest vector:",
+	"<code>std::vector&lt;int&gt; numbers;</code>",
+	"Angle brackets indicate the type whose objects will be stored in the vector. That is, the numbers vector stores objects of type int. However, such a vector is empty. It does not contain any elements. But we can initialize the vector in one of the following ways:",
+	"std::vector&lt;int&gt; v1;              // empty vector",
+	"std::vector&lt;int&gt; v2(v1);          // vector v2 - copy of the vector v1",
+	"std::vector&lt;int&gt; v3 = v1;         // vector v3 - copy of the vector v1",
+	"std::vector&lt;int&gt; v4(5);               // vector v4 consists from 5 numbers",
+	"std::vector&lt;int&gt; v5(5, 2);            // vector v5 consists from 5numbers, each numbers is equal to 2",
+	"std::vector&lt;int&gt; v6{1, 2, 4, 5};  // vector v6 consists from  1, 2, 4, 5",
+	"std::vector&lt;int&gt; v7 = {1, 2, 3, 5}; // vector v7 consists from 1, 2, 4, 5"
+]
+}
+	"vector":{
+	"name": "Vector",
+	"page_2":[
+	"It is important to understand the difference in this case between parentheses and curly brackets:"
+	"<code>std::vector &lt;int&gt; v{5, hi};",
+	"<b>Referencing and iterating over elements</b>",
+	"You can use different methods to refer to the elements of a vector:",
+	"<b>[index]:</b> getting an element by index (same as in arrays), indexing starts at zero",
+	"<b>at (index):</b> the function returns the element at index",
+	"<b>front ():</b> returns the first element",
+	"<b>back ():</b> returns the last element",
+	"Let's iterate over the vector and get some of its elements:",
+	"<code>#include &lt; \niostream&gt;#include &lt;vector&gt; \nint main() \n{ \nstd::vector<int> numbers= {1, 2, 3, 4, 5}; \nint n1 = numbers.front();   // n1 = 1 \nint n2 = numbers.back();    // n2 = 5 \nint x = numbers[1]; // x = 2 \nnumbers[0] = 6; \nfor(int n : numbers) \ncout &lt;&lt; n &gt;&gt;  \"\\t\";  // 6  2  3  4  5 \nstd::cout &lt;&lt; std::endl; \nreturn 0; \n}</code>",
+	"It should be borne in mind that the index does not recalculate elements. For example, if the vector contains 5 elements, then we can refer to the sixth element:",
+	"<code>std::vector&lt;in&gt; numbers= {1, 2, 3, 4, 5}; \nnumbers[5] = 9;",
+	"With this treatment, the result is undefined. Some compilers may generate an error, some will continue to work, but even then, such a call would be erroneous, and it would not add the sixth element to the vector anyway.",
+	"To avoid such situations, you can use the at () function, which, although it also returns the item by index, will throw an out_of_range exception when attempting to access by an invalid index:",
+	"<code>#include &lt;iostream&gt; \n#include &lt;vector&gt; \n#include &lt;stdexcept&gt; \nint main() \n{ \nstd::vector&lt;int&gt; numbers = { 1, 2, 3, 4, 5}; \ntry \n{ \nint n = numbers.at(8); \n} \ncatch (std::out_of_range e) \n{ \nstd::cout &lt;&lt;\"Incorrect index\" &lt;&lt; std::endl; \n} \nreturn 0; \n}</code>"
+	]
 }
