@@ -5,6 +5,23 @@
 
 	"basic_types": {
 		"name": "Basic types",
-		"page_1": [""]
-	}
+		"page_1": ["All the tools for working with the I / O system and streams in the C ++ language are defined in the standard library. The iostream header file defines the following basic types for working with streams: <b>istream</b> and <b>wistream</b>: read data from a stream <b>ostream</b> and <b>wostream</b>: write data to a stream <b>iostream</b >and <b>wiostream</b>: read and write data to a stream. For each type, its counterpart is defined, which begins with the letter w and which is designed to support data of the wchar_t type.These types are the base for other classes that control I / O streams. An object of type ostream receives values ​​of various types, converts them to a sequence of characters and passes them through a buffer to a specific location for output (console, file, network interfaces, etc.)"
+			"Sequence of characters: \n1)value('c',\"hello"\,34,5.6)"
+			"\n2)stream ostream"
+			"\n3)buffer"
+			"\n4)console,file, network and etc."
+			"The istream stream receives a sequence of characters (from the console, from a file, from the network, etc.) through a buffer from a specific location and converts these sequences to values ​​of various types. That is, when we enter data (from the same keyboard in the console), the data is first accumulated in a buffer and only then transferred to the istream object."
+			"Sequence of characters:"
+			"\n1)console,file, network and etc."
+			"\n2)buffer"
+			"\n3)stream istream"
+			"\n4)value('c',\"hello"\,34,5.6)"
+			"By default, the standard library defines objects of these classes - cout, cin, cerr, which work with the console."
+	],
+	"name":"Stream recording",
+	"page_2":["The operator << is used to write data to the ostream stream. This operator receives two operands. The left operand is an ostream object, and the right operand is the value to be output to the stream. For example, by default, the C ++ standard library provides a cout object that represents the ostream type and allows you to output to the console:"
+	"<code>#include &lt;iostream&gt; \nint main() \n{ \nstd::cout &lt;&lt; \"Hello\" &lt;&lt; std::endl; \nreturn 0; \n}</code>
+	"Since the operator << returns the left operand - cout, we can pass several values to the console using a chain of operators:"
+	"<code>\nstd::cout &lt;&lt; \"Hello\"  &lt;&lt; \"world\"&lt;&lt; std::endl;</code>"
+]
 }
